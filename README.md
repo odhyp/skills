@@ -62,33 +62,24 @@ flowchart TD
     X3 -->|"Yes"| T
     X3 -->|"No / milestone"| E1["/release 👤<br/>bump · CHANGELOG · archive · confirm · tag"]
     E1 --> X0
-
-    classDef manual fill:#fde68a,stroke:#b45309
-    classDef auto fill:#bfdbfe,stroke:#1d4ed8
-    classDef builtin fill:#e9d5ff,stroke:#7e22ce
-    classDef store fill:#e5e7eb,stroke:#374151
-    class A1,B1,B2,B3,C1,S1,E1 manual
-    class B4,B5,D1 auto
-    class CL,CL0 builtin
-    class T store
 ```
 
 👤 manual skill · 🤖 auto skill (starts on its own; you can also call it) · ⚙️ built-in Claude Code command
 
 ## Skills
 
-| Skill | Invocation | Does |
-|---|---|---|
-| `setup` | Manual | Run once per project. Writes `polaris.json`, the CLAUDE.md block, VERSION, CHANGELOG, the commit hook and the empty docs folders. Safe to re-run. |
-| `shape` | Manual | Entry point for features, small changes and known-cause bugs. Grills you until you agree, draws diagrams if the structure changes, then names the next step. |
-| `to-spec` | Manual | Turns the agreed design into a spec (`S-NNNN`). |
-| `to-tickets` | Manual | Splits a spec, or an agreed small change, into self-contained tickets (`T-NNNN`). |
-| `diagnose` | Auto | When you report a bug whose cause is unknown: reproduces it, finds the root cause, writes a `fix` ticket. Does not fix. |
-| `diagram` | Auto | Creates or updates the `.mmd` diagrams: on request, from `shape`, or when a change makes an existing diagram wrong. |
-| `implement` | Manual | `/odhyp:implement @<ticket>`: builds one ticket test-first, runs `code-review`, then commits on a pass or stops with the must-fix findings. The only skill that writes code. |
-| `code-review` | Auto | Reviews the uncommitted diff against the ticket in a forked subagent, before the commit. Writes follow-up tickets. Also reviews a ticket's commits on request. |
-| `release` | Manual | Computes the SemVer bump, updates the version and CHANGELOG, archives tickets and specs, then commits and tags after you confirm. |
-| `session-review` | Manual | Run before `/clear`: reviews the session and proposes fixes to CLAUDE.md and to these skills. |
+| Skill            | Invocation | Does                                                                                                                                                                         |
+| ---------------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `setup`          | Manual     | Run once per project. Writes `polaris.json`, the CLAUDE.md block, VERSION, CHANGELOG, the commit hook and the empty docs folders. Safe to re-run.                            |
+| `shape`          | Manual     | Entry point for features, small changes and known-cause bugs. Grills you until you agree, draws diagrams if the structure changes, then names the next step.                 |
+| `to-spec`        | Manual     | Turns the agreed design into a spec (`S-NNNN`).                                                                                                                              |
+| `to-tickets`     | Manual     | Splits a spec, or an agreed small change, into self-contained tickets (`T-NNNN`).                                                                                            |
+| `diagnose`       | Auto       | When you report a bug whose cause is unknown: reproduces it, finds the root cause, writes a `fix` ticket. Does not fix.                                                      |
+| `diagram`        | Auto       | Creates or updates the `.mmd` diagrams: on request, from `shape`, or when a change makes an existing diagram wrong.                                                          |
+| `implement`      | Manual     | `/odhyp:implement @<ticket>`: builds one ticket test-first, runs `code-review`, then commits on a pass or stops with the must-fix findings. The only skill that writes code. |
+| `code-review`    | Auto       | Reviews the uncommitted diff against the ticket in a forked subagent, before the commit. Writes follow-up tickets. Also reviews a ticket's commits on request.               |
+| `release`        | Manual     | Computes the SemVer bump, updates the version and CHANGELOG, archives tickets and specs, then commits and tags after you confirm.                                            |
+| `session-review` | Manual     | Run before `/clear`: reviews the session and proposes fixes to CLAUDE.md and to these skills.                                                                                |
 
 ## Polaris contract
 
