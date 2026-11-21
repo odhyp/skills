@@ -1,0 +1,19 @@
+#!/bin/sh
+# Conventional Commits check, installed by odhyp setup-odhyp-skills.
+# Activate per clone: git config core.hooksPath .githooks
+
+subject=$(grep -v '^#' "$1" | grep -v '^[[:space:]]*$' | head -n 1)
+
+case "$subject" in
+  "Merge "*|"Revert \""*|"fixup! "*|"squash! "*) exit 0 ;;
+esac
+
+if printf '%s\n' "$subject" | grep -Eq '^(feat|fix|perf|refactor|test|docs|build|ci|chore|style|revert)(\([a-z0-9-]+\))?!?: .+'; then
+  exit 0
+fi
+
+echo "commit-msg: not a Conventional Commit:" >&2
+echo "  $subject" >&2
+echo "expected: type(scope)!: subject   e.g. feat(dashboard): add layout" >&2
+echo "types: feat fix perf refactor test docs build ci chore style revert" >&2
+exit 1
