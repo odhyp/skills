@@ -1,0 +1,11 @@
+{
+  "name": "skills",
+  "paths": {
+    "specs": "docs/specs",
+    "tickets": "docs/tickets",
+    "diagrams": "docs/diagrams",
+    "releases": "docs/releases"
+  },
+  "version_file": "VERSION",
+  "changelog": "CHANGELOG.md"
+}

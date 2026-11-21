@@ -93,7 +93,7 @@ Polaris (`npx -y @odhyp/polaris@2`) is the view across all projects. The skills 
 ## Roadmap
 
 - **v0.1.0:** try the workflow end to end in a throwaway Hugo project and a throwaway Python project from the one global install (setup → shape → spec → tickets → implement → review → release), then tag this repo `v0.1.0`.
-- **Later:** a frontmatter and link validation check; avoiding ticket ID collisions across parallel branches; `context: fork` for `implement`; a ticket overview in Polaris; using the workflow on this repo itself.
+- **Later:** a frontmatter and link validation check; avoiding ticket ID collisions across parallel branches; `context: fork` for `implement`; a ticket overview in Polaris.
 
 ## Development
 
