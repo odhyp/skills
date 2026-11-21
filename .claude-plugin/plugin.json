@@ -1,0 +1,10 @@
+{
+  "name": "odhyp",
+  "version": "0.1.0",
+  "description": "Odhy's engineering workflow: shape, spec, tickets, test-first implement, review, release.",
+  "author": { "name": "Odhy Pradhana", "email": "hi@odhyp.com" },
+  "homepage": "https://github.com/odhyp/skills",
+  "repository": "https://github.com/odhyp/skills",
+  "license": "MIT",
+  "keywords": ["workflow", "tickets", "tdd", "conventional-commits", "semver"]
+}
