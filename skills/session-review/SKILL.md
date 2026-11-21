@@ -19,7 +19,7 @@ For each, name the cause in one line and where the fix belongs: the project's `C
 ## 2. Propose
 
 - **CLAUDE.md:** show each proposed edit as a diff. Apply the ones the user approves; apply nothing unapproved.
-- **odhyp skills:** the installed plugin is read-only, so print one ticket for the odhyp skills repo in the ticket format (`TICKET-FORMAT.md`), with `source: human` and `id: T-XXXX` for the user to number. Its `## Context` quotes the moment from this session; its acceptance criteria name the skill and the change.
+- **odhyp skills:** the installed plugin is read-only, so print one ticket for the odhyp skills repo in the ticket format (`${CLAUDE_PLUGIN_ROOT}/templates/TICKET-FORMAT.md`), with `source: human` and `id: T-XXXX` for the user to number. Its `## Context` quotes the moment from this session; its acceptance criteria name the skill and the change.
 
 If the session ran smoothly, say so in one line and propose nothing.
 

@@ -1,6 +1,6 @@
 #!/bin/sh
-# Self-check for skills/setup-odhyp-skills/templates/commit-msg. Run: sh tests/commit-msg.test.sh
-hook="$(dirname "$0")/../skills/setup-odhyp-skills/templates/commit-msg"
+# Self-check for templates/commit-msg. Run: sh tests/commit-msg.test.sh
+hook="$(dirname "$0")/../templates/commit-msg"
 t=$(mktemp -d); fail=0
 chk() { printf '%s\n' "$2" > "$t/m"; sh "$hook" "$t/m" 2>/dev/null; r=$?
         [ "$r" = "$1" ] || { echo "FAIL (want exit $1): $2"; fail=1; }; }

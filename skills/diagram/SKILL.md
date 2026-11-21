@@ -1,9 +1,11 @@
 ---
 name: diagram
-description: Use to create or update the project's Mermaid .mmd diagrams when a change adds, removes or rewires services, infrastructure, data flow or module boundaries. Not for changes that stay inside one module.
+description: Use to create or update the project's Mermaid .mmd diagrams when the user asks for diagrams, when shape finalizes work that changes the structure, or when a change makes an existing diagram wrong (services, infrastructure, data flow or module boundaries added, removed or rewired).
 ---
 
-Read the odhyp block in `CLAUDE.md` for the diagrams folder. Edit only `.mmd` files in that folder.
+Read `polaris.json` for the diagrams folder. Edit only `.mmd` files in that folder; start a new one from `${CLAUDE_PLUGIN_ROOT}/templates/diagram.mmd`.
+
+The folder starts empty. Create a diagram only when the user asks or `shape` calls for one; otherwise update only diagrams that already exist. A diagram drawn from `shape` shows the agreed design.
 
 ## Files
 
@@ -26,4 +28,4 @@ Add another file only for a view none of these covers, named for it (`auth-flow.
 
 **Done when** every service, module or flow the change added, removed or rewired appears correctly, and nothing that no longer exists remains.
 
-Report which files changed and what changed in each. The user can view them with the command in the odhyp block.
+Report which files changed and what changed in each. Polaris shows them.

@@ -2,7 +2,9 @@
 
 A spec records an agreed feature design. Tickets carry everything needed to build it; the spec is the background and the place where decisions changed during implementation are logged.
 
-- **One file per spec**, flat in the specs folder: `NNNN-short-slug.md`.
+**The frontmatter is locked:** exactly the fields below, and no skill adds its own. Polaris parses it, so changing it is a breaking change for both repos. The body is free Markdown; the sections under Body are the recommended structure. Blank template: `spec.md`.
+
+- **One file per spec**, flat in the specs folder (path in `polaris.json`): `NNNN-short-slug.md`.
 - **IDs:** `S-NNNN`, zero-padded, never reused. The next ID is the highest existing `S-` ID (including the releases archive) plus one. Tickets count separately (`T-NNNN`).
 - **Link by ID, never by path.**
 
@@ -29,8 +31,6 @@ tickets: [T-0018, T-0019] # filled by to-tickets
 ## Problem
 ## Goals / Non-goals
 ## Design
-## Diagrams affected
-- architecture.mmd (what changes)      # empty → the diagram skill is skipped
 ## Decisions
 <!-- added during implementation: date · ticket ID · what changed and why -->
 ```
@@ -58,9 +58,6 @@ Logged-in users land on an empty page and have to know URLs to find anything.
 A `/dashboard` route renders a grid layout: header, collapsible sidebar, main area.
 The main area holds three widgets, each fed by one existing query. No new tables.
 `/` redirects to `/dashboard` for logged-in users.
-
-## Diagrams affected
-- architecture.mmd (new dashboard module, depends on auth and orders)
 
 ## Decisions
 - 2026-11-20 · T-0018 · Sidebar collapses at 768px, not 640px: the nav labels wrap below that.

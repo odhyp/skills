@@ -1,10 +1,10 @@
 ---
 name: release
-description: Cut a release: compute the SemVer bump from resolved tickets and commits, update VERSION and CHANGELOG, archive tickets and specs, commit and tag after confirmation.
+description: Cut a release. Computes the SemVer bump from resolved tickets and commits, updates the version and CHANGELOG, archives tickets and specs, then commits and tags after confirmation.
 disable-model-invocation: true
 ---
 
-Read the odhyp block in `CLAUDE.md` for the paths and the test and lint commands, then read `TICKET-FORMAT.md` and `SPEC-FORMAT.md`.
+Read `polaris.json` for the paths, `version_file` and `changelog`, the odhyp block in `CLAUDE.md` for the test and lint commands, and `${CLAUDE_PLUGIN_ROOT}/templates/TICKET-FORMAT.md` and `${CLAUDE_PLUGIN_ROOT}/templates/SPEC-FORMAT.md`.
 
 ## 1. Preconditions
 
@@ -15,7 +15,7 @@ Stop and report if any fails:
 
 ## 2. Collect
 
-- **Last tag:** `git describe --tags --abbrev=0` (none → everything since the first commit). Current version: `VERSION`.
+- **Last tag:** `git describe --tags --abbrev=0` (none → everything since the first commit). Current version: the `version_file`.
 - **Tickets:** every `resolved` ticket in the tickets folder (they have no `released_in` yet), and every `wontfix` ticket.
 - **Commits** since the last tag: their type, `!`, and any `BREAKING CHANGE:` footer. Commits catch work done without a ticket.
 
@@ -34,8 +34,8 @@ Show the proposed version, the bump reason (which ticket or commit decided it), 
 
 ## 5. Write
 
-- `VERSION`, and the version field in `package.json` or `pyproject.toml` when present.
-- `CHANGELOG.md`: a `## [X.Y.Z] - YYYY-MM-DD` section below `## [Unreleased]`, with the release's entries grouped as Added / Changed / Fixed / Removed, plus a line linking to the release folder. Move any hand-written `[Unreleased]` entries into it.
+- The `version_file`, and the version field in `package.json` or `pyproject.toml` when present.
+- The `changelog`: a `## [X.Y.Z] - YYYY-MM-DD` section below `## [Unreleased]`, with the release's entries grouped as Added / Changed / Fixed / Removed, plus a line linking to the release folder. Move any hand-written `[Unreleased]` entries into it.
 - `released_in: vX.Y.Z` on every ticket being archived.
 - A spec whose tickets are now all `resolved` or `wontfix`: `status: done`.
 

@@ -12,33 +12,33 @@ You are a reviewer with fresh eyes. You see the brief and the diff, not the impl
 
 ## 1. Load
 
-- The odhyp block in `CLAUDE.md`: paths, test and lint commands.
-- `TICKET-FORMAT.md`, and the brief.
+- `polaris.json` for the paths, and the odhyp block in `CLAUDE.md` for the test and lint commands.
+- `${CLAUDE_PLUGIN_ROOT}/templates/TICKET-FORMAT.md`, and the brief.
 - The change: `git status --porcelain`, `git diff HEAD`, and the full content of every new untracked file.
-- **Empty diff** and the ticket is `resolved`: review its commits instead (`git log --grep "Refs: T-NNNN" -p`). This is the post-commit mode below.
+- **Empty diff** and the ticket is `resolved`: the user asked for a review after the commit. Review the ticket's commits instead (`git log --grep "Refs: T-NNNN" -p`).
 
 ## 2. Check
 
-Leave the project's code as it is: you report and write tickets, the implementer fixes. Check every item:
+Leave the project's code as it is: you report and write follow-up tickets, the implementer fixes. Check every item:
 
 | Area | Must hold |
 |---|---|
 | Acceptance | Every acceptance criterion is met by the code and covered by a test. Nothing in `## Out of scope` was built. `## Decisions that apply` are followed. |
 | Correctness | The logic is right on the edge and failure cases the ticket implies. No data loss, no secret in the diff, input validated at trust boundaries. |
 | Tests | They test behaviour, would go red if the code were wrong, and pass. Run the test and lint commands yourself. |
-| Records | The ticket's `## Notes` say what was done; the acceptance boxes are checked; `status: resolved` is staged with the code. A spec that the work proved wrong has a `## Decisions` entry. |
-| Diagrams | Every file in the ticket's `diagrams` is updated. Any other change that adds, removes or rewires services, infrastructure, data flow or module boundaries has a diagram update too. |
-| Commit | The planned `type(scope)!:` matches the ticket's `type`, `scope` and `breaking`. |
+| Records | The ticket's `## Notes` say what was done and the acceptance boxes are checked. A spec that the work proved wrong has a `## Decisions` entry. |
+| Diagrams | Every file in the ticket's `diagrams` is updated, and no other existing diagram is left wrong by the change. A diagram that doesn't exist is not a finding. |
+| Commit | The ticket's `type`, `scope` and `breaking` describe the change. |
 
 Sort each problem:
 - **Must-fix:** breaks a row above. It blocks the commit.
-- **Follow-up:** worth doing, outside this ticket's scope. Write it as a new ticket now: next `T-` ID, `source: code-review`, `from: <this ticket>`, `status: ready-for-agent`, self-contained per the format.
+- **Follow-up:** worth doing, outside this ticket's scope. Write it as a new ticket now, from `${CLAUDE_PLUGIN_ROOT}/templates/ticket.md`: next `T-` ID, `source: code-review`, `parent: <this ticket>`, `status: ready-for-agent`, self-contained per the format.
 
 ## 3. Return
 
-Start with a verdict line, `PASS` or `MUST-FIX`, then:
+Start with a verdict line: `MUST-FIX` if any must-fix finding exists, otherwise `PASS`. Then:
 
 - each must-fix finding: `path:line`, what is wrong, and the required change;
 - the IDs and titles of follow-up tickets written.
 
-**Post-commit mode** with must-fix findings: also set the ticket back to `status: ready-for-agent` and add the findings under its `## Notes`.
+**After-commit review** with must-fix findings: also set the ticket back to `status: ready-for-agent` and add the findings under its `## Notes`; the fix becomes a further commit with the same `Refs:` line.

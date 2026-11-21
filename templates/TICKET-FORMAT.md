@@ -2,7 +2,9 @@
 
 A ticket is the handoff between fresh contexts. A fresh agent must be able to finish it from the ticket alone; the spec is background reading only.
 
-- **One file per ticket**, flat in the tickets folder: `NNNN-short-slug.md` (e.g. `0018-dashboard-layout.md`).
+**The frontmatter is locked:** exactly the fields below, in this order, and no skill adds its own. Polaris parses it, so changing it is a breaking change for both repos. The body is free Markdown; the sections under Body are the recommended structure. Blank template: `ticket.md`.
+
+- **One file per ticket**, flat in the tickets folder (path in `polaris.json`): `NNNN-short-slug.md` (e.g. `0018-dashboard-layout.md`).
 - **IDs:** `T-NNNN`, zero-padded, never reused. The next ID is the highest existing `T-` ID (including the releases archive) plus one. Specs count separately (`S-NNNN`).
 - **Link by ID, never by path**, so archiving into `releases/` breaks nothing.
 - **Size:** one ticket fits one fresh session. Bigger → split.
@@ -20,7 +22,7 @@ status: ready-for-agent   # see Statuses
 spec: S-0005              # or none
 depends_on: [T-0017]      # or []
 source: to-tickets        # to-tickets | diagnose | code-review | implement | human
-from: none                # ticket this was split from or follows up, or none
+parent: none              # ticket this was split from or follows up, or none
 diagrams: [architecture]  # diagram files this changes (no extension), or []
 released_in:              # set by /release
 ---
@@ -46,7 +48,7 @@ Identical to commit types.
 |---|---|---|
 | `ready-for-agent` | Fully specified; an agent can do it | to-tickets, diagnose, code-review, human |
 | `ready-for-human` | Needs a person (credentials, DNS, design call, manual test) | any skill, human |
-| `needs-info` | Blocked on the questions in `## Questions` | implement |
+| `needs-info` | Blocked on the questions in `## Questions`; back to `ready-for-agent` once all are answered | implement (sets and clears), human or Polaris (clears) |
 | `in-progress` | An agent is working on it (crash recovery) | implement |
 | `resolved` | Code and tests committed | implement, in the same commit as the code |
 | `wontfix` | Dropped (incl. duplicates); reason in `## Notes` | human |
@@ -61,7 +63,7 @@ stateDiagram-v2
     in_progress --> resolved: done + committed
     in_progress --> needs_info: unclear
     in_progress --> ready_for_agent: too big → split
-    needs_info --> ready_for_agent: human answers
+    needs_info --> ready_for_agent: questions answered
     ready_for_human --> resolved: human does it
     ready_for_human --> ready_for_agent: human decides, agent builds
     resolved --> ready_for_agent: must-fix found after commit
@@ -112,7 +114,7 @@ status: ready-for-agent
 spec: S-0005
 depends_on: [T-0017]
 source: to-tickets
-from: none
+parent: none
 diagrams: [architecture]
 released_in:
 ---
@@ -161,7 +163,7 @@ status: ready-for-agent
 spec: none
 depends_on: []
 source: diagnose
-from: none
+parent: none
 diagrams: []
 released_in:
 ---

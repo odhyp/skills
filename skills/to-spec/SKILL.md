@@ -4,7 +4,7 @@ description: Turn the design agreed in this conversation into a spec file (S-NNN
 disable-model-invocation: true
 ---
 
-Read the odhyp block in `CLAUDE.md` for the specs folder and the path of `SPEC-FORMAT.md`, then read the format. It is the single source for fields, statuses and sections.
+Read `polaris.json` for the specs and releases folders, then `${CLAUDE_PLUGIN_ROOT}/templates/SPEC-FORMAT.md`: the single source for fields, statuses and sections. Start the file from `${CLAUDE_PLUGIN_ROOT}/templates/spec.md`.
 
 ## 1. Check the input
 
@@ -14,7 +14,7 @@ The input is the design agreed earlier in this conversation (usually via `/shape
 
 - **ID:** the highest existing `S-` ID in the specs folder and the releases archive, plus one. Start at `S-0001`.
 - **File:** `<specs>/NNNN-short-slug.md`, `status: draft`, `tickets: []`.
-- **Body:** every section of the format. `## Design` records the decisions as agreed, including the reasons that are not obvious. `## Diagrams affected` names each diagram file and what changes in it, or stays empty. `## Decisions` starts empty.
+- **Body:** every section of the format. `## Design` records the decisions as agreed, including the reasons that are not obvious. `## Decisions` starts empty.
 
 ## 3. Report
 

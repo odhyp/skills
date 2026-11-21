@@ -1,13 +1,13 @@
 ---
 name: shape
-description: Grill a feature, small change or trivial bug until we agree on it, then name the next step. Writes nothing.
+description: Grill a feature, small change or trivial bug until we agree on it, draw diagrams if the structure changes, then name the next step.
 disable-model-invocation: true
 argument-hint: "[what you want to build or change]"
 ---
 
 Every piece of planned work goes through here, including a one-line fix, so no change skips the thinking. A bug whose cause is unknown does not: send it to `diagnose` instead, since there is nothing to shape until the cause is known.
 
-This skill **writes nothing**: no files, no tickets, no code.
+This skill writes no specs, tickets or code. Its only output besides the agreement is diagrams, in step 2.
 
 ## 1. Grill
 
@@ -19,7 +19,11 @@ Interview relentlessly, **one question at a time**, walking each branch of the d
 
 **Done when** every branch is resolved and the user agrees with a short summary you give: the problem, the decisions, and what is out of scope.
 
-## 2. Size it and name the next step
+## 2. Diagrams
+
+If the agreed work adds, removes or rewires services, infrastructure, data flow or module boundaries, use the **diagram** skill to draw or update the diagrams of the agreed design. Show the user what changed and adjust until they agree it matches; skip this step for work that stays inside one module.
+
+## 3. Size it and name the next step
 
 - **Feature** (new capability, several tickets, or decisions worth recording): next is `/to-spec`, then `/to-tickets`.
 - **Small change or trivial bug** (cause known, fits one or two tickets): next is `/to-tickets` straight from this conversation, with `spec: none`.
