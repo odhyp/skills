@@ -83,7 +83,7 @@ flowchart TD
 
 ## Polaris contract
 
-Polaris (`npx -y @odhyp/polaris@2`) is the view across all projects. The skills have no runtime dependency on it; they only produce what it reads, defined once in [`templates/`](templates/):
+Polaris (`npx -y @odhyp/polaris@2`) is the view across all projects. The skills have no runtime dependency on it; they only produce what it reads, defined once in [`plugins/odhyp/templates/`](plugins/odhyp/templates/):
 
 - `polaris.json` in each project: `name`, `paths` (specs, tickets, diagrams, releases), `version_file`, `changelog`. Its presence marks a project as using the workflow.
 - Ticket and spec files with the locked frontmatter in `TICKET-FORMAT.md` and `SPEC-FORMAT.md`. Changing a field is a breaking change for both repos.
@@ -92,15 +92,18 @@ Polaris (`npx -y @odhyp/polaris@2`) is the view across all projects. The skills 
 
 ## Roadmap
 
-- **v0.1.0:** try the workflow end to end in a throwaway Hugo project and a throwaway Python project from the one global install (setup → shape → spec → tickets → implement → review → release), then tag this repo `v0.1.0`.
+- **v0.1.0:** try the workflow end to end in a throwaway project from global install (setup → shape → spec → tickets → implement → review → release), then tag this repo `v0.1.0`.
 - **Later:** a frontmatter and link validation check; avoiding ticket ID collisions across parallel branches; `context: fork` for `implement`; a ticket overview in Polaris.
 
 ## Development
 
 - `sh tests/commit-msg.test.sh` checks the commit hook template.
-- `claude plugin validate .` checks the manifests and skills.
+- `claude plugin validate .` checks the marketplace; `claude plugin validate plugins/odhyp` checks the plugin and its skills.
 - Decisions and their reasons: [`docs/adr/`](docs/adr/). Vocabulary: [`GLOSSARY.md`](GLOSSARY.md).
-- Releases bump `version` in `VERSION`, `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json` together; clients only update when it increases.
+- Layout: the plugin lives in `plugins/odhyp/` (skills, templates, `plugin.json`); the root holds the marketplace and this repo's own dev files, which installs never receive.
+- Releases bump `version` in `VERSION` and `plugins/odhyp/.claude-plugin/plugin.json` together; clients only update when it increases. The marketplace entry carries no version, since `plugin.json` wins.
+- `sh tests/review-smoke.sh` runs the plugin headless in a throwaway repo and checks that `code-review` forks and catches a planted bug. It calls the API (about $0.35), so it runs by hand, not in CI.
+- CI (`.github/workflows/ci.yml`) runs the hook test and both validations on every push and pull request.
 
 ## License
 

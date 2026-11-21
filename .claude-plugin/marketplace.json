@@ -1,13 +1,15 @@
 {
   "name": "odhyp",
   "description": "Odhy's agent skills.",
-  "owner": { "name": "Odhy Pradhana", "email": "hi@odhyp.com" },
+  "owner": {
+    "name": "Odhy Pradhana",
+    "email": "hi@odhyp.com"
+  },
   "plugins": [
     {
       "name": "odhyp",
-      "source": "./",
-      "description": "Odhy's engineering workflow: shape, spec, tickets, test-first implement, review, release.",
-      "version": "0.1.0"
+      "source": "./plugins/odhyp",
+      "description": "Odhy's engineering workflow: shape, spec, tickets, test-first implement, review, release."
     }
   ]
 }
