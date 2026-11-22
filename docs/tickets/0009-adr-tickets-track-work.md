@@ -4,7 +4,7 @@ title: "ADR-0007: tickets track work, not a prerequisite for it"
 type: docs
 breaking: false
 scope: adr
-status: ready-for-agent
+status: resolved
 spec: S-0002
 depends_on: []
 source: to-tickets
@@ -33,11 +33,11 @@ ADR-0001 (`docs/adr/0001-tickets-are-the-handoff.md`) says every unit of work, d
 - GLOSSARY.md (change)
 
 ## Acceptance criteria
-- [ ] ADR-0007 exists and states all four points above.
-- [ ] ADR-0001 says it is superseded by ADR-0007; its text is otherwise unchanged.
-- [ ] `shape/SKILL.md` no longer says every one-line fix goes through it, and names direct `/implement` for review findings and small explicit requests.
-- [ ] GLOSSARY **Ticket** no longer says "the only handoff".
-- [ ] `sh tests/commit-msg.test.sh` and `claude plugin validate . && claude plugin validate plugins/odhyp` pass.
+- [x] ADR-0007 exists and states all four points above.
+- [x] ADR-0001 says it is superseded by ADR-0007; its text is otherwise unchanged.
+- [x] `shape/SKILL.md` no longer says every one-line fix goes through it, and names direct `/implement` for review findings and small explicit requests.
+- [x] GLOSSARY **Ticket** no longer says "the only handoff".
+- [x] `sh tests/commit-msg.test.sh` and `claude plugin validate . && claude plugin validate plugins/odhyp` pass.
 
 ## Out of scope
 - Any change to `implement`, `session-review`, `code-review`, `to-tickets` (T-0010 to T-0012).
@@ -47,3 +47,5 @@ ADR-0001 (`docs/adr/0001-tickets-are-the-handoff.md`) says every unit of work, d
 ## Questions
 
 ## Notes
+- Added ADR-0007 (four points), marked ADR-0001 superseded, rewrote the opening of `shape/SKILL.md` (the `diagnose` sentence is kept), and dropped "only" from GLOSSARY **Ticket**.
+- `shape` now refers to `/implement` direct mode, which does not exist until T-0011.

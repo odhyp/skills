@@ -29,7 +29,7 @@ _Avoid_: plan, refine, groom
 ### Work items
 
 **Ticket**:
-One self-contained unit of work, sized for one fresh session; the only handoff between contexts.
+One self-contained unit of work, sized for one fresh session; the handoff between contexts.
 _Avoid_: issue, task, story
 
 **Spec**:

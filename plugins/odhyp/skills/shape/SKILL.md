@@ -5,7 +5,7 @@ disable-model-invocation: true
 argument-hint: "[what you want to build or change]"
 ---
 
-Every piece of planned work goes through here, including a one-line fix, so no change skips the thinking. A bug whose cause is unknown does not: send it to `diagnose` instead, since there is nothing to shape until the cause is known.
+Planned work, the features and changes the user decides to make, starts here. Findings from `session-review` or `code-review`, and small explicit requests, may go straight to `/implement`, whose direct mode sends ambiguous or architectural requests back here. A bug whose cause is unknown does not: send it to `diagnose` instead, since there is nothing to shape until the cause is known.
 
 This skill writes no specs, tickets or code. Its only output besides the agreement is diagrams, in step 2.
 
