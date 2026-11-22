@@ -2,7 +2,7 @@
 
 My engineering workflow as Claude Code skills, installed once and used in every project.
 
-**Tickets are the handoff between fresh contexts.** Planning, diagnosing and reviewing write tickets. Only `implement` writes code. Run `/clear` between tickets.
+**Tickets are the handoff between fresh contexts.** Planning and diagnosing write tickets; review findings go straight to `/implement` or become tickets, your choice. Only `implement` writes code. Run `/clear` between tickets.
 
 ## Install
 
@@ -42,11 +42,11 @@ flowchart TD
     B5 --> CL0
     CL0 --> T[("tickets<br/>ready-for-agent")]
 
-    subgraph C["Per ticket (fresh context)"]
-        C1["/implement 👤<br/>test-first → code"]
+    subgraph C["Build (ticket or direct)"]
+        C1["/implement 👤<br/>ticket or direct · test-first → code"]
         D1["code-review 🤖<br/>forked · diff vs ticket"]
-        C2["commit<br/>status: resolved (same commit)"]
-        C3["stop<br/>must-fix in Notes"]
+        C2["commit<br/>ticket: status resolved · direct: no Refs"]
+        C3["stop<br/>ticket: must-fix in Notes · direct: report only"]
         S1["/session-review 👤<br/>optional"]
         C1 --> D1
         D1 -->|"Pass"| C2
@@ -54,8 +54,13 @@ flowchart TD
     end
 
     T -->|"/implement @ticket"| C1
+    S1 -->|"/implement N"| C1
     C3 -->|"user runs /implement again"| C1
-    D1 -.->|"Follow-ups"| T
+    X4{"You choose"}
+    C2 -.->|"non-blocking findings"| X4
+    S1 -.->|"findings"| X4
+    X4 -->|"/implement N"| C1
+    X4 -->|"/to-tickets N"| B3
     C2 --> S1 --> CL["/clear ⚙️"]
     C2 --> CL
     CL --> X3{"Tickets left?"}
@@ -68,18 +73,31 @@ flowchart TD
 
 ## Skills
 
+| Skill | Answers |
+|---|---|
+| `setup` | How is this project wired for the workflow? |
+| `shape` | What exactly are we building, and why? |
+| `diagnose` | Why is it broken? |
+| `to-spec` | What did we agree to build? |
+| `to-tickets` | What work should we track? |
+| `implement` | How do we build it? |
+| `code-review` | What is wrong with this code? |
+| `session-review` | What should we improve? |
+| `diagram` | What does the system look like? |
+| `release` | What changed since the last version? |
+
 | Skill            | Invocation | Does                                                                                                                                                                         |
 | ---------------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `setup`          | Manual     | Run once per project. Writes the CLAUDE.md block (paths, version files, changelog, commands), VERSION, CHANGELOG, and the commit hook. Safe to re-run.                       |
 | `shape`          | Manual     | Entry point for features, small changes and known-cause bugs. Grills you until you agree, draws diagrams if the structure changes, then names the next step.                 |
-| `to-spec`        | Manual     | Turns the agreed design into a spec (`S-NNNN`).                                                                                                                              |
-| `to-tickets`     | Manual     | Splits a spec, or an agreed small change, into self-contained tickets (`T-NNNN`).                                                                                            |
+| `to-spec`        | Manual     | Turns the agreed design into a spec (`S-NNNN`), confirms it with you in a loop, then commits it.                                                                             |
+| `to-tickets`     | Manual     | Splits a spec, review findings, or an agreed small change into self-contained tickets (`T-NNNN`).                                                                            |
 | `diagnose`       | Auto       | When you report a bug whose cause is unknown: reproduces it, finds the root cause, writes a `fix` ticket. Does not fix.                                                      |
 | `diagram`        | Auto       | Creates or updates the `.mmd` diagrams: on request, from `shape`, or when a change makes an existing diagram wrong.                                                          |
-| `implement`      | Manual     | `/odhyp:implement @<ticket>`: builds one ticket test-first, runs `code-review`, then commits on a pass or stops with the must-fix findings. The only skill that writes code. |
-| `code-review`    | Auto       | Reviews the uncommitted diff against the ticket in a forked subagent, before the commit. Writes follow-up tickets. Also reviews a ticket's commits on request.               |
+| `implement`      | Manual     | `/odhyp:implement @<ticket>` or `/odhyp:implement N`: builds one ticket or a direct request (a review finding, a small change) test-first, runs `code-review`, then commits on a pass or stops with the must-fix findings. The only skill that writes code. |
+| `code-review`    | Auto       | Reviews the uncommitted diff against the ticket in a forked subagent, before the commit, and grades findings by severity. Writes no tickets. Also reviews a ticket's commits on request. |
 | `release`        | Manual     | Computes the SemVer bump, updates the version and CHANGELOG, archives tickets and specs, then commits and tags after you confirm.                                            |
-| `session-review` | Manual     | Run before `/clear`: reviews the session and proposes fixes to CLAUDE.md and to these skills.                                                                                |
+| `session-review` | Manual     | Run before `/clear`: reviews the session and lists ranked findings. Writes nothing.                                                                                          |
 
 ## Polaris contract
 

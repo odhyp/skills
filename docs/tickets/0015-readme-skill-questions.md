@@ -4,7 +4,7 @@ title: "README: one question per skill"
 type: docs
 breaking: false
 scope: readme
-status: ready-for-agent
+status: resolved
 spec: S-0002
 depends_on: [T-0010, T-0011, T-0012, T-0013, T-0014]
 source: to-tickets
@@ -46,14 +46,14 @@ T-0010 to T-0014 change what `session-review`, `code-review`, `implement`, `to-t
 - README.md (change)
 
 ## Acceptance criteria
-- [ ] The question table is in the README.
-- [ ] The `code-review`, `session-review`, `implement`, `to-tickets` and `to-spec` rows match their skills.
-- [ ] The intro no longer says reviewing writes tickets, and uses the sentence above.
-- [ ] The diagram has no automatic review → tickets edge and shows findings → "You choose" → `/implement` or `/to-tickets`.
-- [ ] The diagram's build subgraph is entered from tickets and from `/implement N`, and its commit and stop nodes name both modes.
-- [ ] The README's Mermaid block still renders (paste into mermaid.live or GitHub preview).
-- [ ] No README text says every change needs a ticket.
-- [ ] `sh tests/commit-msg.test.sh` and `claude plugin validate . && claude plugin validate plugins/odhyp` pass.
+- [x] The question table is in the README.
+- [x] The `code-review`, `session-review`, `implement`, `to-tickets` and `to-spec` rows match their skills.
+- [x] The intro no longer says reviewing writes tickets, and uses the sentence above.
+- [x] The diagram has no automatic review → tickets edge and shows findings → "You choose" → `/implement` or `/to-tickets`.
+- [x] The diagram's build subgraph is entered from tickets and from `/implement N`, and its commit and stop nodes name both modes.
+- [x] The README's Mermaid block still renders (paste into mermaid.live or GitHub preview).
+- [x] No README text says every change needs a ticket.
+- [x] `sh tests/commit-msg.test.sh` and `claude plugin validate . && claude plugin validate plugins/odhyp` pass.
 
 ## Out of scope
 - CHANGELOG and version bump (`/odhyp:release`).
@@ -64,3 +64,6 @@ T-0010 to T-0014 change what `session-review`, `code-review`, `implement`, `to-t
 ## Questions
 
 ## Notes
+- README: question table added above the existing skill table (kept separate so the wide table stays readable); five rows, intro sentence and workflow diagram updated per the decisions. New "You choose" node is `X4`, outside both subgraphs.
+- No README sentence said every change needs a ticket; nothing to change there.
+- Mermaid render: mermaid-cli via npx was denied in this session; the user rendered the block by hand and confirmed it renders. This resolves the review's one must-fix (the unverified render criterion).
