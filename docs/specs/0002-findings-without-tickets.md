@@ -26,7 +26,7 @@ ADR-0001 makes every unit of work, down to a one-line fix, a ticket. In practice
   | `diagnose` | Why is it broken? |
   | `to-spec` | What did we agree to build? |
   | `to-tickets` | What work should we track? |
-  | `implement` | How do we fix it? |
+  | `implement` | How do we build it? |
   | `code-review` | What is wrong with this code? |
   | `session-review` | What should we improve? |
   | `diagram` | What does the system look like? |
@@ -148,3 +148,5 @@ Skill-text changes: `sh tests/commit-msg.test.sh` and `claude plugin validate . 
 - `.gitkeep` is removed when its folder gets real files.
 
 ## Decisions
+
+- 2026-11-22: `implement` answers "How do we build it?", not "How do we fix it?", since it builds features from tickets as well as fixes. T-0015 also gained the README intro sentence and the direct-mode diagram details; skill names stay unchanged.

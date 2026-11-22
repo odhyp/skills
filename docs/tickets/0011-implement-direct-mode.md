@@ -14,7 +14,7 @@ released_in:
 ---
 
 ## Context
-`plugins/odhyp/skills/implement/SKILL.md` only builds tickets. Small, well-understood work found in the current session (a `session-review` or `code-review` finding, a small refactor the user asks for) must become a ticket first. `implement` should answer *How do we fix it?* for both a ticket and a direct request, with the same quality bar. ADR-0007 (T-0009) allows direct work when its scope is clear and the user authorises it.
+`plugins/odhyp/skills/implement/SKILL.md` only builds tickets. Small, well-understood work found in the current session (a `session-review` or `code-review` finding, a small refactor the user asks for) must become a ticket first. `implement` should answer *How do we build it?* for both a ticket and a direct request, with the same quality bar. ADR-0007 (T-0009) allows direct work when its scope is clear and the user authorises it.
 
 ## Decisions that apply
 - **Mode by argument:** `$ARGUMENTS` starting with `T-` or `@<tickets>/` → ticket mode, unchanged. Anything else (`finding 1`, `1`, `1,3`, `all`, free text) → direct mode. No argument keeps today's pick-the-next-ticket behaviour. Update `argument-hint` and `description` to cover both.
