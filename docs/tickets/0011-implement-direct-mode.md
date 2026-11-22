@@ -4,7 +4,7 @@ title: implement direct mode
 type: feat
 breaking: false
 scope: implement
-status: ready-for-agent
+status: resolved
 spec: S-0002
 depends_on: [T-0009]
 source: to-tickets
@@ -30,14 +30,14 @@ released_in:
 - plugins/odhyp/skills/implement/SKILL.md (change)
 
 ## Acceptance criteria
-- [ ] `implement/SKILL.md` picks the mode from the argument as above.
-- [ ] Direct mode restates the brief, asks or points to `/shape` when ambiguous or architectural.
-- [ ] Test-first and the no-testable-behaviour exception are stated once for both modes.
-- [ ] Direct mode runs `odhyp:code-review` with the restated brief; MUST-FIX commits nothing.
-- [ ] Direct-mode commit rules (no `Refs:` unless from a ticket's review; grouping by type and scope) are stated.
-- [ ] Direct mode creates no tickets unless asked.
-- [ ] The ticket-mode steps read as before.
-- [ ] `sh tests/commit-msg.test.sh` and `claude plugin validate . && claude plugin validate plugins/odhyp` pass.
+- [x] `implement/SKILL.md` picks the mode from the argument as above.
+- [x] Direct mode restates the brief, asks or points to `/shape` when ambiguous or architectural.
+- [x] Test-first and the no-testable-behaviour exception are stated once for both modes.
+- [x] Direct mode runs `odhyp:code-review` with the restated brief; MUST-FIX commits nothing.
+- [x] Direct-mode commit rules (no `Refs:` unless from a ticket's review; grouping by type and scope) are stated.
+- [x] Direct mode creates no tickets unless asked.
+- [x] The ticket-mode steps read as before.
+- [x] `sh tests/commit-msg.test.sh` and `claude plugin validate . && claude plugin validate plugins/odhyp` pass.
 
 ## Out of scope
 - Relaying code-review's non-blocking findings after the commit, and removing follow-up-ticket wording (T-0012).
@@ -46,3 +46,5 @@ released_in:
 ## Questions
 
 ## Notes
+- Mode is chosen from `$ARGUMENTS` at the top; each step keeps its ticket-mode text verbatim and adds a short "In direct mode" line, so ticket mode reads as before.
+- Skill-text change: no red/green; `sh tests/commit-msg.test.sh` and both `claude plugin validate` runs pass (pre-existing ICON_MISSING warning only).
