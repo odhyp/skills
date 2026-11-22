@@ -10,7 +10,7 @@ depends_on: [T-0011]
 source: code-review
 parent: T-0011
 diagrams: []
-released_in:
+released_in: v0.3.0
 ---
 
 ## Context

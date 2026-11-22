@@ -1,8 +1,8 @@
 ---
 id: S-0002
 title: Fix findings without tickets
-status: accepted
-tickets: [T-0009, T-0010, T-0011, T-0012, T-0013, T-0014, T-0015]
+status: done
+tickets: [T-0009, T-0010, T-0011, T-0012, T-0013, T-0014, T-0015, T-0016]
 ---
 
 ## Problem

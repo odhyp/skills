@@ -5,6 +5,27 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-11-23
+
+### Added
+
+- `implement` has a direct mode for review findings and small requests, with no ticket needed (T-0011).
+
+### Changed
+
+- Tickets track work; they are not a prerequisite for it (ADR-0007, T-0009).
+- `session-review` returns ranked findings and writes nothing; `to-tickets` accepts findings as input (T-0010).
+- `code-review` grades findings by severity and writes no tickets (T-0012).
+- `to-spec` confirms the spec in a loop, then commits it (T-0013).
+- The README gives the one question each skill answers (T-0015).
+- `implement` states what direct mode records and how it stages the commit (T-0016).
+
+### Fixed
+
+- `setup` drops `.gitkeep` and states the next-ID rule (T-0014).
+
+Release notes: [docs/releases/v0.3.0](docs/releases/v0.3.0/RELEASE.md)
+
 ## [0.2.0] - 2026-11-22
 
 ### Added
