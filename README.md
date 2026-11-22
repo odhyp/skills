@@ -115,6 +115,7 @@ Polaris doesn't need odhyp. What it reads is the ticket and spec format, so any 
 - This repo doesn't use GitHub Issues. Work is tracked as ticket files in [`docs/tickets/`](docs/tickets/), and good ideas from Discussions become tickets there.
 - Pull requests are open to collaborators only. To propose a change, start a discussion.
 - Security problems: report them privately, as [`SECURITY.md`](SECURITY.md) describes, not in Discussions.
+- More in [`CONTRIBUTING.md`](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## License
 

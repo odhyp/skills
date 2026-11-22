@@ -5,6 +5,8 @@ on:
     paths-ignore:
       - README.md
       - SECURITY.md
+      - CONTRIBUTING.md
+      - CODE_OF_CONDUCT.md
       - CHANGELOG.md
       - GLOSSARY.md
       - docs/**
@@ -13,6 +15,8 @@ on:
     paths-ignore:
       - README.md
       - SECURITY.md
+      - CONTRIBUTING.md
+      - CODE_OF_CONDUCT.md
       - CHANGELOG.md
       - GLOSSARY.md
       - docs/**
