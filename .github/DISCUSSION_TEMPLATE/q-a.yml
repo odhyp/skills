@@ -25,15 +25,11 @@ body:
     attributes:
       label: odhyp version
       placeholder: "0.2.0"
-    validations:
-      required: true
   - type: input
     id: claude-version
     attributes:
       label: Claude Code version
       description: Output of `claude --version`.
-    validations:
-      required: true
   - type: dropdown
     id: os
     attributes:
