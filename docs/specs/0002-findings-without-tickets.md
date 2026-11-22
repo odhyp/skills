@@ -150,3 +150,4 @@ Skill-text changes: `sh tests/commit-msg.test.sh` and `claude plugin validate . 
 ## Decisions
 
 - 2026-11-22: `implement` answers "How do we build it?", not "How do we fix it?", since it builds features from tickets as well as fixes. T-0015 also gained the README intro sentence and the direct-mode diagram details; skill names stay unchanged.
+- 2026-11-22 · T-0012 · After-commit MUST-FIX no longer reopens the ticket: it stays resolved and the findings are fixed with direct /implement, Refs: T-NNNN.

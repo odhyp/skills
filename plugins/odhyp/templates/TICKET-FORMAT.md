@@ -51,7 +51,7 @@ Identical to commit types.
 
 | status | Meaning | Set by |
 |---|---|---|
-| `ready-for-agent` | Fully specified; an agent can do it | to-tickets, diagnose, code-review, session-review, human |
+| `ready-for-agent` | Fully specified; an agent can do it | to-tickets, diagnose, human |
 | `ready-for-human` | Needs a person (credentials, DNS, design call, manual test) | any skill, human |
 | `needs-info` | Blocked on the questions in `## Questions`; back to `ready-for-agent` once all are answered | implement (sets and clears), human or Polaris (clears) |
 | `in-progress` | An agent is working on it (crash recovery) | implement |
@@ -71,7 +71,6 @@ stateDiagram-v2
     needs_info --> ready_for_agent: questions answered
     ready_for_human --> resolved: human does it
     ready_for_human --> ready_for_agent: human decides, agent builds
-    resolved --> ready_for_agent: must-fix found after commit
     ready_for_agent --> wontfix
     needs_info --> wontfix
     resolved --> [*]

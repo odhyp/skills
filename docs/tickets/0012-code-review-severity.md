@@ -4,7 +4,7 @@ title: code-review grades by severity and writes no tickets
 type: feat
 breaking: false
 scope: code-review
-status: ready-for-agent
+status: resolved
 spec: S-0002
 depends_on: [T-0010, T-0011]
 source: to-tickets
@@ -43,14 +43,14 @@ released_in:
 - docs/specs/0002-findings-without-tickets.md (change)
 
 ## Acceptance criteria
-- [ ] `code-review/SKILL.md` grades each finding Critical/High/Medium/Low and derives the verdict from it.
-- [ ] Findings come back ranked, ★ on finding 1, each non-blocking one with `fix now` or `ticket`.
-- [ ] `code-review/SKILL.md` contains no instruction to write a ticket or change a ticket's status or Notes.
-- [ ] `implement/SKILL.md` lists non-blocking findings after a PASS commit and stops; no follow-up-ticket wording remains.
-- [ ] `TICKET-FORMAT.md` "Set by" and state diagram updated; frontmatter block unchanged.
-- [ ] GLOSSARY **Follow-up** updated.
-- [ ] S-0002 has the `## Decisions` entry.
-- [ ] `sh tests/commit-msg.test.sh` and `claude plugin validate . && claude plugin validate plugins/odhyp` pass.
+- [x] `code-review/SKILL.md` grades each finding Critical/High/Medium/Low and derives the verdict from it.
+- [x] Findings come back ranked, ★ on finding 1, each non-blocking one with `fix now` or `ticket`.
+- [x] `code-review/SKILL.md` contains no instruction to write a ticket or change a ticket's status or Notes.
+- [x] `implement/SKILL.md` lists non-blocking findings after a PASS commit and stops; no follow-up-ticket wording remains.
+- [x] `TICKET-FORMAT.md` "Set by" and state diagram updated; frontmatter block unchanged.
+- [x] GLOSSARY **Follow-up** updated.
+- [x] S-0002 has the `## Decisions` entry.
+- [x] `sh tests/commit-msg.test.sh` and `claude plugin validate . && claude plugin validate plugins/odhyp` pass.
 
 ## Out of scope
 - `session-review` (T-0010), `implement` direct mode itself (T-0011).
@@ -59,3 +59,6 @@ released_in:
 ## Questions
 
 ## Notes
+- code-review: severity table, verdict from Critical/High, ★-ranked numbered findings with `fix now`/`ticket` on Medium/Low; the "change nothing" rule covers every mode, and after-commit MUST-FIX now only reports (the ticket stays `resolved`, fixed with direct `/implement N`).
+- implement: the review step and step 6 drop follow-up tickets; after a PASS commit it lists the non-blocking findings and stops.
+- TICKET-FORMAT body, GLOSSARY Follow-up, S-0002 Decisions updated. README still says code-review "Writes follow-up tickets" (left for T-0015).

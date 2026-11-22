@@ -41,7 +41,7 @@ What a review judges the work against: a **Ticket**, a **Spec**, or the original
 _Avoid_: requirements, context
 
 **Follow-up**:
-A new **Ticket** written by a review for work outside the reviewed ticket's scope.
+A **Ticket** written from a review finding, at the user's request.
 _Avoid_: todo, tech debt item
 
 **Release**:

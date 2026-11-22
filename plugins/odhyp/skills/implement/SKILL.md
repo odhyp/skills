@@ -63,14 +63,14 @@ In direct mode there is no ticket to update; still update any diagram the work m
 
 ## 4. Review
 
-Run the odhyp **code-review** skill (`odhyp:code-review`) with the ticket ID as its argument (direct mode: the brief). It reviews the uncommitted diff in a fresh context and writes any follow-up tickets itself.
+Run the odhyp **code-review** skill (`odhyp:code-review`) with the ticket ID as its argument (direct mode: the brief). It reviews the uncommitted diff in a fresh context and returns a verdict and ranked findings; it changes nothing.
 
-- **MUST-FIX:** commit nothing. Add the findings under `## Notes` as `Must-fix (review):` with each `path:line` and required change, keep `status: in-progress`, and stop. Tell the user the findings and that the next step is `/implement` on this ticket again. In direct mode: commit nothing, report the findings, and stop.
-- **PASS** (with or without follow-ups): continue to step 5.
+- **MUST-FIX:** commit nothing. Add the Critical and High findings under `## Notes` as `Must-fix (review):` with each `path:line` and required change, keep `status: in-progress`, and stop. Tell the user the findings and that the next step is `/implement` on this ticket again. In direct mode: commit nothing, report the findings, and stop.
+- **PASS:** continue to step 5.
 
 ## 5. Commit
 
-Set `status: resolved`. Stage the code, the tests, the ticket file and any diagram, spec or follow-up ticket files, and commit them together:
+Set `status: resolved`. Stage the code, the tests, the ticket file and any diagram or spec files, and commit them together:
 
 ```
 type(scope)!: subject
@@ -84,4 +84,4 @@ In direct mode, pick `type` and `scope` from the change and commit `type(scope):
 
 ## 6. Stop
 
-Report the commit hash(es) and any follow-up tickets, then end. The user decides what comes next: `/session-review`, `/clear`, or `/implement` on a follow-up.
+Report the commit hash(es), then list the review's non-blocking findings as it returned them, and end. The user decides what comes next: `/implement N` or `/to-tickets N` on a finding, `/session-review`, or `/clear`.

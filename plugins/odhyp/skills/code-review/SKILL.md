@@ -19,7 +19,7 @@ You are a reviewer with fresh eyes. You see the brief and the diff, not the impl
 
 ## 2. Check
 
-Leave the project's code as it is: you report and write follow-up tickets, the implementer fixes. Check every item:
+Answer only *What is wrong with this code?* You report; you change nothing: no code, no ticket, no ticket status or `## Notes`, in every mode. Check every item:
 
 | Area | Must hold |
 |---|---|
@@ -30,15 +30,33 @@ Leave the project's code as it is: you report and write follow-up tickets, the i
 | Diagrams | Every file in the ticket's `diagrams` is updated, and no other existing diagram is left wrong by the change. A diagram that doesn't exist is not a finding. |
 | Commit | The ticket's `type`, `scope` and `breaking` describe the change. |
 
-Sort each problem:
-- **Must-fix:** breaks a row above. It blocks the commit.
-- **Follow-up:** worth doing, outside this ticket's scope. Write it as a new ticket now, from `${CLAUDE_PLUGIN_ROOT}/templates/ticket.md`: next `T-` ID (see the ticket format), `source: code-review`, `parent: <this ticket>`, `status: ready-for-agent`, self-contained per the format.
+Grade each finding:
+
+| Severity | Action |
+|---|---|
+| Critical | Stop and address immediately |
+| High | Fix before merging |
+| Medium | Fix directly when appropriate, or track as a ticket |
+| Low | Optional; avoid unnecessary work |
+
+A finding that breaks a row above is at least High. Give each Medium and Low finding a suggested action: `fix now` (small, well understood) or `ticket` (large, independent, or worth deferring).
 
 ## 3. Return
 
-Start with a verdict line: `MUST-FIX` if any must-fix finding exists, otherwise `PASS`. Then:
+Start with a verdict line: `MUST-FIX` if any Critical or High finding exists (it blocks the commit), otherwise `PASS`. Then the findings, highest priority first:
 
-- each must-fix finding: `path:line`, what is wrong, and the required change;
-- the IDs and titles of follow-up tickets written.
+```markdown
+1. ★ RECOMMENDED — <title>  `High`  `path:line`
 
-**After-commit review** with must-fix findings: also set the ticket back to `status: ready-for-agent` and add the findings under its `## Notes`; the fix becomes a further commit with the same `Refs:` line.
+   <what is wrong>. <the required change>.
+
+2. <title>  `Medium` · `fix now`  `path:line`
+
+   <what is wrong>. <the suggested change>.
+```
+
+- Each finding: number, title, severity, `path:line`, and one to two sentences.
+- Only finding 1 is ★ RECOMMENDED.
+- No findings: the verdict line alone.
+
+**After-commit review** with a `MUST-FIX` verdict: the ticket stays `resolved`. Say the fix is a direct `/implement N`, whose commit carries `Refs: T-NNNN`.
