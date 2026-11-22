@@ -30,11 +30,11 @@ From the tickets and commits together:
 
 ## 4. Confirm
 
-Show the proposed version, the bump reason (which ticket or commit decided it), and the full CHANGELOG entry. **Wait for the user's OK.** Write, commit and tag nothing before it; apply any change they ask for and show it again.
+Show the proposed version, the bump reason (which ticket or commit decided it), every file whose version will change (each one under `Version files:`, plus `package.json`/`pyproject.toml` when present), and the full CHANGELOG entry. **Wait for the user's OK.** Write, commit and tag nothing before it; apply any change they ask for and show it again.
 
 ## 5. Write
 
-- The primary version file, and the version field in `package.json` or `pyproject.toml` when present.
+- The new version into every file under `Version files:` (replace the version string in each), and the version field in `package.json` or `pyproject.toml` when present.
 - The changelog: a `## [X.Y.Z] - YYYY-MM-DD` section below `## [Unreleased]`, with the release's entries grouped as Added / Changed / Fixed / Removed, plus a line linking to the release folder. Move any hand-written `[Unreleased]` entries into it.
 - `released_in: vX.Y.Z` on every ticket being archived.
 - A spec whose tickets are now all `resolved` or `wontfix`: `status: done`.
