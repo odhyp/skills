@@ -24,7 +24,7 @@ scope: dashboard          # commit scope, lowercase-kebab
 status: ready-for-agent   # see Statuses
 spec: S-0005              # or none
 depends_on: [T-0017]      # or []
-source: to-tickets        # to-tickets | diagnose | code-review | implement | human
+source: to-tickets        # to-tickets | diagnose | code-review | implement | session-review | human
 parent: none              # ticket this was split from or follows up, or none
 diagrams: [architecture]  # diagram files this changes (no extension), or []
 released_in:              # set by /release
@@ -49,7 +49,7 @@ Identical to commit types.
 
 | status | Meaning | Set by |
 |---|---|---|
-| `ready-for-agent` | Fully specified; an agent can do it | to-tickets, diagnose, code-review, human |
+| `ready-for-agent` | Fully specified; an agent can do it | to-tickets, diagnose, code-review, session-review, human |
 | `ready-for-human` | Needs a person (credentials, DNS, design call, manual test) | any skill, human |
 | `needs-info` | Blocked on the questions in `## Questions`; back to `ready-for-agent` once all are answered | implement (sets and clears), human or Polaris (clears) |
 | `in-progress` | An agent is working on it (crash recovery) | implement |
