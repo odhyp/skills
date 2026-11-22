@@ -1,7 +1,7 @@
 ---
 id: S-0001
 title: Fix skill gaps and move project config into the CLAUDE.md block
-status: accepted
+status: done
 tickets: [T-0001, T-0002, T-0003, T-0004, T-0005, T-0006, T-0007, T-0008]
 ---
 

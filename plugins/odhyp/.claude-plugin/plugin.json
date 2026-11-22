@@ -1,6 +1,6 @@
 {
   "name": "odhyp",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Odhy's engineering workflow: shape, spec, tickets, test-first implement, review, release.",
   "author": { "name": "Odhy Pradhana", "email": "hi@odhyp.com" },
   "homepage": "https://github.com/odhyp/skills",
