@@ -5,7 +5,7 @@ disable-model-invocation: true
 argument-hint: "[S-NNNN]"
 ---
 
-Read `polaris.json` for the paths, then `${CLAUDE_PLUGIN_ROOT}/templates/TICKET-FORMAT.md`: the single source for fields, statuses, sections and both examples. Start each file from `${CLAUDE_PLUGIN_ROOT}/templates/ticket.md`.
+Read the odhyp block in `CLAUDE.md` for the paths (No odhyp block: stop and say to run `/odhyp:setup`), then `${CLAUDE_PLUGIN_ROOT}/templates/TICKET-FORMAT.md`: the single source for fields, statuses, sections and both examples. Start each file from `${CLAUDE_PLUGIN_ROOT}/templates/ticket.md`.
 
 **Input:** the spec `$ARGUMENTS` if given, otherwise the small change agreed earlier in this conversation (then every ticket gets `spec: none`).
 

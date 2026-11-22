@@ -19,7 +19,7 @@ Then run `/odhyp:setup` once in each project that uses the workflow. The skills 
 
 ```mermaid
 flowchart TD
-    A1["/setup 👤<br/>polaris.json · CLAUDE.md · VERSION · hook"] --> X0{"Work type"}
+    A1["/setup 👤<br/>CLAUDE.md · VERSION · hook"] --> X0{"Work type"}
     X0 -->|"Feature / small change / known-cause bug"| B1
     X0 -->|"Bug, cause unknown"| B5
 
@@ -70,7 +70,7 @@ flowchart TD
 
 | Skill            | Invocation | Does                                                                                                                                                                         |
 | ---------------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `setup`          | Manual     | Run once per project. Writes `polaris.json`, the CLAUDE.md block, VERSION, CHANGELOG, the commit hook and the empty docs folders. Safe to re-run.                            |
+| `setup`          | Manual     | Run once per project. Writes the CLAUDE.md block (paths, version files, changelog, commands), VERSION, CHANGELOG, the commit hook and the empty docs folders. Safe to re-run.                            |
 | `shape`          | Manual     | Entry point for features, small changes and known-cause bugs. Grills you until you agree, draws diagrams if the structure changes, then names the next step.                 |
 | `to-spec`        | Manual     | Turns the agreed design into a spec (`S-NNNN`).                                                                                                                              |
 | `to-tickets`     | Manual     | Splits a spec, or an agreed small change, into self-contained tickets (`T-NNNN`).                                                                                            |
@@ -85,7 +85,7 @@ flowchart TD
 
 Polaris (`npx -y @odhyp/polaris@2`) is the view across all projects. The skills have no runtime dependency on it; they only produce what it reads, defined once in [`plugins/odhyp/templates/`](plugins/odhyp/templates/):
 
-- `polaris.json` in each project: `name`, `paths` (specs, tickets, diagrams, releases), `version_file`, `changelog`. Its presence marks a project as using the workflow.
+- The odhyp block in each project's `CLAUDE.md`: one line each for `Specs:`, `Tickets:`, `Diagrams:`, `Releases:`, `Version files:` and `Changelog:`. Polaris keeps its own config in its app data, not in the repo.
 - Ticket and spec files with the locked frontmatter in `TICKET-FORMAT.md` and `SPEC-FORMAT.md`. Changing a field is a breaking change for both repos.
 - `.mmd` diagrams, each opening with a `%%` header comment.
 - The version file and CHANGELOG.

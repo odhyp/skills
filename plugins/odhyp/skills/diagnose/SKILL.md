@@ -5,7 +5,7 @@ description: Use when the user reports a bug whose cause is unknown (something b
 
 You **diagnose; you do not fix.** The output is one `fix` ticket that a fresh agent can implement. Repro scripts go in a temp directory outside the repo. Temporary logging in project files is fine, but revert it before step 3: the working tree ends exactly as you found it, plus the ticket.
 
-Read `polaris.json` for the paths, the odhyp block in `CLAUDE.md` for the test command, and `${CLAUDE_PLUGIN_ROOT}/templates/TICKET-FORMAT.md`, including its `fix` example.
+Read the odhyp block in `CLAUDE.md` for the paths and the test command (No odhyp block: stop and say to run `/odhyp:setup`), and `${CLAUDE_PLUGIN_ROOT}/templates/TICKET-FORMAT.md`, including its `fix` example.
 
 ## 1. Reproduce
 

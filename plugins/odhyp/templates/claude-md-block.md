@@ -1,6 +1,11 @@
 <!-- odhyp:start -->
 ## odhyp skills
-- Paths (specs, tickets, diagrams, releases): see polaris.json
+- Specs: `{{specs}}`
+- Tickets: `{{tickets}}`
+- Diagrams: `{{diagrams}}`
+- Releases: `{{releases}}`
+- Version files: `{{version_files}}`
+- Changelog: `{{changelog}}`
 - Ticket and spec format: locked frontmatter, free Markdown body (loaded by the odhyp skills)
 - Test: {{test}} · Lint: {{lint}}
 - Commits: Conventional Commits, enforced by .githooks/commit-msg

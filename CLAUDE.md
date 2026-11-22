@@ -7,7 +7,12 @@
 
 <!-- odhyp:start -->
 ## odhyp skills
-- Paths (specs, tickets, diagrams, releases): see polaris.json
+- Specs: `docs/specs`
+- Tickets: `docs/tickets`
+- Diagrams: `docs/diagrams`
+- Releases: `docs/releases`
+- Version files: `VERSION`, `plugins/odhyp/.claude-plugin/plugin.json`
+- Changelog: `CHANGELOG.md`
 - Ticket and spec format: locked frontmatter, free Markdown body (loaded by the odhyp skills)
 - Test: `sh tests/commit-msg.test.sh` · Lint: `claude plugin validate . && claude plugin validate plugins/odhyp`
 - Commits: Conventional Commits, enforced by .githooks/commit-msg

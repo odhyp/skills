@@ -4,7 +4,7 @@ description: Turn the design agreed in this conversation into a spec file (S-NNN
 disable-model-invocation: true
 ---
 
-Read `polaris.json` for the specs and releases folders, then `${CLAUDE_PLUGIN_ROOT}/templates/SPEC-FORMAT.md`: the single source for fields, statuses and sections. Start the file from `${CLAUDE_PLUGIN_ROOT}/templates/spec.md`.
+Read the odhyp block in `CLAUDE.md` for the specs and releases folders (No odhyp block: stop and say to run `/odhyp:setup`), then `${CLAUDE_PLUGIN_ROOT}/templates/SPEC-FORMAT.md`: the single source for fields, statuses and sections. Start the file from `${CLAUDE_PLUGIN_ROOT}/templates/spec.md`.
 
 ## 1. Check the input
 

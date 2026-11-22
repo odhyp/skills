@@ -6,9 +6,8 @@ plugin="$(cd "$(dirname "$0")/../plugins/odhyp" && pwd)"
 t=$(mktemp -d); trap 'rm -rf "$t"' EXIT
 cd "$t"
 git init -q && git config user.email t@t && git config user.name t
-cp "$plugin/templates/polaris.json" polaris.json
 mkdir -p docs/tickets
-printf '<!-- odhyp:start -->\n## odhyp skills\n- Paths: see polaris.json\n- Test: python -m unittest -q · Lint: none\n<!-- odhyp:end -->\n' > CLAUDE.md
+printf '<!-- odhyp:start -->\n## odhyp skills\n- Specs: `docs/specs`\n- Tickets: `docs/tickets`\n- Diagrams: `docs/diagrams`\n- Releases: `docs/releases`\n- Version files: `VERSION`\n- Changelog: `CHANGELOG.md`\n- Test: python -m unittest -q · Lint: none\n<!-- odhyp:end -->\n' > CLAUDE.md
 printf 'def add(a, b):\n    return a + b\n' > calc.py
 git add -A && git commit -qm "chore: init"
 cat > docs/tickets/0001-subtract.md <<'TICKET'

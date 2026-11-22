@@ -3,7 +3,7 @@ name: diagram
 description: Use to create or update the project's Mermaid .mmd diagrams when the user asks for diagrams, when shape finalizes work that changes the structure, or when a change makes an existing diagram wrong (services, infrastructure, data flow or module boundaries added, removed or rewired).
 ---
 
-Read `polaris.json` for the diagrams folder. Edit only `.mmd` files in that folder; start a new one from `${CLAUDE_PLUGIN_ROOT}/templates/diagram.mmd`.
+Read the odhyp block in `CLAUDE.md` for the diagrams folder. No odhyp block: stop and say to run `/odhyp:setup`. Edit only `.mmd` files in that folder; start a new one from `${CLAUDE_PLUGIN_ROOT}/templates/diagram.mmd`.
 
 The folder starts empty. Create a diagram only when the user asks or `shape` calls for one; otherwise update only diagrams that already exist. A diagram drawn from `shape` shows the agreed design.
 

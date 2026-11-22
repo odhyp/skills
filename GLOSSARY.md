@@ -51,7 +51,7 @@ _Avoid_: deploy, ship
 ### Project
 
 **Project config**:
-The one per-project file that names where **Specs**, **Tickets**, **Diagrams** and **Releases** live; its presence marks a project as using the workflow.
+The odhyp block in a project's `CLAUDE.md` that names where **Specs**, **Tickets**, **Diagrams** and **Releases** live, plus its version files and changelog; its presence marks a project as using the workflow.
 _Avoid_: settings, manifest
 
 **Diagram**:

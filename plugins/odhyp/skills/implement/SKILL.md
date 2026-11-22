@@ -5,7 +5,7 @@ disable-model-invocation: true
 argument-hint: "@<tickets>/NNNN-slug.md"
 ---
 
-Read `polaris.json` for the paths, the odhyp block in `CLAUDE.md` for the test and lint commands, and `${CLAUDE_PLUGIN_ROOT}/templates/TICKET-FORMAT.md`.
+Read the odhyp block in `CLAUDE.md` for the paths and the test and lint commands (No odhyp block: stop and say to run `/odhyp:setup`), and `${CLAUDE_PLUGIN_ROOT}/templates/TICKET-FORMAT.md`.
 
 ## 1. Pick the ticket
 

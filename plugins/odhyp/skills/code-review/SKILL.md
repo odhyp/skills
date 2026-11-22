@@ -12,7 +12,7 @@ You are a reviewer with fresh eyes. You see the brief and the diff, not the impl
 
 ## 1. Load
 
-- `polaris.json` for the paths, and the odhyp block in `CLAUDE.md` for the test and lint commands.
+- The odhyp block in `CLAUDE.md` for the paths and the test and lint commands. No odhyp block: stop and return `MUST-FIX: no odhyp block in CLAUDE.md; run /odhyp:setup`.
 - `${CLAUDE_PLUGIN_ROOT}/templates/TICKET-FORMAT.md`, and the brief.
 - The change: `git status --porcelain`, `git diff HEAD`, and the full content of every new untracked file.
 - **Empty diff** and the ticket is `resolved`: the user asked for a review after the commit. Review the ticket's commits instead (`git log --grep "Refs: T-NNNN" -p`).
