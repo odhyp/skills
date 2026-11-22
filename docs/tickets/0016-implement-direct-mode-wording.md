@@ -4,7 +4,7 @@ title: implement direct mode wording in records and commit steps
 type: docs
 breaking: false
 scope: implement
-status: ready-for-agent
+status: resolved
 spec: S-0002
 depends_on: [T-0011]
 source: code-review
@@ -27,10 +27,10 @@ released_in:
 - plugins/odhyp/skills/implement/SKILL.md (change)
 
 ## Acceptance criteria
-- [ ] Step 3's direct-mode line gives the spec `## Decisions` entry format without a ticket ID (except a reviewed ticket's).
-- [ ] Step 5's direct-mode line says what to stage and that no ticket status is set.
-- [ ] Ticket-mode text in steps 3 and 5 is unchanged.
-- [ ] `sh tests/commit-msg.test.sh` and `claude plugin validate . && claude plugin validate plugins/odhyp` pass.
+- [x] Step 3's direct-mode line gives the spec `## Decisions` entry format without a ticket ID (except a reviewed ticket's).
+- [x] Step 5's direct-mode line says what to stage and that no ticket status is set.
+- [x] Ticket-mode text in steps 3 and 5 is unchanged.
+- [x] `sh tests/commit-msg.test.sh` and `claude plugin validate . && claude plugin validate plugins/odhyp` pass.
 
 ## Out of scope
 - Review-step and follow-up-ticket wording in steps 4 and 6 (T-0012).
@@ -39,3 +39,4 @@ released_in:
 ## Questions
 
 ## Notes
+- Edited only the direct-mode paragraphs of steps 3 and 5 in `implement/SKILL.md`. Step 3 now gives the entry format `date · what changed and why`, with `T-NNNN ·` only for findings from a ticket review. Step 5 now says there is no status to set and what to stage. Docs-only, so no red/green; tests and lint pass (the ICON_MISSING warning was already there).

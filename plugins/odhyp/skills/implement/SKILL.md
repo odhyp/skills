@@ -59,7 +59,7 @@ In direct mode: unclear → ask the user and stop; too big → stop and suggest 
 - If the work proved the spec wrong, add an entry under the spec's `## Decisions`: `date · T-NNNN · what changed and why`.
 - Check off the acceptance criteria and append to `## Notes` what was done and anything a later reader needs.
 
-In direct mode there is no ticket to update; still update any diagram the work makes wrong, and any spec's `## Decisions` the work proves wrong.
+In direct mode there is no ticket to update; still update any diagram the work makes wrong, and add an entry under the `## Decisions` of any spec the work proves wrong: `date · what changed and why` (put `T-NNNN ·` after the date only when the findings came from a review of that ticket).
 
 ## 4. Review
 
@@ -80,7 +80,7 @@ Refs: T-NNNN
 
 `type`, `scope` and `!` (only when `breaking: true`) come from the ticket. Commit to the current branch.
 
-In direct mode, pick `type` and `scope` from the change and commit `type(scope): subject` with no `Refs:` footer, unless the findings came from a review of ticket T-NNNN: then add `Refs: T-NNNN`. Findings that share type and scope share one commit; otherwise one commit each.
+In direct mode there is no ticket status to set; stage the code, the tests and any diagram or spec files. Pick `type` and `scope` from the change and commit `type(scope): subject` with no `Refs:` footer, unless the findings came from a review of ticket T-NNNN: then add `Refs: T-NNNN`. Findings that share type and scope share one commit; otherwise one commit each.
 
 ## 6. Stop
 
