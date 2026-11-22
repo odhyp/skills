@@ -21,6 +21,10 @@ Refuse and stop when:
 - it is `ready-for-human`: say what the person has to do;
 - any `depends_on` ticket is not `resolved`: list them.
 
+With no argument and no eligible ticket, change nothing and stop:
+- no open tickets (every ticket is `resolved` or `wontfix`): say so and point to `/shape` for new work;
+- otherwise: list each open ticket with the refusal reason above that blocks it.
+
 ## 2. Build, test-first
 
 The ticket is the whole brief: build exactly its acceptance criteria, inside its `## Decisions that apply` and `## Out of scope`. Read the spec only as background.
