@@ -1,5 +1,22 @@
 name: ci
-on: [push, pull_request]
+# Skips files no check reads; skill .md files are validated, so never ignore **.md.
+on:
+  push:
+    paths-ignore:
+      - README.md
+      - SECURITY.md
+      - CHANGELOG.md
+      - GLOSSARY.md
+      - docs/**
+      - .github/DISCUSSION_TEMPLATE/**
+  pull_request:
+    paths-ignore:
+      - README.md
+      - SECURITY.md
+      - CHANGELOG.md
+      - GLOSSARY.md
+      - docs/**
+      - .github/DISCUSSION_TEMPLATE/**
 jobs:
   check:
     runs-on: ubuntu-latest
