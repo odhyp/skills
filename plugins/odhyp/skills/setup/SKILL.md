@@ -34,7 +34,7 @@ Ask in one round, each with a recommended answer from step 1:
 | Changelog (default `CHANGELOG.md`) | Create only if missing: a `# Changelog` heading, one line naming Keep a Changelog and SemVer, and an empty `## [Unreleased]` section. |
 | `.githooks/commit-msg` | Copy from the template, replacing any older copy. Make it executable (`chmod +x`, and `git add --chmod=+x` so the bit survives on Windows). |
 | git config | Run `git config core.hooksPath .githooks`. |
-| `CLAUDE.md` | Fill `claude-md-block.md`: `{{test}}`, `{{lint}}` from step 2; `{{specs}}`, `{{tickets}}`, `{{diagrams}}`, `{{releases}}` from the existing block, or as those folders under the base path when there is no block or the user changed the base path; `{{version_files}}` and `{{changelog}}` from the existing block, else `VERSION` and `CHANGELOG.md`. It is the only place paths are written. Replace the existing odhyp block between its markers, or append the block if there is none. Leave the rest of the file untouched. |
+| `CLAUDE.md` | Fill `claude-md-block.md`: `{{test}}`, `{{lint}}` from step 2; `{{specs}}`, `{{tickets}}`, `{{diagrams}}`, `{{releases}}` from the existing block, or as those folders under the base path when there is no block or the user changed the base path; `{{version_files}}` and `{{changelog}}` from the existing block, else `VERSION` and `CHANGELOG.md`. Render `{{version_files}}` with each file in its own backticks, comma-separated, primary first: `` `VERSION`, `package.json` ``. It is the only place paths are written. Replace the existing odhyp block between its markers, or append the block if there is none. Leave the rest of the file untouched. |
 
 ## 4. Report
 

@@ -4,7 +4,7 @@ title: Format each version file in its own code span in the CLAUDE.md block temp
 type: fix
 breaking: false
 scope: config
-status: ready-for-agent
+status: resolved
 spec: S-0001
 depends_on: [T-0001]
 source: code-review
@@ -25,9 +25,9 @@ The odhyp block in `CLAUDE.md` has a `- Version files:` line listing the primary
 - plugins/odhyp/skills/setup/SKILL.md (change: the `CLAUDE.md` row of step 3 says how `{{version_files}}` is rendered)
 
 ## Acceptance criteria
-- [ ] `claude-md-block.md` has `- Version files: {{version_files}}` with no backticks around the placeholder.
-- [ ] `setup` step 3 says each version file goes in its own backticks, comma-separated, primary first.
-- [ ] `sh tests/commit-msg.test.sh` passes; `claude plugin validate . && claude plugin validate plugins/odhyp` passes.
+- [x] `claude-md-block.md` has `- Version files: {{version_files}}` with no backticks around the placeholder.
+- [x] `setup` step 3 says each version file goes in its own backticks, comma-separated, primary first.
+- [x] `sh tests/commit-msg.test.sh` passes; `claude plugin validate . && claude plugin validate plugins/odhyp` passes.
 
 ## Out of scope
 - `release` writing every version file (T-0002).
@@ -36,3 +36,4 @@ The odhyp block in `CLAUDE.md` has a `- Version files:` line listing the primary
 ## Questions
 
 ## Notes
+Removed the backticks around `{{version_files}}` in the template; setup step 3 now renders each version file in its own backticks, comma-separated, primary first.
