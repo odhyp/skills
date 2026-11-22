@@ -4,7 +4,7 @@ title: session-review returns ranked findings and writes nothing
 type: feat
 breaking: false
 scope: session-review
-status: ready-for-agent
+status: resolved
 spec: S-0002
 depends_on: [T-0009]
 source: to-tickets
@@ -50,13 +50,13 @@ released_in:
 - plugins/odhyp/skills/to-tickets/SKILL.md (change)
 
 ## Acceptance criteria
-- [ ] `session-review/SKILL.md` produces the format above: numbered, tagged, finding 1 marked ★ RECOMMENDED, a `## Recommendation` line.
-- [ ] It writes no files, applies no edits, shows no diffs or ticket previews.
-- [ ] It ends by offering `/implement` (one, several, all) and `/to-tickets N`.
-- [ ] The outside-the-odhyp-repo rule for `odhyp skill` findings is stated.
-- [ ] A smooth session gets a one-line answer.
-- [ ] `to-tickets/SKILL.md` accepts findings from the conversation and sets `source` and `parent` as above; outside the odhyp repo, an `odhyp skill` finding is printed with `id: T-XXXX`, not written.
-- [ ] `sh tests/commit-msg.test.sh` and `claude plugin validate . && claude plugin validate plugins/odhyp` pass.
+- [x] `session-review/SKILL.md` produces the format above: numbered, tagged, finding 1 marked ★ RECOMMENDED, a `## Recommendation` line.
+- [x] It writes no files, applies no edits, shows no diffs or ticket previews.
+- [x] It ends by offering `/implement` (one, several, all) and `/to-tickets N`.
+- [x] The outside-the-odhyp-repo rule for `odhyp skill` findings is stated.
+- [x] A smooth session gets a one-line answer.
+- [x] `to-tickets/SKILL.md` accepts findings from the conversation and sets `source` and `parent` as above; outside the odhyp repo, an `odhyp skill` finding is printed with `id: T-XXXX`, not written.
+- [x] `sh tests/commit-msg.test.sh` and `claude plugin validate . && claude plugin validate plugins/odhyp` pass.
 
 ## Out of scope
 - `implement` accepting `1,3` / `all` / free text (T-0011).
@@ -66,3 +66,6 @@ released_in:
 ## Questions
 
 ## Notes
+- `session-review` now returns a ranked, tagged findings list (one ★ RECOMMENDED, a `## Recommendation` line), writes nothing, and ends with the `/implement` and `/to-tickets` offers; it states the outside-the-odhyp-repo rule for `odhyp skill` findings.
+- `to-tickets` accepts findings as a third input, sets `source`/`parent` from them, and prints an `odhyp skill` ticket with `id: T-XXXX` outside the odhyp repo.
+- README still describes the old `session-review` (T-0015).

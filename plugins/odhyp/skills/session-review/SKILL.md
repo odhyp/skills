@@ -1,28 +1,51 @@
 ---
 name: session-review
-description: Review this session before /clear and suggest improvements to CLAUDE.md and to the odhyp skills.
+description: Review this session before /clear and answer "What should we improve?" with a short ranked list of findings. Writes nothing.
 disable-model-invocation: true
 ---
 
-Run before `/clear`: the evidence is this session's history, and `/clear` erases it.
+Run before `/clear`: the evidence is this session's history, and `/clear` erases it. This is the line between this skill and `code-review`, which judges a diff against a brief.
 
-## 1. Find the friction
+## 1. Find the findings
 
-Go through the session and list each moment that cost time or went wrong:
-- retries: a command, edit or approach that had to be repeated;
-- wrong assumptions: about the code, the tools, the paths or the user's intent;
-- corrections: anything the user had to say twice, or overrule;
-- missing context: something the agent had to search for, ask, or guess that a line in a file would have given.
+Go through the session and list what should improve, in two kinds:
+- **the work:** code problems seen in the session;
+- **the way of working:** each moment that cost time or went wrong:
+  - retries: a command, edit or approach that had to be repeated;
+  - wrong assumptions: about the code, the tools, the paths or the user's intent;
+  - corrections: anything the user had to say twice, or overrule;
+  - missing context: something the agent had to search for, ask, or guess that a line in a file would have given.
 
-For each, name the cause in one line and where the fix belongs: the project's `CLAUDE.md`, or an odhyp skill.
+Each finding names where its fix belongs: `code`, `CLAUDE.md`, or `odhyp skill`. Rank them; the first is the highest priority.
 
-## 2. Propose
+## 2. Report
 
-- **CLAUDE.md:** show each proposed edit as a diff. Apply the ones the user approves; apply nothing unapproved.
-- **odhyp skills:** propose one ticket for the odhyp skills repo in the ticket format (`${CLAUDE_PLUGIN_ROOT}/templates/TICKET-FORMAT.md`), with `source: session-review` and `status: ready-for-agent`. Its `## Context` quotes the moment from this session; its acceptance criteria name the skill and the change.
-  - **In the odhyp repo** (`plugins/odhyp/.claude-plugin/plugin.json` exists at the repo root): give it the next `T-` ID per the ticket format, show it as a diff like the CLAUDE.md edits, and once the user approves, write it into the tickets folder named in the odhyp block in `CLAUDE.md`. Write nothing unapproved.
-  - **Elsewhere:** the installed plugin is read-only, so print it with `id: T-XXXX` for the user to number and copy into the odhyp repo.
+Print the findings in this shape:
 
-If the session ran smoothly, say so in one line and propose nothing.
+```markdown
+# Session Review
 
-Write no other files.
+## Findings
+
+1. ★ RECOMMENDED — <title>  `code`
+
+   <cause>. <consequence>.
+
+2. <title>  `CLAUDE.md`
+
+   <cause>. <consequence>.
+
+## Recommendation
+
+Fix **Finding #1 — <title>** first. <one line on why>.
+```
+
+- Each finding: a concise title, its tag, and one to two sentences of cause and consequence, specific and backed by what happened in this session.
+- Only finding 1 is ★ RECOMMENDED.
+- No ticket previews, no diffs, no implementation plans. Write no files and apply no edits: fixing is `implement`'s job, tracking is `to-tickets`'.
+
+End by offering: `/implement 1`, `/implement 1,3`, `/implement all`, or `/to-tickets N`. A ticket is only ever the user's explicit choice.
+
+**Outside the odhyp repo** (no `plugins/odhyp/.claude-plugin/plugin.json` at the repo root) the installed plugin is read-only, so an `odhyp skill` finding can only become a ticket: offer only `/to-tickets N` for it.
+
+If the session ran smoothly, say so in one line and list nothing.
