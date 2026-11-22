@@ -17,7 +17,7 @@ Show the breakdown as a short list (title, type, depends on) and adjust it until
 
 ## 2. Write each ticket
 
-- **IDs:** the highest existing `T-` ID in the tickets folder and the releases archive, plus one, then onward in order.
+- **IDs:** next `T-` ID (see the ticket format), then onward in order.
 - `source: to-tickets`, `parent: none`, `status: ready-for-agent` unless it needs a person.
 - **Self-contained:** a fresh agent with only this ticket must be able to finish it. Copy into `## Decisions that apply` every spec decision the ticket depends on; never write "see spec". Name the files, write checkable acceptance criteria, and fence the scope in `## Out of scope`.
 - `diagrams` lists each existing diagram file whose code the ticket changes, or `[]`.

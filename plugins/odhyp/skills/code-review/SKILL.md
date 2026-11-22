@@ -32,7 +32,7 @@ Leave the project's code as it is: you report and write follow-up tickets, the i
 
 Sort each problem:
 - **Must-fix:** breaks a row above. It blocks the commit.
-- **Follow-up:** worth doing, outside this ticket's scope. Write it as a new ticket now, from `${CLAUDE_PLUGIN_ROOT}/templates/ticket.md`: next `T-` ID, `source: code-review`, `parent: <this ticket>`, `status: ready-for-agent`, self-contained per the format.
+- **Follow-up:** worth doing, outside this ticket's scope. Write it as a new ticket now, from `${CLAUDE_PLUGIN_ROOT}/templates/ticket.md`: next `T-` ID (see the ticket format), `source: code-review`, `parent: <this ticket>`, `status: ready-for-agent`, self-contained per the format.
 
 ## 3. Return
 

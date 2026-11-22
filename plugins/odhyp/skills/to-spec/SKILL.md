@@ -12,7 +12,7 @@ The input is the design agreed earlier in this conversation (usually via `/shape
 
 ## 2. Write
 
-- **ID:** the highest existing `S-` ID in the specs folder and the releases archive, plus one. Start at `S-0001`.
+- **ID:** next `S-` ID (see the spec format).
 - **File:** `<specs>/NNNN-short-slug.md`, `status: draft`, `tickets: []`.
 - **Body:** every section of the format. `## Design` records the decisions as agreed, including the reasons that are not obvious. `## Decisions` starts empty.
 

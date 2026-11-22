@@ -5,8 +5,11 @@ A spec records an agreed feature design. Tickets carry everything needed to buil
 **The frontmatter is locked:** exactly the fields below, and no skill adds its own. Polaris parses it, so changing it is a breaking change for both repos. The body is free Markdown; the sections under Body are the recommended structure. Blank template: `spec.md`.
 
 - **One file per spec**, flat in the specs folder (path in the odhyp block in `CLAUDE.md`): `NNNN-short-slug.md`.
-- **IDs:** `S-NNNN`, zero-padded, never reused. The next ID is the highest existing `S-` ID (including the releases archive) plus one. Tickets count separately (`T-NNNN`).
 - **Link by ID, never by path.**
+
+## IDs
+
+`S-NNNN`, zero-padded, never reused. The next ID is the highest existing `S-` ID in the specs folder and in the releases archive, plus one; the first is `S-0001`. Tickets count separately (`T-NNNN`).
 
 ## Frontmatter
 

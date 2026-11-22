@@ -5,9 +5,12 @@ A ticket is the handoff between fresh contexts. A fresh agent must be able to fi
 **The frontmatter is locked:** exactly the fields below, in this order, and no skill adds its own. Polaris parses it, so changing it is a breaking change for both repos. The body is free Markdown; the sections under Body are the recommended structure. Blank template: `ticket.md`.
 
 - **One file per ticket**, flat in the tickets folder (path in the odhyp block in `CLAUDE.md`): `NNNN-short-slug.md` (e.g. `0018-dashboard-layout.md`).
-- **IDs:** `T-NNNN`, zero-padded, never reused. The next ID is the highest existing `T-` ID (including the releases archive) plus one. Specs count separately (`S-NNNN`).
 - **Link by ID, never by path**, so archiving into `releases/` breaks nothing.
 - **Size:** one ticket fits one fresh session. Bigger → split.
+
+## IDs
+
+`T-NNNN`, zero-padded, never reused. The next ID is the highest existing `T-` ID in the tickets folder and in the releases archive, plus one; the first is `T-0001`. Specs count separately (`S-NNNN`).
 
 ## Frontmatter
 

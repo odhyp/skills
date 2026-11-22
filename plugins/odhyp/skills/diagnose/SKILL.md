@@ -21,7 +21,7 @@ Form hypotheses, then narrow with evidence: read the code on the failing path, a
 
 ## 3. Write the ticket
 
-- Next `T-` ID (highest in the tickets folder and the releases archive, plus one).
+- Next `T-` ID (see the ticket format).
 - `type: fix` (or `perf` for slowness), `source: diagnose`, `spec: none`, `status: ready-for-agent`.
 - All sections, including `## Reproduction`, `## Expected / Actual`, `## Root cause` and `## Failing test to write first`: the test that goes red on this bug and green once fixed.
 - Fill `## Decisions that apply` with any constraint on the fix you found (code that must not change, callers that depend on the behaviour).
