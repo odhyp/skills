@@ -15,6 +15,7 @@
 - Version files: `VERSION`, `plugins/odhyp/.claude-plugin/plugin.json`
 - Changelog: `CHANGELOG.md`
 - Ticket and spec format: locked frontmatter, free Markdown body (loaded by the odhyp skills)
+- Next ID: one above the highest `NNNN` in the folder and in `docs/releases/*/`; start at 0001 when there is none.
 - Test: `sh tests/commit-msg.test.sh` · Lint: `claude plugin validate . && claude plugin validate plugins/odhyp`
 - Commits: Conventional Commits, enforced by .githooks/commit-msg
   (activate per clone: git config core.hooksPath .githooks)

@@ -36,7 +36,7 @@ ADR-0001 makes every unit of work, down to a one-line fix, a ticket. In practice
 - Goal: review output is short, ranked, terminal-readable, with one recommended finding.
 - Goal: review-only operations change nothing (no code, no tickets, no ticket state).
 - Goal: an approved spec is always written and committed; an unapproved one never is.
-- Goal: `.gitkeep` only in otherwise-empty folders.
+- Goal: no `.gitkeep` anywhere; a skill creates its folder when it first writes a file there.
 - Non-goal: commit-on-approval for `to-tickets`.
 - Non-goal: any change to `diagnose`.
 - Non-goal: any change to the ticket or spec frontmatter (the Polaris contract).
@@ -116,7 +116,7 @@ Input is a spec, a small agreed change, or findings selected from this conversat
 
 1. Show the full draft spec (frontmatter and body) in chat; write nothing to disk.
 2. Each revision request: apply it and show the whole spec again. Only an explicit approval ends the loop; an approval that also asks for a change is a revision and needs another round.
-3. On approval: write `<specs>/NNNN-slug.md` with `status: draft`, apply the `.gitkeep` rule, and commit only those paths as `docs(spec): add S-NNNN <slug>`, no `Refs:` footer.
+3. On approval: write `<specs>/NNNN-slug.md` with `status: draft` and commit only that file as `docs(spec): add S-NNNN <slug>`, no `Refs:` footer.
 4. Report ID, path and commit hash; next step `/to-tickets S-NNNN`. Never continue to tickets or implementation.
 
 Showing the draft in chat makes "never commit an unconfirmed spec" hold by construction; committing only the spec's paths leaves unrelated dirty files alone.
@@ -125,11 +125,12 @@ Showing the draft in chat makes "never commit an unconfirmed spec" hold by const
 
 The opening line becomes: planned work (features and changes the user decides to make) starts here; findings from `session-review` or `code-review`, and small explicit requests, may go straight to `/implement`. `implement`'s direct mode sends ambiguous or architectural requests back to `/shape`. `diagnose` is unchanged.
 
-### `.gitkeep` rule
+### No `.gitkeep`; next-ID rule
 
-- `templates/claude-md-block.md` gains one line, roughly: *`.gitkeep` only in an otherwise-empty folder: remove it when you add a file there, add it back when you empty a folder that must stay.* It reaches every agent and every file in a project; `setup` re-run installs it. This repo's `CLAUDE.md` block is updated to match.
-- `release` step 6 (the only skill that empties folders): remove `<releases>/.gitkeep`, keep a `.gitkeep` in `tickets/` and `specs/` when they end up empty.
-- Delete `docs/releases/.gitkeep` in this repo.
+- No skill needs a folder to exist beforehand: writing a file creates its folder. `setup` creates no folders and writes the four paths only into the config block; on re-run it deletes any `.gitkeep` in those folders (`git rm` if tracked) and lists that in its report.
+- `to-spec` commits only the spec file. `release` is unchanged: creating `<releases>/vX.Y.Z/` is part of its move.
+- `templates/claude-md-block.md` gains one line: *Next ID: one above the highest `NNNN` in the folder and in `<releases>/*/`; start at 0001 when there is none.* This repo's `CLAUDE.md` block is updated to match.
+- Delete `docs/releases/.gitkeep` and `docs/diagrams/.gitkeep` in this repo.
 
 ### Docs
 
@@ -145,9 +146,10 @@ Skill-text changes: `sh tests/commit-msg.test.sh` and `claude plugin validate . 
 - `implement` accepts both tickets and direct requests.
 - `code-review` grades by severity and separates fix-now from ticket findings.
 - Review-only operations modify nothing.
-- `.gitkeep` is removed when its folder gets real files.
+- No `.gitkeep` is tracked, and `setup` creates no folders.
 
 ## Decisions
 
 - 2026-11-22: `implement` answers "How do we build it?", not "How do we fix it?", since it builds features from tickets as well as fixes. T-0015 also gained the README intro sentence and the direct-mode diagram details; skill names stay unchanged.
 - 2026-11-22 · T-0012 · After-commit MUST-FIX no longer reopens the ticket: it stays resolved and the findings are fixed with direct /implement, Refs: T-NNNN.
+- 2026-11-22 · T-0014 · Dropped .gitkeep entirely instead of keeping it only in empty folders, to stop skills adding and removing it; added the next-ID rule to the config block.

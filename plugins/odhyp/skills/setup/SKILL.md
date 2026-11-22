@@ -1,10 +1,10 @@
 ---
 name: setup
-description: Set up a project for the odhyp workflow (CLAUDE.md block with the paths, VERSION, CHANGELOG, commit hook, docs folders). Safe to re-run.
+description: Set up a project for the odhyp workflow (CLAUDE.md block with the paths, VERSION, CHANGELOG, commit hook). Safe to re-run.
 disable-model-invocation: true
 ---
 
-Run once per project, and again after upgrading the plugin. Every step **updates in place**: re-running keeps existing values, never duplicates a folder, a block or a file, and never touches the project's tickets, specs or diagrams. It installs nothing; the skills are already installed globally.
+Run once per project, and again after upgrading the plugin. Every step **updates in place**: re-running keeps existing values, never duplicates a folder, a block or a file, and never touches the project's tickets, specs or diagrams, except deleting `.gitkeep` files there. It installs nothing; the skills are already installed globally.
 
 Templates live in `${CLAUDE_PLUGIN_ROOT}/templates/`: `claude-md-block.md`, `commit-msg`.
 
@@ -29,7 +29,7 @@ Ask in one round, each with a recommended answer from step 1:
 
 | Target | Action |
 |---|---|
-| `<specs>`, `<tickets>`, `<diagrams>`, `<releases>` | Create if missing, each with a `.gitkeep` while empty. Draw no diagrams: they come later, on request or from `/shape`. |
+| `<specs>`, `<tickets>`, `<diagrams>`, `<releases>` | Create no folders: these paths are only written into the `CLAUDE.md` block, and a skill creates its folder when it first writes a file there. Delete any `.gitkeep` in these four folders (`git rm` if tracked). Draw no diagrams: they come later, on request or from `/shape`. |
 | Primary version file (default `VERSION`) | Create with `0.1.0` only if missing. |
 | Changelog (default `CHANGELOG.md`) | Create only if missing: a `# Changelog` heading, one line naming Keep a Changelog and SemVer, and an empty `## [Unreleased]` section. |
 | `.githooks/commit-msg` | Copy from the template, replacing any older copy. Make it executable (`chmod +x`, and `git add --chmod=+x` so the bit survives on Windows). |
@@ -38,4 +38,4 @@ Ask in one round, each with a recommended answer from step 1:
 
 ## 4. Report
 
-List each target from step 3 as created, updated or unchanged, then the next step: `/shape` for planned work, or describe a bug whose cause is unknown for `diagnose`. Leave the changes uncommitted for the user to review.
+List each target from step 3 as created, updated or unchanged, and each `.gitkeep` deleted, then the next step: `/shape` for planned work, or describe a bug whose cause is unknown for `diagnose`. Leave the changes uncommitted for the user to review.

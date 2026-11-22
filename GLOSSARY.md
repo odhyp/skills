@@ -19,7 +19,7 @@ A **Skill** the agent starts by itself when the trigger condition in its descrip
 _Avoid_: model skill, background skill
 
 **Setup skill**:
-The **Skill** run once per project to write its **Project config**, **Rules** and folders.
+The **Skill** run once per project to write its **Project config** and **Rules**.
 _Avoid_: init, bootstrap
 
 **Shape**:

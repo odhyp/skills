@@ -27,9 +27,8 @@ Ask the user to approve the draft or ask for changes. For each revision request,
 On approval:
 
 1. Write the spec to `<specs>/NNNN-short-slug.md` with `status: draft` (written, not yet split into tickets).
-2. If the specs folder has a `.gitkeep`, remove it.
-3. Stage only those paths: `git add` the spec file, and `git rm` the `.gitkeep` if there was one. Never `git add -A`.
-4. Commit only those paths, so anything the user already had staged stays out: `git commit -m "docs(spec): add S-NNNN <slug>" -- <spec file> [<.gitkeep>]`, with no `Refs:` footer. Never push.
+2. Stage only that file: `git add` the spec file. Never `git add -A`.
+3. Commit only that file, so anything the user already had staged stays out: `git commit -m "docs(spec): add S-NNNN <slug>" -- <spec file>`, with no `Refs:` footer. Never push.
 
 ## 5. Report
 
