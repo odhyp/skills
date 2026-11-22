@@ -10,12 +10,27 @@ Read the odhyp block in `CLAUDE.md` for the specs and releases folders (No odhyp
 
 The input is the design agreed earlier in this conversation (usually via `/shape`). If there is no agreed design, or a section of the format would be guesswork, ask only the questions that fill those gaps; do not re-interview settled decisions.
 
-## 2. Write
+## 2. Draft
 
 - **ID:** next `S-` ID (see the spec format).
 - **File:** `<specs>/NNNN-short-slug.md`, `status: draft`, `tickets: []`.
 - **Body:** every section of the format. `## Design` records the decisions as agreed, including the reasons that are not obvious. `## Decisions` starts empty.
 
-## 3. Report
+Show the full draft (frontmatter and body) in chat. Write nothing to disk yet.
 
-Give the spec's ID and path, and the next step: `/to-tickets S-NNNN`.
+## 3. Confirm
+
+Ask the user to approve the draft or ask for changes. For each revision request, apply it and show the whole spec again. Only an explicit approval ends the loop; a reply that approves and also asks for a change is a revision and needs another round. Never skip the loop.
+
+## 4. Write and commit
+
+On approval:
+
+1. Write the spec to `<specs>/NNNN-short-slug.md` with `status: draft` (written, not yet split into tickets).
+2. If the specs folder has a `.gitkeep`, remove it.
+3. Stage only those paths: `git add` the spec file, and `git rm` the `.gitkeep` if there was one. Never `git add -A`.
+4. Commit only those paths, so anything the user already had staged stays out: `git commit -m "docs(spec): add S-NNNN <slug>" -- <spec file> [<.gitkeep>]`, with no `Refs:` footer. Never push.
+
+## 5. Report
+
+Give the spec's ID, path and commit hash, and the next step: `/to-tickets S-NNNN`. Then stop: never continue to tickets or implementation.
