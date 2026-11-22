@@ -1,5 +1,7 @@
 # Ticket format
 
+This format is the contract any skills can write to so that Polaris can read their output.
+
 A ticket is the handoff between fresh contexts. A fresh agent must be able to finish it from the ticket alone; the spec is background reading only.
 
 **The frontmatter is locked:** exactly the fields below, in this order, and no skill adds its own. Polaris parses it, so changing it is a breaking change for both repos. The body is free Markdown; the sections under Body are the recommended structure. Blank template: `ticket.md`.

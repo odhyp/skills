@@ -1,5 +1,7 @@
 # Spec format
 
+This format is the contract any skills can write to so that Polaris can read their output.
+
 A spec records an agreed feature design. Tickets carry everything needed to build it; the spec is the background and the place where decisions changed during implementation are logged.
 
 **The frontmatter is locked:** exactly the fields below, and no skill adds its own. Polaris parses it, so changing it is a breaking change for both repos. The body is free Markdown; the sections under Body are the recommended structure. Blank template: `spec.md`.

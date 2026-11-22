@@ -90,6 +90,10 @@ Polaris (`npx -y @odhyp/polaris@2`) is the view across all projects. The skills 
 - `.mmd` diagrams, each opening with a `%%` header comment.
 - The version file and CHANGELOG.
 
+### Using your own skills
+
+Polaris doesn't need odhyp. What it reads is the ticket and spec format, so any skills that write files following [`TICKET-FORMAT.md`](plugins/odhyp/templates/TICKET-FORMAT.md) and [`SPEC-FORMAT.md`](plugins/odhyp/templates/SPEC-FORMAT.md) show up in Polaris too. odhyp has no runtime dependency on Polaris: Polaris only reads, and it keeps its own config in its app data, outside the repo.
+
 ## Roadmap
 
 - **v0.1.0:** try the workflow end to end in a throwaway project from global install (setup → shape → spec → tickets → implement → review → release), then tag this repo `v0.1.0`.
