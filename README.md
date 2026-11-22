@@ -109,6 +109,13 @@ Polaris doesn't need odhyp. What it reads is the ticket and spec format, so any 
 - `sh tests/review-smoke.sh` runs the plugin headless in a throwaway repo and checks that `code-review` forks and catches a planted bug. It calls the API (about $0.35), so it runs by hand, not in CI.
 - CI (`.github/workflows/ci.yml`) runs the hook test and both validations on every push and pull request.
 
+## Feedback
+
+- Bugs, questions and ideas: [Discussions](https://github.com/odhyp/skills/discussions). Bug reports go in Q&A, which has a form.
+- This repo doesn't use GitHub Issues. Work is tracked as ticket files in [`docs/tickets/`](docs/tickets/), and good ideas from Discussions become tickets there.
+- Pull requests are open to collaborators only. To propose a change, start a discussion.
+- Security problems: report them privately, as [`SECURITY.md`](SECURITY.md) describes, not in Discussions.
+
 ## License
 
 [MIT](LICENSE)

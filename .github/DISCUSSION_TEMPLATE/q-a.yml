@@ -1,0 +1,46 @@
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For bug reports and questions. Security problems go through [private reporting](https://github.com/odhyp/skills/security/advisories/new) instead.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you expected, and what you got instead. Paste the exact error text if there is one.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: The skill or command you ran, and in what kind of project.
+      placeholder: |
+        1. /odhyp:...
+        2. ...
+    validations:
+      required: true
+  - type: input
+    id: plugin-version
+    attributes:
+      label: odhyp version
+      placeholder: "0.2.0"
+    validations:
+      required: true
+  - type: input
+    id: claude-version
+    attributes:
+      label: Claude Code version
+      description: Output of `claude --version`.
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: OS
+      options:
+        - Windows
+        - macOS
+        - Linux
+    validations:
+      required: true
