@@ -23,7 +23,7 @@ The **Skill** run once per project to write its **Project config** and **Rules**
 _Avoid_: init, bootstrap
 
 **Shape**:
-The conversation that turns a vague idea into a clear need, and an idea, small change or known-cause bug into agreed work before any **Spec** or **Ticket** exists.
+The conversation that turns an idea, even a vague one, a small change or a known-cause bug into agreed work before any **Spec** or **Ticket** exists.
 _Avoid_: plan, refine, groom
 
 ### Work items

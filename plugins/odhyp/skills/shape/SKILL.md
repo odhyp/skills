@@ -50,13 +50,13 @@ Say which and why in one line, under the summary's `## Next step`. The agreed co
 
 ## Output
 
-Print the size line once, above the first grilling round, and again only on a re-size:
+Print the size line above the first grilling round, again on a re-size, and at the top of the summary:
 
 ```markdown
 **Size: small change** — <why, in one line>.
 ```
 
-Print each round, Explore or Grill, in this shape:
+Print each Explore round in this shape:
 
 ```markdown
 # Shape — Round N
@@ -67,8 +67,14 @@ a) <option>
 b) <option>
 
 **Recommended:** b. <why>.
+```
 
-### 2. <question>
+Print each grilling round in this shape:
+
+```markdown
+# Shape — Round N
+
+### 1. <question>
 
 **Recommended:** <answer>. <why>.
 ```
