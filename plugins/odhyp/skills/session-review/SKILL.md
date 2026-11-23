@@ -27,13 +27,13 @@ Print the findings in this shape:
 
 ## Findings
 
-1. ★ RECOMMENDED — <title>  `code`
+### 1. ★ RECOMMENDED — <title>  `code`
 
-   <cause>. <consequence>.
+<cause>. <consequence>.
 
-2. <title>  `CLAUDE.md`
+### 2. <title>  `CLAUDE.md`
 
-   <cause>. <consequence>.
+<cause>. <consequence>.
 
 ## Recommendation
 
