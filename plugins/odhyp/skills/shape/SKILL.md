@@ -24,7 +24,7 @@ Interview relentlessly in **rounds of at most 3 questions**, walking each branch
   - **Feature:** the problem and who has it, what done looks like, scope edges (what is explicitly out), behaviour in edge and failure cases, data and interfaces touched, how it will be tested, and what it could break.
   - **Small change:** what done looks like, what it could break, and how it will be tested. Add an item from the feature list only when the code shows it applies.
 
-**Done when** every branch is resolved and the user agrees with a summary you give. Feature: the problem, the decisions, and what is out of scope. Small change: two or three lines on what done looks like and what it could break.
+**Done when** every branch is resolved and the user agrees with a summary you give. Feature: the problem, the decisions, and what is out of scope. Small change: two or three lines on what done looks like, what it could break, and how it will be tested.
 
 ## 3. Diagrams
 

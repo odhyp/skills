@@ -89,7 +89,7 @@ flowchart TD
 | Skill            | Invocation | Does                                                                                                                                                                         |
 | ---------------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `setup`          | Manual     | Run once per project. Writes the CLAUDE.md block (paths, version files, changelog, commands), VERSION, CHANGELOG, and the commit hook. Safe to re-run.                       |
-| `shape`          | Manual     | Entry point for features, small changes and known-cause bugs. Grills you until you agree, draws diagrams if the structure changes, then names the next step.                 |
+| `shape`          | Manual     | Entry point for features, small changes and known-cause bugs. Sizes the work, grills you in short rounds until you agree, draws diagrams if the structure changes, then names the next step. |
 | `to-spec`        | Manual     | Turns the agreed design into a spec (`S-NNNN`), confirms it with you in a loop, then commits it.                                                                             |
 | `to-tickets`     | Manual     | Splits a spec, review findings, or an agreed small change into self-contained tickets (`T-NNNN`).                                                                            |
 | `diagnose`       | Auto       | When you report a bug whose cause is unknown: reproduces it, finds the root cause, writes a `fix` ticket. Does not fix.                                                      |
