@@ -1,6 +1,6 @@
 ---
 name: release
-description: Cut a release. Computes the SemVer bump from resolved tickets and commits, updates the version and CHANGELOG, archives tickets and specs, then commits and tags after confirmation.
+description: Cut a release. Computes the SemVer bump from resolved tickets and commits, updates the version and CHANGELOG, archives tickets and specs, then commits, tags and pushes after confirmation.
 disable-model-invocation: true
 ---
 
@@ -30,7 +30,7 @@ From the tickets and commits together:
 
 ## 4. Confirm
 
-Show the proposed version, the bump reason (which ticket or commit decided it), every file whose version will change (each one under `Version files:`, plus `package.json`/`pyproject.toml` when present), and the full CHANGELOG entry. **Wait for the user's OK.** Write, commit and tag nothing before it; apply any change they ask for and show it again.
+Show the proposed version, the bump reason (which ticket or commit decided it), every file whose version will change (each one under `Version files:`, plus `package.json`/`pyproject.toml` when present), the full CHANGELOG entry, and the remote and branch the release will be pushed to (no upstream: say it will not be pushed). **Wait for the user's OK**; it covers the commit, the tag and the push. Write, commit, tag and push nothing before it; apply any change they ask for and show it again.
 
 ## 5. Write
 
@@ -47,6 +47,8 @@ Move into `<releases>/vX.Y.Z/`:
 
 Write `<releases>/vX.Y.Z/RELEASE.md`: the version, the date, a two-line summary, and the tickets by type (ID and title) and the specs archived.
 
-## 7. Commit and tag
+## 7. Commit, tag and push
 
-Commit everything as `chore(release): vX.Y.Z`, then `git tag vX.Y.Z`. Push nothing; report the tag and leave pushing to the user.
+Commit everything as `chore(release): vX.Y.Z`, then `git tag vX.Y.Z`, then push both at once to the current branch's upstream: `git push --atomic <remote> HEAD vX.Y.Z`. Report the commit, the tag and the push.
+
+No upstream, or the push is rejected: keep the local commit and tag, report the error and the push command to run, and stop. Never force-push or retry.
