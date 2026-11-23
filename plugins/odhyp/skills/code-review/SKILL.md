@@ -43,9 +43,15 @@ A finding that breaks a row above is at least High. Give each Medium and Low fin
 
 ## 3. Return
 
-Start with a verdict line: `MUST-FIX` if any Critical or High finding exists (it blocks the commit), otherwise `PASS`. Then the findings, highest priority first:
+Start with the title and a verdict line: `**Verdict: ⛔ MUST-FIX**` if any Critical or High finding exists (it blocks the commit), otherwise `**Verdict: ✅ PASS**`. Then the findings, highest priority first:
 
 ```markdown
+# Code Review
+
+**Verdict: ✅ PASS**
+
+## Findings
+
 ### 1. ★ RECOMMENDED — <title>  `High`  `path:line`
 
 <what is wrong>. <the required change>.
@@ -57,6 +63,6 @@ Start with a verdict line: `MUST-FIX` if any Critical or High finding exists (it
 
 - Each finding: number, title, severity, `path:line`, and one to two sentences.
 - Only finding 1 is ★ RECOMMENDED.
-- No findings: the verdict line alone.
+- No findings: the title and verdict line alone.
 
 **After-commit review** with a `MUST-FIX` verdict: the ticket stays `resolved`. Say the fix is a direct `/implement N`, whose commit carries `Refs: T-NNNN`.
