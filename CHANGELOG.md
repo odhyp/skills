@@ -5,9 +5,13 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-11-23
+
 ### Changed
 
 - `release` pushes the release commit and tag to the upstream after your OK. Re-run `/odhyp:setup` so your `CLAUDE.md` block allows it.
+
+Release notes: [docs/releases/v0.6.0](docs/releases/v0.6.0/RELEASE.md)
 
 ## [0.5.0] - 2026-11-23
 
