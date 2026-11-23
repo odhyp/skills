@@ -86,18 +86,18 @@ flowchart TD
 | `diagram` | What does the system look like? |
 | `release` | What changed since the last version? |
 
-| Skill            | Invocation | Does                                                                                                                                                                         |
-| ---------------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `setup`          | Manual     | Run once per project. Writes the CLAUDE.md block (paths, version files, changelog, commands), VERSION, CHANGELOG, and the commit hook. Safe to re-run.                       |
-| `shape`          | Manual     | Entry point for features, small changes and known-cause bugs. Sizes the work, grills you in short rounds until you agree, draws diagrams if the structure changes, then names the next step. |
-| `to-spec`        | Manual     | Turns the agreed design into a spec (`S-NNNN`), confirms it with you in a loop, then commits it.                                                                             |
-| `to-tickets`     | Manual     | Splits a spec, review findings, or an agreed small change into self-contained tickets (`T-NNNN`).                                                                            |
-| `diagnose`       | Auto       | When you report a bug whose cause is unknown: reproduces it, finds the root cause, writes a `fix` ticket. Does not fix.                                                      |
-| `diagram`        | Auto       | Creates or updates the `.mmd` diagrams: on request, from `shape`, or when a change makes an existing diagram wrong.                                                          |
+| Skill            | Invocation | Does                                                                                                                                                                                                                                                        |
+| ---------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `setup`          | Manual     | Run once per project. Writes the CLAUDE.md block (paths, version files, changelog, commands), VERSION, CHANGELOG, and the commit hook. Safe to re-run.                                                                                                      |
+| `shape`          | Manual     | Entry point for features, small changes and known-cause bugs. Sizes the work, grills you in short rounds until you agree, draws diagrams if the structure changes, then names the next step.                                                                |
+| `to-spec`        | Manual     | Turns the agreed design into a spec (`S-NNNN`), confirms it with you in a loop, then commits it.                                                                                                                                                            |
+| `to-tickets`     | Manual     | Splits a spec, review findings, or an agreed small change into self-contained tickets (`T-NNNN`).                                                                                                                                                           |
+| `diagnose`       | Auto       | When you report a bug whose cause is unknown: reproduces it, finds the root cause, writes a `fix` ticket. Does not fix.                                                                                                                                     |
+| `diagram`        | Auto       | Creates or updates the `.mmd` diagrams: on request, from `shape`, or when a change makes an existing diagram wrong.                                                                                                                                         |
 | `implement`      | Manual     | `/odhyp:implement @<ticket>` or `/odhyp:implement N`: builds one ticket or a direct request (a review finding, a small change) test-first, runs `code-review`, then commits on a pass or stops with the must-fix findings. The only skill that writes code. |
-| `code-review`    | Auto       | Reviews the uncommitted diff against the ticket in a forked subagent, before the commit, and grades findings by severity. Writes no tickets. Also reviews a ticket's commits on request. |
-| `release`        | Manual     | Computes the SemVer bump, updates the version and CHANGELOG, archives tickets and specs, then commits and tags after you confirm.                                            |
-| `session-review` | Manual     | Run before `/clear`: reviews the session and lists ranked findings. Writes nothing.                                                                                          |
+| `code-review`    | Auto       | Reviews the uncommitted diff against the ticket in a forked subagent, before the commit, and grades findings by severity. Writes no tickets. Also reviews a ticket's commits on request.                                                                    |
+| `release`        | Manual     | Computes the SemVer bump, updates the version and CHANGELOG, archives tickets and specs, then commits and tags after you confirm.                                                                                                                           |
+| `session-review` | Manual     | Run before `/clear`: reviews the session and lists ranked findings. Writes nothing.                                                                                                                                                                         |
 
 ## Polaris contract
 
