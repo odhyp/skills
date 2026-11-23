@@ -50,7 +50,7 @@ Say which and why in one line, under the summary's `## Next step`. The agreed co
 
 ## Output
 
-Print the size line above the first grilling round, again on a re-size, and at the top of the summary:
+Print the size line above the first grilling round, again on a re-size, and at the top of the summary once the work is sized:
 
 ```markdown
 **Size: small change** — <why, in one line>.
