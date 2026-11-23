@@ -5,6 +5,25 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-11-23
+
+### Added
+
+- `shape` explores a vague idea before sizing it, then exits to grilling or back to the user.
+
+### Changed
+
+- The workflow chart moved to `docs/diagrams/` (with a new data-flow diagram); the README links to it, merges its two Skills tables and drops the Roadmap (T-0017).
+- The skills and templates no longer name Polaris or any outside reader of their files (ADR-0008, T-0018).
+
+### Fixed
+
+- `shape` prints the summary size line only once the work is sized, and states where it prints.
+- `code-review` words suggested actions as suggestions in every mode.
+- `implement` leaves fix-now findings to the user on a review pass.
+
+Release notes: [docs/releases/v0.5.0](docs/releases/v0.5.0/RELEASE.md)
+
 ## [0.4.0] - 2026-11-23
 
 ### Changed
