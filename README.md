@@ -17,87 +17,22 @@ Then run `/odhyp:setup` once in each project that uses the workflow. The skills 
 
 ## Workflow
 
-```mermaid
-flowchart TD
-    A1["/setup 👤<br/>CLAUDE.md · VERSION · hook"] --> X0{"Work type"}
-    X0 -->|"Feature / small change / known-cause bug"| B1
-    X0 -->|"Bug, cause unknown"| B5
-
-    subgraph B["Planning (writes specs & tickets)"]
-        B1["/shape 👤<br/>Grill the work"]
-        X2{"Structure changes?"}
-        B4["diagram 🤖<br/>diagrams/*.mmd"]
-        X1{"Size"}
-        B2["/to-spec 👤<br/>S-NNNN"]
-        B3["/to-tickets 👤<br/>T-NNNN"]
-        B5["diagnose 🤖<br/>Root cause → fix ticket"]
-        B1 --> X2
-        X2 -->|"Yes"| B4 --> X1
-        X2 -->|"No"| X1
-        X1 -->|"Feature"| B2 --> B3
-        X1 -->|"Small"| B3
-    end
-
-    B3 --> CL0["/clear ⚙️"]
-    B5 --> CL0
-    CL0 --> T[("tickets<br/>ready-for-agent")]
-
-    subgraph C["Build (ticket or direct)"]
-        C1["/implement 👤<br/>ticket or direct · test-first → code"]
-        D1["code-review 🤖<br/>forked · diff vs ticket"]
-        C2["commit<br/>ticket: status resolved · direct: no Refs"]
-        C3["stop<br/>ticket: must-fix in Notes · direct: report only"]
-        S1["/session-review 👤<br/>optional"]
-        C1 --> D1
-        D1 -->|"Pass"| C2
-        D1 -->|"Must-fix"| C3
-    end
-
-    T -->|"/implement @ticket"| C1
-    S1 -->|"/implement N"| C1
-    C3 -->|"user runs /implement again"| C1
-    X4{"You choose"}
-    C2 -.->|"non-blocking findings"| X4
-    S1 -.->|"findings"| X4
-    X4 -->|"/implement N"| C1
-    X4 -->|"/to-tickets N"| B3
-    C2 --> S1 --> CL["/clear ⚙️"]
-    C2 --> CL
-    CL --> X3{"Tickets left?"}
-    X3 -->|"Yes"| T
-    X3 -->|"No / milestone"| E1["/release 👤<br/>bump · CHANGELOG · archive · confirm · tag"]
-    E1 --> X0
-```
-
-👤 manual skill · 🤖 auto skill (starts on its own; you can also call it) · ⚙️ built-in Claude Code command
+How the skills hand off, from `/setup` to `/release`: [`docs/diagrams/workflow.mmd`](docs/diagrams/workflow.mmd). Which skill reads or writes which file: [`docs/diagrams/data-flow.mmd`](docs/diagrams/data-flow.mmd).
 
 ## Skills
 
-| Skill | Answers |
-|---|---|
-| `setup` | How is this project wired for the workflow? |
-| `shape` | What exactly are we building, and why? |
-| `diagnose` | Why is it broken? |
-| `to-spec` | What did we agree to build? |
-| `to-tickets` | What work should we track? |
-| `implement` | How do we build it? |
-| `code-review` | What is wrong with this code? |
-| `session-review` | What should we improve? |
-| `diagram` | What does the system look like? |
-| `release` | What changed since the last version? |
-
 | Skill            | Invocation | Does                                                                                                                                                                                                                                                        |
 | ---------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `setup`          | Manual     | Run once per project. Writes the CLAUDE.md block (paths, version files, changelog, commands), VERSION, CHANGELOG, and the commit hook. Safe to re-run.                                                                                                      |
-| `shape`          | Manual     | Entry point for features, small changes and known-cause bugs. Sizes the work, grills you in short rounds until you agree, draws diagrams if the structure changes, then names the next step.                                                                |
-| `to-spec`        | Manual     | Turns the agreed design into a spec (`S-NNNN`), confirms it with you in a loop, then commits it.                                                                                                                                                            |
+| `setup`          | Manual     | Wires a project for the workflow. Run once per project. Writes the CLAUDE.md block (paths, version files, changelog, commands), VERSION, CHANGELOG, and the commit hook. Safe to re-run.                                                                    |
+| `shape`          | Manual     | Settles what we are building and why. Entry point for features, small changes and known-cause bugs. Sizes the work, grills you in short rounds until you agree, draws diagrams if the structure changes, then names the next step.                          |
+| `to-spec`        | Manual     | Records what we agreed to build: turns the agreed design into a spec (`S-NNNN`), confirms it with you in a loop, then commits it.                                                                                                                           |
 | `to-tickets`     | Manual     | Splits a spec, review findings, or an agreed small change into self-contained tickets (`T-NNNN`).                                                                                                                                                           |
-| `diagnose`       | Auto       | When you report a bug whose cause is unknown: reproduces it, finds the root cause, writes a `fix` ticket. Does not fix.                                                                                                                                     |
-| `diagram`        | Auto       | Creates or updates the `.mmd` diagrams: on request, from `shape`, or when a change makes an existing diagram wrong.                                                                                                                                         |
+| `diagnose`       | Auto       | Finds why it is broken. When you report a bug whose cause is unknown: reproduces it, finds the root cause, writes a `fix` ticket. Does not fix.                                                                                                             |
+| `diagram`        | Auto       | Shows what the system looks like. Creates or updates the `.mmd` diagrams: on request, from `shape`, or when a change makes an existing diagram wrong.                                                                                                       |
 | `implement`      | Manual     | `/odhyp:implement @<ticket>` or `/odhyp:implement N`: builds one ticket or a direct request (a review finding, a small change) test-first, runs `code-review`, then commits on a pass or stops with the must-fix findings. The only skill that writes code. |
-| `code-review`    | Auto       | Reviews the uncommitted diff against the ticket in a forked subagent, before the commit, and grades findings by severity. Writes no tickets. Also reviews a ticket's commits on request.                                                                    |
-| `release`        | Manual     | Computes the SemVer bump, updates the version and CHANGELOG, archives tickets and specs, then commits and tags after you confirm.                                                                                                                           |
-| `session-review` | Manual     | Run before `/clear`: reviews the session and lists ranked findings. Writes nothing.                                                                                                                                                                         |
+| `code-review`    | Auto       | Answers what is wrong with this code. Reviews the uncommitted diff against the ticket in a forked subagent, before the commit, and grades findings by severity. Writes no tickets. Also reviews a ticket's commits on request.                              |
+| `release`        | Manual     | Computes the SemVer bump from what changed since the last version, updates the version and CHANGELOG, archives tickets and specs, then commits and tags after you confirm.                                                                                  |
+| `session-review` | Manual     | Answers what we should improve. Run before `/clear`: reviews the session and lists ranked findings. Writes nothing.                                                                                                                                         |
 
 ## Polaris contract
 
@@ -111,11 +46,6 @@ Polaris (`npx -y @odhyp/polaris@2`) is the view across all projects. The skills 
 ### Using your own skills
 
 Polaris doesn't need odhyp. What it reads is the ticket and spec format, so any skills that write files following [`TICKET-FORMAT.md`](plugins/odhyp/templates/TICKET-FORMAT.md) and [`SPEC-FORMAT.md`](plugins/odhyp/templates/SPEC-FORMAT.md) show up in Polaris too. odhyp has no runtime dependency on Polaris: Polaris only reads, and it keeps its own config in its app data, outside the repo.
-
-## Roadmap
-
-- **v0.1.0:** try the workflow end to end in a throwaway project from global install (setup → shape → spec → tickets → implement → review → release), then tag this repo `v0.1.0`.
-- **Later:** a frontmatter and link validation check; avoiding ticket ID collisions across parallel branches; `context: fork` for `implement`; a ticket overview in Polaris.
 
 ## Development
 

@@ -1,0 +1,101 @@
+%% Data flow: which odhyp skill reads (dotted) or writes (solid) which file; templates come from plugins/odhyp/templates/, skills from plugins/odhyp/skills/.
+%% Every skill except shape and session-review also reads the CLAUDE.md odhyp block for paths and commands.
+%% Not drawn: setup deletes .gitkeep files in the four odhyp folders and sets git config core.hooksPath; to-tickets and session-review check whether plugins/odhyp/.claude-plugin/plugin.json exists (are we in the odhyp repo?). session-review otherwise reads only the session and writes nothing.
+flowchart LR
+    tBlock["claude-md-block.md"]
+    tHook["commit-msg"]
+    tTicket["TICKET-FORMAT.md · ticket.md"]
+    tSpec["SPEC-FORMAT.md · spec.md"]
+    tDiagram["diagram.mmd"]
+
+    setup
+    shape
+    toSpec["to-spec"]
+    toTickets["to-tickets"]
+    diagnose
+    diagram
+    implement
+    codeReview["code-review"]
+    release
+    sessionReview["session-review"]
+
+    block["CLAUDE.md odhyp block"]
+    hook[".githooks/commit-msg"]
+    version["Version files"]
+    changelog["CHANGELOG.md"]
+    specs[("specs/")]
+    tickets[("tickets/")]
+    diagrams[("diagrams/*.mmd")]
+    releases[("releases/vX.Y.Z/")]
+    code["code and tests"]
+    session["session history"]
+
+    tBlock -.-> setup
+    tHook -.-> setup
+    code -.->|"stack config"| setup
+    setup --> block
+    setup --> hook
+    setup --> version
+    setup --> changelog
+
+    code -.-> shape
+    shape -.->|"calls"| diagram
+
+    tSpec -.-> toSpec
+    releases -.->|"next ID"| toSpec
+    specs -.->|"next ID"| toSpec
+    toSpec --> specs
+
+    tTicket -.-> toTickets
+    specs -.-> toTickets
+    releases -.->|"next ID"| toTickets
+    tickets -.->|"next ID"| toTickets
+    diagrams -.-> toTickets
+    toTickets --> tickets
+    toTickets -->|"tickets, status"| specs
+
+    tTicket -.-> diagnose
+    code -.-> diagnose
+    releases -.->|"next ID"| diagnose
+    tickets -.->|"next ID"| diagnose
+    diagnose --> tickets
+
+    tDiagram -.-> diagram
+    diagrams -.-> diagram
+    diagram --> diagrams
+
+    tTicket -.-> implement
+    tickets -.-> implement
+    specs -.-> implement
+    code -.-> implement
+    implement --> code
+    implement -->|"status, Notes"| tickets
+    implement -->|"Decisions"| specs
+    implement -.->|"calls"| diagram
+    implement -.->|"calls"| codeReview
+
+    tTicket -.-> codeReview
+    tickets -.-> codeReview
+    specs -.-> codeReview
+    diagrams -.-> codeReview
+    code -.->|"diff"| codeReview
+
+    tTicket -.-> release
+    tSpec -.-> release
+    tickets -.-> release
+    specs -.-> release
+    version -.-> release
+    changelog -.-> release
+    code -.->|"commits"| release
+    release --> version
+    release --> changelog
+    release -->|"released_in"| tickets
+    release -->|"status"| specs
+    release -->|"archive tickets, specs"| releases
+
+    session -.-> sessionReview
+
+    classDef template stroke-dasharray: 4 3
+    classDef skill stroke-width:2px
+    class tBlock,tHook,tTicket,tSpec,tDiagram template
+    class setup,shape,toSpec,toTickets,diagnose,diagram,implement,codeReview,release,sessionReview skill

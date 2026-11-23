@@ -1,0 +1,63 @@
+%% Workflow: how the odhyp skills hand off from setup to release. 👤 manual skill · 🤖 auto skill (starts on its own; you can also call it) · ⚙️ built-in Claude Code command
+flowchart TD
+    A1["`/setup 👤
+    CLAUDE.md · VERSION · hook`"] --> X0{"Work type"}
+    X0 -->|"Feature / small change / known-cause bug"| B1
+    X0 -->|"Bug, cause unknown"| B5
+
+    subgraph B["Planning (writes specs & tickets)"]
+        B1["`/shape 👤
+        Grill the work`"]
+        X2{"Structure changes?"}
+        B4["`diagram 🤖
+        diagrams/*.mmd`"]
+        X1{"Size"}
+        B2["`/to-spec 👤
+        S-NNNN`"]
+        B3["`/to-tickets 👤
+        T-NNNN`"]
+        B5["`diagnose 🤖
+        Root cause → fix ticket`"]
+        B1 --> X2
+        X2 -->|"Yes"| B4 --> X1
+        X2 -->|"No"| X1
+        X1 -->|"Feature"| B2 --> B3
+        X1 -->|"Small"| B3
+    end
+
+    B3 --> CL0["/clear ⚙️"]
+    B5 --> CL0
+    CL0 --> T[("`tickets
+    ready-for-agent`")]
+
+    subgraph C["Build (ticket or direct)"]
+        C1["`/implement 👤
+        ticket or direct · test-first → code`"]
+        D1["`code-review 🤖
+        forked · diff vs ticket`"]
+        C2["`commit
+        ticket: status resolved · direct: no Refs`"]
+        C3["`stop
+        ticket: must-fix in Notes · direct: report only`"]
+        S1["`/session-review 👤
+        optional`"]
+        C1 --> D1
+        D1 -->|"Pass"| C2
+        D1 -->|"Must-fix"| C3
+    end
+
+    T -->|"/implement @ticket"| C1
+    S1 -->|"/implement N"| C1
+    C3 -->|"user runs /implement again"| C1
+    X4{"You choose"}
+    C2 -.->|"non-blocking findings"| X4
+    S1 -.->|"findings"| X4
+    X4 -->|"/implement N"| C1
+    X4 -->|"/to-tickets N"| B3
+    C2 --> S1 --> CL["/clear ⚙️"]
+    C2 --> CL
+    CL --> X3{"Tickets left?"}
+    X3 -->|"Yes"| T
+    X3 -->|"No / milestone"| E1["`/release 👤
+    bump · CHANGELOG · archive · confirm · tag`"]
+    E1 --> X0
