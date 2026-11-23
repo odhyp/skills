@@ -2,12 +2,14 @@
 flowchart TD
     A1["`/setup 👤
     CLAUDE.md · VERSION · hook`"] --> X0{"Work type"}
-    X0 -->|"Feature / small change / known-cause bug"| B1
+    X0 -->|"Idea / feature / small change / known-cause bug"| B1
     X0 -->|"Bug, cause unknown"| B5
 
     subgraph B["Planning (writes specs & tickets)"]
         B1["`/shape 👤
-        Grill the work`"]
+        Explore · size · grill`"]
+        B0["`stop
+        nothing to build`"]
         X2{"Structure changes?"}
         B4["`diagram 🤖
         diagrams/*.mmd`"]
@@ -19,6 +21,8 @@ flowchart TD
         B5["`diagnose 🤖
         Root cause → fix ticket`"]
         B1 --> X2
+        B1 -.->|"Explore: nothing to build"| B0
+        B1 -.->|"Explore: bug, cause unknown"| B5
         X2 -->|"Yes"| B4 --> X1
         X2 -->|"No"| X1
         X1 -->|"Feature"| B2 --> B3
