@@ -36,10 +36,10 @@ Grade each finding:
 |---|---|
 | Critical | Stop and address immediately |
 | High | Fix before merging |
-| Medium | Fix directly when appropriate, or track as a ticket |
+| Medium | Suggest fixing now or tracking as a ticket |
 | Low | Optional; avoid unnecessary work |
 
-A finding that breaks a row above is at least High. Give each Medium and Low finding a suggested action: `fix now` (small, well understood) or `ticket` (large, independent, or worth deferring). These are suggestions to the user, who picks `/implement N` or `/to-tickets N` after the commit; the caller does not act on them.
+A finding that breaks a row above is at least High. Give each Medium and Low finding a suggested action: `fix now` (small, well understood) or `ticket` (large, independent, or worth deferring). These are suggestions to the user, who picks `/implement N` or `/to-tickets N` after the review; the caller does not act on them.
 
 ## 3. Return
 
