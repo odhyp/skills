@@ -14,7 +14,6 @@ Look before asking. Note:
 
 - Is this a git repo? If not, ask whether to `git init`; stop if no.
 - An existing odhyp block in `CLAUDE.md` (between `<!-- odhyp:start -->` and `<!-- odhyp:end -->`). If present, its paths, version files, changelog, test and lint commands are the defaults for this run.
-- Ignore any Polaris config file in the project and never delete it; it belongs to Polaris, not odhyp.
 - Whether `docs/` already belongs to something else: a docs site (Hugo `content/`, MkDocs, Docusaurus, Astro Starlight), or files unrelated to specs and tickets.
 - The stack (`pyproject.toml`, `package.json`, `go.mod`, `hugo.toml`, …) and likely test and lint commands from its config.
 

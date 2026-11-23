@@ -28,4 +28,4 @@ Add another file only for a view none of these covers, named for it (`auth-flow.
 
 **Done when** every service, module or flow the change added, removed or rewired appears correctly, and nothing that no longer exists remains.
 
-Report which files changed and what changed in each. Polaris shows them.
+Report which files changed and what changed in each.

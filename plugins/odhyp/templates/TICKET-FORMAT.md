@@ -1,10 +1,10 @@
 # Ticket format
 
-This format is the contract any skills can write to so that Polaris can read their output.
+This format is the contract the odhyp skills write and read.
 
 A ticket is the handoff between fresh contexts. A fresh agent must be able to finish it from the ticket alone; the spec is background reading only.
 
-**The frontmatter is locked:** exactly the fields below, in this order, and no skill adds its own. Polaris parses it, so changing it is a breaking change for both repos. The body is free Markdown; the sections under Body are the recommended structure. Blank template: `ticket.md`.
+**The frontmatter is locked:** exactly the fields below, in this order, and no skill adds its own. The odhyp skills parse it, so changing it is a breaking change. The body is free Markdown; the sections under Body are the recommended structure. Blank template: `ticket.md`.
 
 - **One file per ticket**, flat in the tickets folder (path in the odhyp block in `CLAUDE.md`): `NNNN-short-slug.md` (e.g. `0018-dashboard-layout.md`).
 - **Link by ID, never by path**, so archiving into `releases/` breaks nothing.
@@ -53,7 +53,7 @@ Identical to commit types.
 |---|---|---|
 | `ready-for-agent` | Fully specified; an agent can do it | to-tickets, diagnose, human |
 | `ready-for-human` | Needs a person (credentials, DNS, design call, manual test) | any skill, human |
-| `needs-info` | Blocked on the questions in `## Questions`; back to `ready-for-agent` once all are answered | implement (sets and clears), human or Polaris (clears) |
+| `needs-info` | Blocked on the questions in `## Questions`; back to `ready-for-agent` once all are answered | implement (sets and clears), human (clears) |
 | `in-progress` | An agent is working on it (crash recovery) | implement |
 | `resolved` | Code and tests committed | implement, in the same commit as the code |
 | `wontfix` | Dropped (incl. duplicates); reason in `## Notes` | human |

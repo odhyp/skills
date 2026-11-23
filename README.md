@@ -34,25 +34,12 @@ How the skills hand off, from `/setup` to `/release`: [`docs/diagrams/workflow.m
 | `release`        | Manual     | Computes the SemVer bump from what changed since the last version, updates the version and CHANGELOG, archives tickets and specs, then commits and tags after you confirm.                                                                                  |
 | `session-review` | Manual     | Answers what we should improve. Run before `/clear`: reviews the session and lists ranked findings. Writes nothing.                                                                                                                                         |
 
-## Polaris contract
-
-Polaris (`npx -y @odhyp/polaris@2`) is the view across all projects. The skills have no runtime dependency on it; they only produce what it reads, defined once in [`plugins/odhyp/templates/`](plugins/odhyp/templates/):
-
-- The odhyp block in each project's `CLAUDE.md`: one line each for `Specs:`, `Tickets:`, `Diagrams:`, `Releases:`, `Version files:` and `Changelog:`. Polaris keeps its own config in its app data, not in the repo.
-- Ticket and spec files with the locked frontmatter in `TICKET-FORMAT.md` and `SPEC-FORMAT.md`. Changing a field is a breaking change for both repos.
-- `.mmd` diagrams, each opening with a `%%` header comment.
-- The version file and CHANGELOG.
-
-### Using your own skills
-
-Polaris doesn't need odhyp. What it reads is the ticket and spec format, so any skills that write files following [`TICKET-FORMAT.md`](plugins/odhyp/templates/TICKET-FORMAT.md) and [`SPEC-FORMAT.md`](plugins/odhyp/templates/SPEC-FORMAT.md) show up in Polaris too. odhyp has no runtime dependency on Polaris: Polaris only reads, and it keeps its own config in its app data, outside the repo.
-
 ## Development
 
 - `sh tests/commit-msg.test.sh` checks the commit hook template.
 - `claude plugin validate .` checks the marketplace; `claude plugin validate plugins/odhyp` checks the plugin and its skills.
 - Decisions and their reasons: [`docs/adr/`](docs/adr/). Vocabulary: [`GLOSSARY.md`](GLOSSARY.md).
-- Layout: the plugin lives in `plugins/odhyp/` (skills, templates, `plugin.json`); the root holds the marketplace and this repo's own dev files, which installs never receive.
+- Layout: the plugin lives in `plugins/odhyp/` (skills, templates with the ticket and spec formats, `plugin.json`); the root holds the marketplace and this repo's own dev files, which installs never receive.
 - Releases bump `version` in `VERSION` and `plugins/odhyp/.claude-plugin/plugin.json` together; clients only update when it increases. The marketplace entry carries no version, since `plugin.json` wins.
 - `sh tests/review-smoke.sh` runs the plugin headless in a throwaway repo and checks that `code-review` forks and catches a planted bug. It calls the API (about $0.35), so it runs by hand, not in CI.
 - CI (`.github/workflows/ci.yml`) runs the hook test and both validations on every push and pull request, except ones that only touch docs (`README.md`, `docs/**` and the other paths listed in the workflow).
