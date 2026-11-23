@@ -3,6 +3,7 @@
 - Commits: Conventional Commits (`type(scope)!: subject`).
 - On Windows/Git Bash, make literal text edits with the Edit tool; sed, perl and heredoc escaping mangled `/` and `\n` here.
 - Releases: bump `VERSION` and `plugins/odhyp/.claude-plugin/plugin.json` together, and add a CHANGELOG entry.
+- Shell commands written into skills must run in both sh and PowerShell 5.1 (quote `@{...}`; no `&&`, `||` or `VAR=x cmd`); run each in both before committing.
 - The plugin is `plugins/odhyp/`; everything else at the root is dev-only and never installed.
 - Vocabulary: `GLOSSARY.md`. Decisions and their reasons: `docs/adr/`.
 
