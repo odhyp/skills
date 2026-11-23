@@ -5,6 +5,20 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-11-23
+
+### Changed
+
+- `shape` sizes the work before grilling, asks at most 3 questions per round, and gives small changes a short checklist and summary with a direct `/implement` option.
+- `code-review` opens its report with a title, a bold verdict (✅ PASS or ⛔ MUST-FIX) and a Findings heading.
+
+### Fixed
+
+- `shape` keeps the agreed test approach in the small-change summary.
+- `session-review` and `code-review` put each finding under its own heading, so findings no longer run together in the terminal.
+
+Release notes: [docs/releases/v0.4.0](docs/releases/v0.4.0/RELEASE.md)
+
 ## [0.3.0] - 2026-11-23
 
 ### Added
