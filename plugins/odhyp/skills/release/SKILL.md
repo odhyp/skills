@@ -49,6 +49,6 @@ Write `<releases>/vX.Y.Z/RELEASE.md`: the version, the date, a two-line summary,
 
 ## 7. Commit, tag and push
 
-Commit everything as `chore(release): vX.Y.Z`, then `git tag vX.Y.Z`, then push both at once to the current branch's upstream: `git push --atomic <remote> HEAD vX.Y.Z`. Report the commit, the tag and the push.
+Commit everything as `chore(release): vX.Y.Z`, then `git tag vX.Y.Z`, then push both at once to the current branch's upstream. Read it with `git rev-parse --abbrev-ref --symbolic-full-name @{u}` (prints `<remote>/<branch>`; the remote is the part before the first `/`), and push with `git push --atomic <remote> HEAD:<branch> vX.Y.Z`. Report the commit, the tag and the push.
 
-No upstream, or the push is rejected: keep the local commit and tag, report the error and the push command to run, and stop. Never force-push or retry.
+No upstream (that command fails), or the push is rejected: keep the local commit and tag, report the error and the push command to run, and stop. Never force-push or retry.
