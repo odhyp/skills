@@ -46,13 +46,13 @@ A finding that breaks a row above is at least High. Give each Medium and Low fin
 Start with a verdict line: `MUST-FIX` if any Critical or High finding exists (it blocks the commit), otherwise `PASS`. Then the findings, highest priority first:
 
 ```markdown
-1. ★ RECOMMENDED — <title>  `High`  `path:line`
+### 1. ★ RECOMMENDED — <title>  `High`  `path:line`
 
-   <what is wrong>. <the required change>.
+<what is wrong>. <the required change>.
 
-2. <title>  `Medium` · `fix now`  `path:line`
+### 2. <title>  `Medium` · `fix now`  `path:line`
 
-   <what is wrong>. <the suggested change>.
+<what is wrong>. <the suggested change>.
 ```
 
 - Each finding: number, title, severity, `path:line`, and one to two sentences.
