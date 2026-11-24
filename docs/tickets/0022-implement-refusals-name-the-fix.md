@@ -4,7 +4,7 @@ title: implement refusals name the edit that unblocks the ticket
 type: feat
 breaking: false
 scope: implement
-status: ready-for-agent
+status: resolved
 spec: S-0003
 depends_on: []
 source: to-tickets
@@ -27,11 +27,11 @@ In ticket mode, `implement` step 1 refuses `ready-for-human` tickets ("say what 
 - plugins/odhyp/skills/implement/SKILL.md (change: step 1, ticket mode refusals)
 
 ## Acceptance criteria
-- [ ] The `ready-for-human` refusal names the file path and the two status values to set, and says to commit.
-- [ ] The `needs-info` refusal shows the questions and says to answer them under `## Questions` in the named file.
-- [ ] The refusals and the no-eligible-ticket list say once how to drop a ticket (`status: wontfix`, reason in `## Notes`).
-- [ ] `implement` still changes no ticket when it refuses.
-- [ ] `claude plugin validate . && claude plugin validate plugins/odhyp` passes.
+- [x] The `ready-for-human` refusal names the file path and the two status values to set, and says to commit.
+- [x] The `needs-info` refusal shows the questions and says to answer them under `## Questions` in the named file.
+- [x] The refusals and the no-eligible-ticket list say once how to drop a ticket (`status: wontfix`, reason in `## Notes`).
+- [x] `implement` still changes no ticket when it refuses.
+- [x] `claude plugin validate . && claude plugin validate plugins/odhyp` passes.
 
 ## Out of scope
 - Direct-mode must-fix warning (T-0023).
@@ -41,3 +41,4 @@ In ticket mode, `implement` step 1 refuses `ready-for-human` tickets ("say what 
 ## Questions
 
 ## Notes
+- Step 1 refusals now name the edit: `needs-info` says to answer under `## Questions` in the ticket's file; `ready-for-human` says to set `resolved` or `ready-for-agent` there and commit. One trailing line after any refusal or open-ticket list says how to drop a ticket (`wontfix`, reason in `## Notes`). The refusal header now says "change no ticket".
