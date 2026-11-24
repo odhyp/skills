@@ -86,4 +86,4 @@ In direct mode there is no ticket status to set; stage the code, the tests and a
 
 ## 6. Stop
 
-Report the commit hash(es), then list the review's non-blocking findings as it returned them, and end. The user decides what comes next: `/implement N` or `/to-tickets N` on a finding, `/session-review`, or `/clear`.
+Report the commit hash(es), then list the review's non-blocking findings as it returned them. In both modes, when the ticket, its spec (read `## Design` and `## Decisions` both: `## Decisions` holds only changes made during implementation) or the direct brief settled a decision worth keeping that no ADR in the decisions folder (`Decisions:` in the odhyp block) covers, offer `/odhyp:to-adr` in one line; never run it yourself. Then end. The user decides what comes next: `/implement N` or `/to-tickets N` on a finding, `/session-review`, or `/clear`.

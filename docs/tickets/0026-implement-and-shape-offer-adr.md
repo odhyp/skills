@@ -4,7 +4,7 @@ title: implement and shape offer to-adr
 type: feat
 breaking: false
 scope: adr
-status: ready-for-agent
+status: resolved
 spec: S-0004
 depends_on: [T-0025]
 source: to-tickets
@@ -35,10 +35,10 @@ nothing to build. Both only offer it, in one line; neither writes an ADR.
 - plugins/odhyp/skills/shape/SKILL.md (change)
 
 ## Acceptance criteria
-- [ ] `implement` step 6 has the conditional one-line offer, in both ticket and direct mode, not on MUST-FIX.
-- [ ] `shape`'s nothing-to-build exit has the conditional offer under `## Next step`.
-- [ ] Neither skill writes to the decisions folder.
-- [ ] `claude plugin validate . && claude plugin validate plugins/odhyp` passes.
+- [x] `implement` step 6 has the conditional one-line offer, in both ticket and direct mode, not on MUST-FIX.
+- [x] `shape`'s nothing-to-build exit has the conditional offer under `## Next step`.
+- [x] Neither skill writes to the decisions folder.
+- [x] `claude plugin validate . && claude plugin validate plugins/odhyp` passes.
 
 ## Out of scope
 - Offers from shape's feature and small-change exits, `to-spec` or `release`.
@@ -47,3 +47,5 @@ nothing to build. Both only offer it, in one line; neither writes an ADR.
 ## Questions
 
 ## Notes
+- implement step 6: one-line conditional `/odhyp:to-adr` offer, both modes; MUST-FIX stops in step 4 so never reach it.
+- shape Explore nothing-to-build exit: conditional offer under `## Next step`; plain "already exists" gets none.

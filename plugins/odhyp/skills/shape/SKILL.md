@@ -16,7 +16,7 @@ Run this step only when the request is too vague to size: the problem, who has i
 Ask about the problem before any solution, in rounds of at most 3 questions. Give each question 2–3 lettered options and recommend one. End the step in one of three ways:
 
 - the need is concrete enough to size: go to step 2;
-- nothing should be built (the need is already met, or not worth it): say so under `## Next step` and stop;
+- nothing should be built (the need is already met, or not worth it): say so under `## Next step` and stop. When the reason is worth keeping ("we decided not to do X, because Y"), add a one-line offer of `/odhyp:to-adr` there; never run it yourself. A plain "already exists" gets no offer;
 - another skill fits (e.g. a bug of unknown cause goes to `diagnose`): name it under `## Next step` and stop.
 
 ## 2. Size it
