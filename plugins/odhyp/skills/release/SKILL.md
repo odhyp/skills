@@ -16,12 +16,12 @@ Stop and report if any fails:
 ## 2. Collect
 
 - **Last tag:** `git describe --tags --abbrev=0` (none → everything since the first commit). Current version: the primary version file (the first under `Version files:`).
-- **Tickets:** every `resolved` ticket in the tickets folder (they have no `released_in` yet), and every `wontfix` ticket.
+- **Tickets:** every `resolved` ticket in the tickets folder (they have no `released_in` yet), and every `wontfix` ticket. Only the `resolved` ones are **shipped**; `wontfix` tickets are dropped work, archived but never released.
 - **Commits** since the last tag: their type, `!`, and any `BREAKING CHANGE:` footer. Commits catch work done without a ticket.
 
 ## 3. Compute the bump
 
-From the tickets and commits together:
+From the shipped (`resolved`) tickets and the commits together; `wontfix` tickets never count:
 
 1. Anything breaking (`breaking: true`, `!`, `BREAKING CHANGE:`): **major**, but **minor** while the version is below 1.0.0.
 2. Otherwise any `feat`: **minor**.
@@ -35,7 +35,7 @@ Show the proposed version, the bump reason (which ticket or commit decided it), 
 ## 5. Write
 
 - The new version into every file under `Version files:` (replace the version string in each), and the version field in `package.json` or `pyproject.toml` when present.
-- The changelog: a `## [X.Y.Z] - YYYY-MM-DD` section below `## [Unreleased]`, with the release's entries grouped as Added / Changed / Fixed / Removed, plus a line linking to the release folder. Move any hand-written `[Unreleased]` entries into it.
+- The changelog: a `## [X.Y.Z] - YYYY-MM-DD` section below `## [Unreleased]`, with entries from the shipped tickets and the commits only (no `wontfix` ticket), grouped as Added / Changed / Fixed / Removed, plus a line linking to the release folder. Move any hand-written `[Unreleased]` entries into it.
 - `released_in: vX.Y.Z` on every ticket being archived.
 - A spec whose tickets are now all `resolved` or `wontfix`: `status: done`.
 
@@ -45,7 +45,7 @@ Move into `<releases>/vX.Y.Z/`:
 - `tickets/`: the `resolved` and `wontfix` tickets;
 - `specs/`: the `done` specs.
 
-Write `<releases>/vX.Y.Z/RELEASE.md`: the version, the date, a two-line summary, and the tickets by type (ID and title) and the specs archived.
+Write `<releases>/vX.Y.Z/RELEASE.md`: the version, the date, a two-line summary, and the shipped tickets by type (ID and title), the `wontfix` tickets under **Dropped**, and the specs archived.
 
 ## 7. Commit, tag and push
 
