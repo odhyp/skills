@@ -4,7 +4,7 @@ title: implement direct-mode must-fix warns before /clear
 type: feat
 breaking: false
 scope: implement
-status: ready-for-agent
+status: resolved
 spec: S-0003
 depends_on: [T-0022]
 source: to-tickets
@@ -25,10 +25,10 @@ In ticket mode, a MUST-FIX review is saved under the ticket's `## Notes` as `Mus
 - plugins/odhyp/skills/implement/SKILL.md (change: step 4, direct-mode MUST-FIX)
 
 ## Acceptance criteria
-- [ ] The direct-mode MUST-FIX branch says the findings exist only in this session and offers `/to-tickets N` before `/clear`.
-- [ ] Direct mode still commits nothing on MUST-FIX and creates no ticket by itself.
-- [ ] Ticket-mode MUST-FIX handling is unchanged.
-- [ ] `claude plugin validate . && claude plugin validate plugins/odhyp` passes.
+- [x] The direct-mode MUST-FIX branch says the findings exist only in this session and offers `/to-tickets N` before `/clear`.
+- [x] Direct mode still commits nothing on MUST-FIX and creates no ticket by itself.
+- [x] Ticket-mode MUST-FIX handling is unchanged.
+- [x] `claude plugin validate . && claude plugin validate plugins/odhyp` passes.
 
 ## Out of scope
 - Refusal messages (T-0022).
@@ -38,3 +38,4 @@ In ticket mode, a MUST-FIX review is saved under the ticket's `## Notes` as `Mus
 ## Questions
 
 ## Notes
+- Step 4's direct-mode MUST-FIX sentence now warns the findings live only in this session (lost on `/clear`) and offers `/to-tickets N` or `/implement N`. Only that sentence changed; step 2's no-ticket rule and the ticket-mode branch are untouched. Skill text, so no red/green.

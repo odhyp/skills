@@ -67,7 +67,7 @@ In direct mode there is no ticket to update; still update any diagram the work m
 
 Run the odhyp **code-review** skill (`odhyp:code-review`) with the ticket ID as its argument (direct mode: the brief). It reviews the uncommitted diff in a fresh context and returns a verdict and ranked findings; it changes nothing.
 
-- **MUST-FIX:** commit nothing. Add the Critical and High findings under `## Notes` as `Must-fix (review):` with each `path:line` and required change, keep `status: in-progress`, and stop. Tell the user the findings and that the next step is `/implement` on this ticket again. In direct mode: commit nothing, report the findings, and stop.
+- **MUST-FIX:** commit nothing. Add the Critical and High findings under `## Notes` as `Must-fix (review):` with each `path:line` and required change, keep `status: in-progress`, and stop. Tell the user the findings and that the next step is `/implement` on this ticket again. In direct mode: commit nothing, report the findings, say they exist only in this session and a `/clear` loses them, offer `/to-tickets N` (N = the finding numbers) to keep them or `/implement N` to fix them now, and stop.
 - **PASS:** continue to step 5 and commit the diff as reviewed. Change nothing for Medium or Low findings, even ones marked `fix now`; step 6 hands them to the user.
 
 ## 5. Commit
