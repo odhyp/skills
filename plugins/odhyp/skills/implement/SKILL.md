@@ -35,7 +35,7 @@ With no argument and no eligible ticket, change nothing and stop:
 
 ### Direct mode
 
-Restate the selected finding(s) from this session, or the request, as one or two lines of expected outcome: the **brief**. State it before building. Keep the scope to what was asked.
+Restate the selected finding(s) from this session, or the request, as one or two lines of expected outcome: the **brief**. A request like `this` means the session's last `# Shape Summary`; its `## Done when` is the brief. State it before building. Keep the scope to what was asked.
 
 Ask instead of building when the request is ambiguous; when it has significant architectural implications, send the user to `/shape`.
 
