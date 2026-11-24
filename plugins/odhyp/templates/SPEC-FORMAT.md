@@ -24,7 +24,7 @@ tickets: [T-0018, T-0019] # filled by to-tickets
 ---
 ```
 
-`title` is plain text: no `:` or `#`, it starts with a letter or digit, and it is not a lone YAML keyword, number or date (`true`, `yes`, `no`, `on`, `null`, `1.0`, `2026-11-24`), so YAML reads it unquoted as text. Reword to fit (`Walking skeleton — source in, diagram out`), never quote.
+`title` is plain text: no `:` or `#`, it starts with a letter or digit, and it is not a lone YAML keyword, number or date (such as `true`, `yes`, `no`, `on`, `null`, `1.0`, `2026-11-24`), so YAML reads it unquoted as text. Reword to fit (`Walking skeleton — source in, diagram out`), never quote.
 
 | status | Meaning |
 |---|---|
