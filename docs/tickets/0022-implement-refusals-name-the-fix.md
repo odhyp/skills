@@ -41,5 +41,5 @@ In ticket mode, `implement` step 1 refuses `ready-for-human` tickets ("say what 
 ## Questions
 
 ## Notes
-- Step 1 refusals now name the edit: `needs-info` says to answer under `## Questions` in the ticket's file; `ready-for-human` says to set `resolved` or `ready-for-agent` there and commit. One trailing line after any refusal or open-ticket list says how to drop a ticket (`wontfix`, reason in `## Notes`). The refusal header now says "change no ticket".
+- Step 1 refusals now name the edit: `needs-info` says to answer under `## Questions` in the ticket's file; `ready-for-human` says to set `resolved` or `ready-for-agent` there and commit. One trailing line after a blocking refusal or the open-ticket list says how to drop a ticket (`wontfix`, reason in `## Notes`). The refusal header now says "change no ticket".
 - Follow-up (25e99a9): the wontfix line now follows only the `needs-info`, `ready-for-human` and `depends_on` refusals and the open-ticket list, not the `resolved`/`wontfix` refusal.
