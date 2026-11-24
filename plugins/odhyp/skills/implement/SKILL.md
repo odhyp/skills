@@ -33,7 +33,7 @@ With no argument and no eligible ticket, change nothing and stop:
 - no open tickets (every ticket is `resolved` or `wontfix`): say so and point to `/shape` for new work;
 - otherwise: list each open ticket with the refusal reason above that blocks it.
 
-After any refusal or open-ticket list, add one line: to drop a blocking ticket instead, set `status: wontfix` in its file with the reason under `## Notes`.
+After a `needs-info`, `ready-for-human` or `depends_on` refusal, or the open-ticket list, add one line: to drop a blocking ticket instead, set `status: wontfix` in its file with the reason under `## Notes`.
 
 ### Direct mode
 
