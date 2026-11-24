@@ -32,7 +32,7 @@ Show the breakdown as a short list (title, type, depends on) and adjust it until
 
 **Done when** every part of the spec (or the agreed change) is covered by exactly one ticket.
 
-Write each ticket to `<tickets>/NNNN-short-slug.md`, uncommitted. In chat, show only a table (ID, title, type, depends on, path) and, under it, one line per ticket for anything it adds beyond the spec or the agreed change. The user reads the files themselves. For an `odhyp skill` finding outside the odhyp repo (see above) there are no files, so print the tickets in full.
+Write each ticket to `<tickets>/NNNN-short-slug.md`, uncommitted. In chat, show only a table (ID, title, type, depends on, path) and, under it, one line per ticket for anything it adds beyond the spec or the agreed change. The user reads the files themselves. For an `odhyp skill` finding outside the odhyp repo (see above) there are no files, so print those tickets in full; the rest are written as above.
 
 ## 3. Confirm
 
@@ -40,7 +40,7 @@ Ask the user to approve the tickets or ask for changes. For each revision reques
 
 ## 4. Commit
 
-On approval (for an `odhyp skill` finding outside the odhyp repo, see step 2: commit nothing):
+On approval, commit the written tickets (an `odhyp skill` finding outside the odhyp repo has none, see step 2):
 
 1. If there is a spec: set its `tickets:` to the new IDs and `status: accepted`.
 2. Stage only those files: `git add` the ticket files and the spec file. Never `git add -A`.
