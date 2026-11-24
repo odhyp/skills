@@ -4,7 +4,7 @@ title: diagnose confirms the ticket draft, then commits it
 type: feat
 breaking: false
 scope: diagnose
-status: ready-for-agent
+status: resolved
 spec: S-0003
 depends_on: []
 source: to-tickets
@@ -28,12 +28,12 @@ released_in:
 - README.md (change: the `diagnose` row in the Skills table)
 
 ## Acceptance criteria
-- [ ] `diagnose` shows the full ticket draft, writes nothing, and loops until explicit approval, with the same approve-and-change rule as `to-spec`.
-- [ ] On approval it writes the ticket and commits only that file with `docs(tickets): add T-NNNN <slug>`, with no `Refs:` footer and no push.
-- [ ] The opening rule says the tree ends as found plus the committed ticket, and temporary logging is reverted before the draft is shown.
-- [ ] The report gives the commit hash along with the ticket's ID and path.
-- [ ] The README `diagnose` row says it confirms the fix ticket with you and then commits it.
-- [ ] `claude plugin validate . && claude plugin validate plugins/odhyp` passes.
+- [x] `diagnose` shows the full ticket draft, writes nothing, and loops until explicit approval, with the same approve-and-change rule as `to-spec`.
+- [x] On approval it writes the ticket and commits only that file with `docs(tickets): add T-NNNN <slug>`, with no `Refs:` footer and no push.
+- [x] The opening rule says the tree ends as found plus the committed ticket, and temporary logging is reverted before the draft is shown.
+- [x] The report gives the commit hash along with the ticket's ID and path.
+- [x] The README `diagnose` row says it confirms the fix ticket with you and then commits it.
+- [x] `claude plugin validate . && claude plugin validate plugins/odhyp` passes.
 
 ## Out of scope
 - `to-tickets` (T-0020) and `implement` (T-0022, T-0023).
@@ -43,3 +43,6 @@ released_in:
 ## Questions
 
 ## Notes
+- `diagnose` step 3 now drafts and shows the ticket; new step 4 (confirm loop, to-spec wording) and step 5 (write, `git add` the one file, `git commit -- <file>`); report is step 6 and gives the commit hash.
+- Opening rule: logging reverted before step 3, before the draft is shown; tree ends as found plus the committed ticket.
+- README `diagnose` row updated; table padding kept aligned. Skill text only, so no red/green; `tests/commit-msg.test.sh` and both validates pass.
