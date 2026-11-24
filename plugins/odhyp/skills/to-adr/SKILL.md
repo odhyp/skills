@@ -25,11 +25,11 @@ Take the decision and its reasons from this conversation. When `implement` made 
 
 ## 4. Link an overridden ADR
 
-Read the existing ADRs. If the new decision overrides one, in full or in part, name it (`ADR-NNNN`) and say whether the new ADR supersedes (in full) or amends (in part) it. The user confirms the link; without a confirmed link, write none.
+Read the existing ADRs. If the new decision overrides one or more of them, in full or in part, name each (`ADR-NNNN`) and say whether the new ADR supersedes (in full) or amends (in part) it. List several in one line, comma-separated: `Amends ADR-0003, ADR-0004.`; when the kinds differ, use one line per kind. The user confirms each link; without a confirmed link, write none.
 
 ## 5. Draft and confirm
 
-Show the full draft in chat, plus the back-link line for the old ADR if there is one. Write nothing to disk yet.
+Show the full draft in chat, plus the back-link line for each old ADR. Write nothing to disk yet.
 
 Ask the user to approve the draft or ask for changes. For each revision request, apply it and show the whole ADR again. Only an explicit approval ends the loop; a reply that approves and also asks for a change is a revision and needs another round. Never skip the loop.
 
@@ -37,8 +37,9 @@ Ask the user to approve the draft or ask for changes. For each revision request,
 
 On approval:
 
-1. Write the new ADR to its file.
-2. If it links to an old ADR, add `Superseded by ADR-NNNN.` or `Amended by ADR-NNNN.` to the old ADR as the line right after its H1, with a blank line around it. That line is the only change this skill makes to an existing ADR.
+1. For each old ADR it links to, run `git status --porcelain -- <old ADR file>`. Any output means the user has uncommitted changes there, which the commit would sweep in: write nothing, name the file, say to commit or stash those changes and run `/to-adr` again, and stop.
+2. Write the new ADR to its file.
+3. In each old ADR it links to, add `Superseded by ADR-NNNN.` or `Amended by ADR-NNNN.` as the line right after its H1, with a blank line around it. That line is the only change this skill makes to an existing ADR.
 
 ## 7. Commit
 
