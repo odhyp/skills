@@ -1,8 +1,8 @@
 ---
 id: S-0004
 title: ADR skill
-status: draft
-tickets: []
+status: accepted
+tickets: [T-0024, T-0025, T-0026, T-0027, T-0028]
 ---
 
 ## Problem
