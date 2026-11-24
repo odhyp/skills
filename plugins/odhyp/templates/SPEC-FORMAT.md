@@ -24,6 +24,8 @@ tickets: [T-0018, T-0019] # filled by to-tickets
 ---
 ```
 
+`title` is plain text: no `:` or `#`, and it starts with a letter or digit, so YAML reads it unquoted. Reword to fit (`Walking skeleton — source in, diagram out`), never quote.
+
 | status | Meaning |
 |---|---|
 | `draft` | Written, not yet split into tickets |

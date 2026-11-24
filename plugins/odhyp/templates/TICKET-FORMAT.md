@@ -35,6 +35,8 @@ released_in:              # set by /release
 
 No dates (git has them), no assignee (status covers it), no priority.
 
+`title` is plain text: no `:` or `#`, and it starts with a letter or digit, so YAML reads it unquoted. Reword to fit (`Walking skeleton — source in, diagram out`), never quote.
+
 ## Types
 
 Identical to commit types.
