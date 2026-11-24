@@ -4,7 +4,7 @@ title: Manual test of the three to-adr entry points
 type: test
 breaking: false
 scope: adr
-status: ready-for-human
+status: wontfix
 spec: S-0004
 depends_on: [T-0026]
 source: to-tickets
@@ -40,3 +40,4 @@ this repo's working copy. That needs a person.
 ## Questions
 
 ## Notes
+- Dropped by the user (2026-11-24): the manual test of the three entry points won't be run.
