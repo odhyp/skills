@@ -1,7 +1,7 @@
 ---
 id: S-0003
 title: Confirm and commit tickets, and name the way out of a blocked ticket
-status: accepted
+status: done
 tickets: [T-0020, T-0021, T-0022, T-0023]
 ---
 

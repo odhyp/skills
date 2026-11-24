@@ -5,6 +5,23 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-11-24
+
+### Changed
+
+- `to-tickets` shows the full ticket drafts, waits for your approval, then writes and commits them (T-0020).
+- `diagnose` shows the ticket draft, waits for your approval, then writes and commits it (T-0021).
+- `implement` refusals name the ticket edit that unblocks the ticket, and say how to drop a ticket that blocks (T-0022).
+- `implement` direct mode warns that must-fix findings exist only in this session and offers `/to-tickets` before `/clear` (T-0023).
+- `shape` suggests `/implement this` for small in-session changes, and `implement` direct mode uses the shape summary's Done when and Tested by as its brief.
+
+### Fixed
+
+- `release` keeps `wontfix` tickets out of the bump and changelog (T-0019).
+- `setup` reuses the files that already hold the version instead of creating `VERSION`, warns when a target folder is git-ignored, and offers to import an existing tracker.
+
+Release notes: [docs/releases/v0.7.0](docs/releases/v0.7.0/RELEASE.md)
+
 ## [0.6.0] - 2026-11-23
 
 ### Changed
