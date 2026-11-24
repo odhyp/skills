@@ -4,7 +4,7 @@ title: Decisions path in the CLAUDE.md block
 type: feat
 breaking: false
 scope: setup
-status: ready-for-agent
+status: resolved
 spec: S-0004
 depends_on: []
 source: to-tickets
@@ -36,10 +36,10 @@ this repo's own block. The `to-adr` skill itself is T-0025.
 - CLAUDE.md (change: odhyp block only)
 
 ## Acceptance criteria
-- [ ] `claude-md-block.md` has `- Decisions: \`{{decisions}}\`` after the Releases line.
-- [ ] `setup/SKILL.md` names `<decisions>` wherever it lists the four odhyp folders (base path, git check-ignore, the folders row, the CLAUDE.md fill row), and says how `{{decisions}}` is filled.
-- [ ] This repo's CLAUDE.md block has `- Decisions: \`docs/adr\``; nothing outside the block changes.
-- [ ] `claude plugin validate . && claude plugin validate plugins/odhyp` passes; `sh tests/commit-msg.test.sh` passes.
+- [x] `claude-md-block.md` has `- Decisions: \`{{decisions}}\`` after the Releases line.
+- [x] `setup/SKILL.md` names `<decisions>` wherever it lists the four odhyp folders (base path, git check-ignore, the folders row, the CLAUDE.md fill row), and says how `{{decisions}}` is filled.
+- [x] This repo's CLAUDE.md block has `- Decisions: \`docs/adr\``; nothing outside the block changes.
+- [x] `claude plugin validate . && claude plugin validate plugins/odhyp` passes; `sh tests/commit-msg.test.sh` passes.
 
 ## Out of scope
 - The `to-adr` skill and template (T-0025).
@@ -49,3 +49,6 @@ this repo's own block. The `to-adr` skill itself is T-0025.
 ## Questions
 
 ## Notes
+- Added `- Decisions:` to the block template and to this repo's block (`docs/adr`).
+- `setup`: base path step lists `adr` among the folders, the git-tracked check names the decisions folder (`/to-adr` commits ADRs), the folders row deletes `.gitkeep` in all five, and the CLAUDE.md row fills `{{decisions}}` from the existing block's `Decisions:` line, else `<base path>/adr`.
+- Note: `{{decisions}}` defaults to `<base>/adr`, not `<base>/decisions`, unlike the other folders, which take their placeholder name.

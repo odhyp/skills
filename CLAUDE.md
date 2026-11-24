@@ -13,6 +13,7 @@
 - Tickets: `docs/tickets`
 - Diagrams: `docs/diagrams`
 - Releases: `docs/releases`
+- Decisions: `docs/adr`
 - Version files: `VERSION`, `plugins/odhyp/.claude-plugin/plugin.json`
 - Changelog: `CHANGELOG.md`
 - Ticket and spec format: locked frontmatter, free Markdown body (loaded by the odhyp skills)
