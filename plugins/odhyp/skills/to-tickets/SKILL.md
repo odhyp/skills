@@ -36,11 +36,11 @@ Write each ticket to `<tickets>/NNNN-short-slug.md`, uncommitted. In chat, show 
 
 ## 3. Confirm
 
-Ask the user to approve the tickets or ask for changes. For each revision request, edit the files and report one line per changed ticket saying what changed. Only an explicit approval ends the loop; a reply that approves and also asks for a change is a revision and needs another round. Never skip the loop. If the user rejects or drops the tickets, delete the files this run wrote, and nothing else.
+Ask the user to approve the tickets or ask for changes. For each revision request, edit the files and report one line per changed ticket saying what changed; reprint a printed ticket in full. Only an explicit approval ends the loop; a reply that approves and also asks for a change is a revision and needs another round. Never skip the loop. If the user rejects or drops the tickets, delete the files this run wrote, and nothing else.
 
 ## 4. Commit
 
-On approval, commit the written tickets (an `odhyp skill` finding outside the odhyp repo has none, see step 2):
+On approval, commit the written tickets (an `odhyp skill` finding outside the odhyp repo has none, see step 2). No written tickets: skip this step.
 
 1. If there is a spec: set its `tickets:` to the new IDs and `status: accepted`.
 2. Stage only those files: `git add` the ticket files and the spec file. Never `git add -A`.
@@ -48,4 +48,4 @@ On approval, commit the written tickets (an `odhyp skill` finding outside the od
 
 ## 5. Report
 
-List the tickets (ID, title, status, depends on) and give the commit hash. Next step: `/clear`, then `/implement @<tickets>/NNNN-slug.md` for the first ticket.
+List the tickets (ID, title, status, depends on) and give the commit hash, if any. Next step: `/clear`, then `/implement @<tickets>/NNNN-slug.md` for the first written ticket.
