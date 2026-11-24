@@ -10,7 +10,7 @@ depends_on: [T-0024]
 source: to-tickets
 parent: none
 diagrams: [workflow, data-flow]
-released_in:
+released_in: v0.8.0
 ---
 
 ## Context

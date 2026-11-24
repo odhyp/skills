@@ -5,6 +5,28 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-11-24
+
+### Added
+
+- `to-adr` writes an Architecture Decision Record into the decisions folder, from its template, and links it to the ADRs it supersedes or amends (T-0025).
+- `implement` offers `/odhyp:to-adr` after it commits, and `shape` offers it when it ends with nothing to build (T-0026).
+
+### Changed
+
+- `setup` adds a `Decisions:` path to the CLAUDE.md odhyp block (default `<base>/adr`). Re-run `/odhyp:setup` to add it to your block (T-0024).
+- `to-tickets` writes the drafts to disk and shows only a summary table.
+- This repo's ADRs use one format for their supersede and amend link lines (T-0027).
+
+### Fixed
+
+- `setup` moves the decisions path when the base path changes (T-0024).
+- `to-adr` links several old ADRs at once, guards their uncommitted edits, and puts back-links of one kind on one line below all link lines (T-0025).
+- `to-tickets` applies the outside-repo exception per ticket, prints in full only the findings from odhyp skills, and handles runs where the tickets are only printed.
+- The ticket and spec templates require plain-text titles, so a title that YAML would read as a keyword, a number or a date can no longer break the frontmatter.
+
+Release notes: [docs/releases/v0.8.0](docs/releases/v0.8.0/RELEASE.md)
+
 ## [0.7.0] - 2026-11-24
 
 ### Changed

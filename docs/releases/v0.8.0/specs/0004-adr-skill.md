@@ -1,7 +1,7 @@
 ---
 id: S-0004
 title: ADR skill
-status: accepted
+status: done
 tickets: [T-0024, T-0025, T-0026, T-0027, T-0028]
 ---
 
