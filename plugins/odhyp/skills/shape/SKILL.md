@@ -43,7 +43,7 @@ If the agreed work adds, removes or rewires services, infrastructure, data flow 
 ## 5. Name the next step
 
 - **Feature:** next is `/to-spec`, then `/to-tickets`.
-- **Small change, done now in this session:** next is `/implement this`; the summary's `## Done when` is the brief, so write no separate one.
+- **Small change, done now in this session:** next is `/implement this`; the summary's `## Done when` and `## Tested by` are the brief, so write no separate one.
 - **Small change for later or a fresh session:** next is `/to-tickets` straight from this conversation, with `spec: none`.
 
 Say which and why in one line, under the summary's `## Next step`. The agreed conversation is the input to the next skill, so the user runs it now, before any `/clear`.
