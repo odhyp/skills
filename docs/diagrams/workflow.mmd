@@ -50,6 +50,11 @@ flowchart TD
         D1 -->|"Must-fix"| C3
     end
 
+    A2["`/to-adr 👤
+    ADR-NNNN · docs(adr) commit`"]
+    B0 -.->|"offer: reason worth keeping"| A2
+    C2 -.->|"offer: spec decision not recorded"| A2
+
     T -->|"/implement @ticket"| C1
     S1 -->|"/implement N"| C1
     C3 -->|"user runs /implement again"| C1

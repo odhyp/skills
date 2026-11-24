@@ -4,7 +4,7 @@ title: to-adr skill and ADR template
 type: feat
 breaking: false
 scope: adr
-status: ready-for-agent
+status: resolved
 spec: S-0004
 depends_on: [T-0024]
 source: to-tickets
@@ -63,11 +63,11 @@ This ticket adds the user-invocable `to-adr` skill and the ADR template. The off
 - docs/diagrams/data-flow.mmd (change, already drawn)
 
 ## Acceptance criteria
-- [ ] `to-adr/SKILL.md` follows the seven steps above and points to the template for the format.
-- [ ] `templates/adr.md` shows the format above, optional parts marked as optional.
-- [ ] README Skills table has a `to-adr` row.
-- [ ] Both diagrams match the skill as built.
-- [ ] `claude plugin validate . && claude plugin validate plugins/odhyp` passes; `sh tests/commit-msg.test.sh` passes.
+- [x] `to-adr/SKILL.md` follows the seven steps above and points to the template for the format.
+- [x] `templates/adr.md` shows the format above, optional parts marked as optional.
+- [x] README Skills table has a `to-adr` row.
+- [x] Both diagrams match the skill as built.
+- [x] `claude plugin validate . && claude plugin validate plugins/odhyp` passes; `sh tests/commit-msg.test.sh` passes.
 
 ## Out of scope
 - Offers from `implement` and `shape` (T-0026).
@@ -78,3 +78,10 @@ This ticket adds the user-invocable `to-adr` skill and the ADR template. The off
 ## Questions
 
 ## Notes
+- Added `plugins/odhyp/skills/to-adr/SKILL.md` (seven steps as above; step 4 reads the
+  existing ADRs to find one to link) and `plugins/odhyp/templates/adr.md` (optional parts
+  marked with comments). README Skills table has a `to-adr` row.
+- Diagrams matched; added `tickets -.-> toAdr` to `data-flow.mmd`, since step 2 reads the
+  ticket when `implement` made the offer.
+- The `git add` / `git commit ... -- <files>` pair ran in sh and PowerShell 5.1 in a scratch
+  repo: only the named file committed, other staged files left staged.

@@ -7,6 +7,7 @@ flowchart LR
     tTicket["TICKET-FORMAT.md · ticket.md"]
     tSpec["SPEC-FORMAT.md · spec.md"]
     tDiagram["diagram.mmd"]
+    tAdr["adr.md"]
 
     setup
     shape
@@ -18,6 +19,7 @@ flowchart LR
     codeReview["code-review"]
     release
     sessionReview["session-review"]
+    toAdr["to-adr"]
 
     block["CLAUDE.md odhyp block"]
     hook[".githooks/commit-msg"]
@@ -27,6 +29,7 @@ flowchart LR
     tickets[("tickets/")]
     diagrams[("diagrams/*.mmd")]
     releases[("releases/vX.Y.Z/")]
+    adrs[("adr/")]
     code["code and tests"]
     session["session history"]
 
@@ -95,7 +98,16 @@ flowchart LR
 
     session -.-> sessionReview
 
+    shape -.->|"offers"| toAdr
+    implement -.->|"offers"| toAdr
+    tAdr -.-> toAdr
+    session -.-> toAdr
+    specs -.->|"Decisions"| toAdr
+    tickets -.-> toAdr
+    adrs -.->|"next ID, ADR to link"| toAdr
+    toAdr -->|"new ADR; Superseded/Amended line"| adrs
+
     classDef template stroke-dasharray: 4 3
     classDef skill stroke-width:2px
-    class tBlock,tHook,tTicket,tSpec,tDiagram template
-    class setup,shape,toSpec,toTickets,diagnose,diagram,implement,codeReview,release,sessionReview skill
+    class tBlock,tHook,tTicket,tSpec,tDiagram,tAdr template
+    class setup,shape,toSpec,toTickets,diagnose,diagram,implement,codeReview,release,sessionReview,toAdr skill

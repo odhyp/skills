@@ -33,6 +33,7 @@ How the skills hand off, from `/setup` to `/release`: [`docs/diagrams/workflow.m
 | `code-review`    | Auto       | Answers what is wrong with this code. Reviews the uncommitted diff against the ticket in a forked subagent, before the commit, and grades findings by severity. Writes no tickets. Also reviews a ticket's commits on request.                              |
 | `release`        | Manual     | Computes the SemVer bump from what changed since the last version, updates the version and CHANGELOG, archives tickets and specs, then commits, tags and pushes after you confirm.                                                                          |
 | `session-review` | Manual     | Answers what we should improve. Run before `/clear`: reviews the session and lists ranked findings. Writes nothing.                                                                                                                                         |
+| `to-adr`         | Manual     | Records why we decided: turns a settled decision into an ADR (`ADR-NNNN`), links any ADR it supersedes or amends, confirms it with you in a loop, then commits it.                                                                                          |
 
 ## Development
 
