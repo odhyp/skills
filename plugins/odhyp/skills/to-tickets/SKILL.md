@@ -20,7 +20,7 @@ Split into **vertical slices**: each ticket delivers something testable end to e
 
 Show the breakdown as a short list (title, type, depends on) and adjust it until the user agrees.
 
-## 2. Write each ticket
+## 2. Draft each ticket
 
 - **IDs:** next `T-` ID (see the ticket format), then onward in order.
 - `source: to-tickets`, `parent: none`, `status: ready-for-agent` unless it needs a person.
@@ -32,10 +32,21 @@ Show the breakdown as a short list (title, type, depends on) and adjust it until
 
 **Done when** every part of the spec (or the agreed change) is covered by exactly one ticket.
 
-## 3. Update the spec
+Show every ticket in full (frontmatter and body) in chat. Write nothing to disk yet.
 
-If there is a spec: set its `tickets:` to the new IDs and `status: accepted`.
+## 3. Confirm
 
-## 4. Report
+Ask the user to approve the tickets or ask for changes. For each revision request, apply it and show all the tickets again. Only an explicit approval ends the loop; a reply that approves and also asks for a change is a revision and needs another round. Never skip the loop.
 
-List the tickets (ID, title, status, depends on). Next step: `/clear`, then `/implement @<tickets>/NNNN-slug.md` for the first ticket.
+## 4. Write and commit
+
+On approval (outside the odhyp repo, see step 2: write and commit nothing):
+
+1. Write each ticket to `<tickets>/NNNN-short-slug.md`.
+2. If there is a spec: set its `tickets:` to the new IDs and `status: accepted`.
+3. Stage only those files: `git add` the ticket files and the spec file. Never `git add -A`.
+4. Commit only those files, so anything the user already had staged stays out: `git commit -m "docs(tickets): add T-NNNN to T-MMMM" -- <files>` (one ticket: `docs(tickets): add T-NNNN <slug>`), with no `Refs:` footer. Never push.
+
+## 5. Report
+
+List the tickets (ID, title, status, depends on) and give the commit hash. Next step: `/clear`, then `/implement @<tickets>/NNNN-slug.md` for the first ticket.
