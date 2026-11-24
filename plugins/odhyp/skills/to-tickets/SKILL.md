@@ -32,20 +32,19 @@ Show the breakdown as a short list (title, type, depends on) and adjust it until
 
 **Done when** every part of the spec (or the agreed change) is covered by exactly one ticket.
 
-Show every ticket in full (frontmatter and body) in chat. Write nothing to disk yet.
+Write each ticket to `<tickets>/NNNN-short-slug.md`, uncommitted. In chat, show only a table (ID, title, type, depends on, path) and, under it, one line per ticket for anything it adds beyond the spec or the agreed change. The user reads the files themselves. Outside the odhyp repo there are no files, so print the tickets in full.
 
 ## 3. Confirm
 
-Ask the user to approve the tickets or ask for changes. For each revision request, apply it and show all the tickets again. Only an explicit approval ends the loop; a reply that approves and also asks for a change is a revision and needs another round. Never skip the loop.
+Ask the user to approve the tickets or ask for changes. For each revision request, edit the files and report one line per changed ticket saying what changed. Only an explicit approval ends the loop; a reply that approves and also asks for a change is a revision and needs another round. Never skip the loop. If the user rejects or drops the tickets, delete the files this run wrote, and nothing else.
 
-## 4. Write and commit
+## 4. Commit
 
-On approval (outside the odhyp repo, see step 2: write and commit nothing):
+On approval (outside the odhyp repo, see step 2: commit nothing):
 
-1. Write each ticket to `<tickets>/NNNN-short-slug.md`.
-2. If there is a spec: set its `tickets:` to the new IDs and `status: accepted`.
-3. Stage only those files: `git add` the ticket files and the spec file. Never `git add -A`.
-4. Commit only those files, so anything the user already had staged stays out: `git commit -m "docs(tickets): add T-NNNN to T-MMMM" -- <files>` (one ticket: `docs(tickets): add T-NNNN <slug>`), with no `Refs:` footer. Never push.
+1. If there is a spec: set its `tickets:` to the new IDs and `status: accepted`.
+2. Stage only those files: `git add` the ticket files and the spec file. Never `git add -A`.
+3. Commit only those files, so anything the user already had staged stays out: `git commit -m "docs(tickets): add T-NNNN to T-MMMM" -- <files>` (one ticket: `docs(tickets): add T-NNNN <slug>`), with no `Refs:` footer. Never push.
 
 ## 5. Report
 
