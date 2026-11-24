@@ -11,7 +11,7 @@ The odhyp workflow keeps decisions only in specs, and `release` archives specs w
 
 ## Goals / Non-goals
 
-- Goal: a `adr` skill that records a settled decision as an ADR file in the project's decisions folder.
+- Goal: a `to-adr` skill that records a settled decision as an ADR file in the project's decisions folder.
 - Goal: one ADR format, held in a plugin template, that the existing ADRs also follow.
 - Goal: an old ADR always points to the newer one that overrides it.
 - Non-goal: frontmatter or status fields on ADRs (`proposed`, `superseded`). A spec already holds unsettled decisions; a status that has to be flipped goes stale.
@@ -22,13 +22,13 @@ The odhyp workflow keeps decisions only in specs, and `release` archives specs w
 
 ### When an ADR is written
 
-`adr` records a decision only once it is settled: either `implement` shipped it, or `shape` agreed on it with nothing to build. A half-shaped feature decision stays in its spec, which is allowed to change. This matches how ADRs 0007 and 0008 were written, which was after or alongside the change they record.
+`to-adr` records a decision only once it is settled: either `implement` shipped it, or `shape` agreed on it with nothing to build. A half-shaped feature decision stays in its spec, which is allowed to change. This matches how ADRs 0007 and 0008 were written, which was after or alongside the change they record.
 
 There are three entry points. All three invoke the same user-invocable skill.
 
 - **`implement`** offers it, in one line, after a commit, when the ticket, its spec or the direct brief settled a decision worth keeping that no ADR covers. It only offers and never writes; whether a decision deserves an ADR is the user's call. (A spec's `## Decisions` holds only changes made during implementation, and the agreed design lives in `## Design`. So the check reads both, not `## Decisions` alone.)
 - **`shape`'s "nothing to build" exit** offers it under `## Next step` when the reason for not building is worth keeping. "We decided not to do X, because Y" is settled as soon as it's agreed, and the ADR stops the idea from being re-shaped later. A trivial "already exists" answer is a plain stop.
-- **The user** runs `/odhyp:adr` for a decision that shipped any other way, as ADR 0007 did.
+- **The user** runs `/odhyp:to-adr` for a decision that shipped any other way, as ADR 0007 did.
 
 ### The skill
 
@@ -37,7 +37,7 @@ There are three entry points. All three invoke the same user-invocable skill.
 3. Next ID: one above the highest `NNNN` in the decisions folder, starting at 0001. ADRs are never archived, so only that one folder is scanned. File: `NNNN-<kebab-title>.md`.
 4. If the decision overrides an existing ADR, in full or in part, name that ADR. The user confirms the link.
 5. Show the draft and get explicit approval before writing, the same way `to-spec` does.
-6. Write the new ADR. If it links to an old one, add the matching back-link line to the old ADR, right after its H1. That line is the only change `adr` makes to an existing ADR.
+6. Write the new ADR. If it links to an old one, add the matching back-link line to the old ADR, right after its H1. That line is the only change `to-adr` makes to an existing ADR.
 7. Stage only the files it wrote. Commit them as `docs(adr): add ADR-NNNN <slug>` with `-- <files>`, with no `Refs:` footer. It never amends the `implement` commit, which `code-review` already checked. It never pushes.
 
 ### Format (`plugins/odhyp/templates/adr.md`)
@@ -82,13 +82,15 @@ ADR 0008 says 0003 and 0004 "stay as written for the record". A pointer line kee
 
 Already updated in this session and not yet committed:
 
-- `workflow.mmd` adds the `/adr` node, with offers from "nothing to build" and from commit.
-- `data-flow.mmd` adds the `adr` skill, the `adr.md` template and the `adr/` folder, plus the read and write edges.
+- `workflow.mmd` adds the `/to-adr` node, with offers from "nothing to build" and from commit.
+- `data-flow.mmd` adds the `to-adr` skill, the `adr.md` template and the `adr/` folder, plus the read and write edges.
 
 ### Testing
 
 - `claude plugin validate . && claude plugin validate plugins/odhyp`.
-- One manual run per entry point: `implement` offer, `shape` "nothing to build" offer, direct `/odhyp:adr`. Each run checks the ID, the format, the back-link and that the commit holds only the ADR files.
+- One manual run per entry point: `implement` offer, `shape` "nothing to build" offer, direct `/odhyp:to-adr`. Each run checks the ID, the format, the back-link and that the commit holds only the ADR files.
 - Any shell command in the skill gets run in both sh and PowerShell 5.1.
 
 ## Decisions
+
+- 2026-11-24 · Skill named `to-adr`, not `adr`, matching `to-spec`/`to-tickets`: it turns an agreed decision into a committed document. The template, folder, `docs(adr)` commit and `scope: adr` keep `adr`, since they name the document.

@@ -14,17 +14,17 @@ released_in:
 ---
 
 ## Context
-S-0004 adds an `adr` skill that writes ADRs into a decisions folder. Per ADR-0006, every
+S-0004 adds a `to-adr` skill that writes ADRs into a decisions folder. Per ADR-0006, every
 odhyp path lives in the CLAUDE.md odhyp block, and the block has no decisions path yet.
 This ticket adds the line to the block template, makes `setup` fill it, and adds it to
-this repo's own block. The `adr` skill itself is T-0025.
+this repo's own block. The `to-adr` skill itself is T-0025.
 
 ## Decisions that apply
 - The block line is `- Decisions: \`{{decisions}}\``, placed after `- Releases:`.
 - `setup` fills `{{decisions}}` the way it fills the other folders: from the existing block
   when one has the line, else `<base path>/adr` (default `docs/adr`).
 - `setup` creates no folder for it; a skill creates its folder when it first writes there.
-- The folder must be tracked by git (`adr` commits into it), so `setup`'s
+- The folder must be tracked by git (`to-adr` commits into it), so `setup`'s
   `git check-ignore -v <folder>/x.md` check covers it too.
 - `setup` deletes `.gitkeep` in the decisions folder too, the same as the other four.
 - Projects set up earlier get the line when they re-run `setup`, which is safe to re-run.
@@ -42,7 +42,7 @@ this repo's own block. The `adr` skill itself is T-0025.
 - [ ] `claude plugin validate . && claude plugin validate plugins/odhyp` passes; `sh tests/commit-msg.test.sh` passes.
 
 ## Out of scope
-- The `adr` skill and template (T-0025).
+- The `to-adr` skill and template (T-0025).
 - The "This repo" section of CLAUDE.md, which already mentions `docs/adr/`.
 - Changing the `Next ID` line in the block; ADRs are never archived, so it already holds.
 

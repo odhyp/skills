@@ -1,6 +1,6 @@
 ---
 id: T-0026
-title: implement and shape offer adr
+title: implement and shape offer to-adr
 type: feat
 breaking: false
 scope: adr
@@ -14,20 +14,20 @@ released_in:
 ---
 
 ## Context
-T-0025 added the `adr` skill. It is user-invocable, and two skills should offer it at the
+T-0025 added the `to-adr` skill. It is user-invocable, and two skills should offer it at the
 moments a decision becomes settled: after `implement` commits, and when `shape` ends with
 nothing to build. Both only offer it, in one line; neither writes an ADR.
 
 ## Decisions that apply
-- `implement`, step 6 (Stop): after reporting the commit, offer `/odhyp:adr` in one line
+- `implement`, step 6 (Stop): after reporting the commit, offer `/odhyp:to-adr` in one line
   when the ticket, its spec or the direct brief settled a decision worth keeping that no ADR
   in the decisions folder covers. Read the spec's `## Design` and `## Decisions` both:
   `## Decisions` holds only changes made during implementation. No offer on a MUST-FIX stop
   (nothing shipped).
 - `shape`, the Explore "nothing should be built" exit: under `## Next step`, offer
-  `/odhyp:adr` when the reason for not building is worth keeping ("we decided not to do X,
+  `/odhyp:to-adr` when the reason for not building is worth keeping ("we decided not to do X,
   because Y"). A trivial "already exists" answer stays a plain stop.
-- Whether a decision deserves an ADR is the user's call; the offer never runs `adr` itself.
+- Whether a decision deserves an ADR is the user's call; the offer never runs `to-adr` itself.
 - `workflow.mmd` already shows both offer edges (committed in T-0025); nothing to redraw.
 
 ## Files
@@ -42,7 +42,7 @@ nothing to build. Both only offer it, in one line; neither writes an ADR.
 
 ## Out of scope
 - Offers from shape's feature and small-change exits, `to-spec` or `release`.
-- Changes to the `adr` skill.
+- Changes to the `to-adr` skill.
 
 ## Questions
 
