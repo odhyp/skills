@@ -94,3 +94,4 @@ Already updated in this session and not yet committed:
 ## Decisions
 
 - 2026-11-24 · Skill named `to-adr`, not `adr`, matching `to-spec`/`to-tickets`: it turns an agreed decision into a committed document. The template, folder, `docs(adr)` commit and `scope: adr` keep `adr`, since they name the document.
+- 2026-11-24 · T-0025 · Links can name several old ADRs, not just one. Forward and back-links are one line per kind (supersedes or amends) right after the H1, with IDs comma-separated; a new back-link joins an existing line of its kind (`Superseded by ADR-0007, ADR-0009.`), so an ADR overridden twice keeps one line per kind. Before writing, `to-adr` stops if a linked old ADR has uncommitted changes, since `git commit -- <files>` would sweep them into the `docs(adr)` commit. Steps 4 and 6 and "Links go both ways" above are read with this.

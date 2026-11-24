@@ -39,7 +39,7 @@ On approval:
 
 1. For each old ADR it links to, run `git status --porcelain -- <old ADR file>`. Any output means the user has uncommitted changes there, which the commit would sweep in: write nothing, name the file, say to commit or stash those changes and run `/to-adr` again, and stop.
 2. Write the new ADR to its file.
-3. In each old ADR it links to, add `Superseded by ADR-NNNN.` or `Amended by ADR-NNNN.` as the line right after its H1, with a blank line around it. That line is the only change this skill makes to an existing ADR.
+3. In each old ADR it links to, add the back-link to the lines right after its H1: one line per kind, `Superseded by ADR-NNNN.` or `Amended by ADR-NNNN.` If a line of that kind is already there, append the new ID to it (`Superseded by ADR-0007, ADR-0009.`); otherwise add the line below any existing back-link lines, with a blank line before the body. Those lines are the only change this skill makes to an existing ADR.
 
 ## 7. Commit
 
