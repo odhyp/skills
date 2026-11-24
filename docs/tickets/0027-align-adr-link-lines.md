@@ -4,7 +4,7 @@ title: Align existing ADR link lines
 type: docs
 breaking: false
 scope: adr
-status: ready-for-agent
+status: resolved
 spec: S-0004
 depends_on: []
 source: to-tickets
@@ -43,9 +43,9 @@ ADRs must match the new format.
 - docs/adr/0008-skills-know-no-outside-reader.md (change)
 
 ## Acceptance criteria
-- [ ] Each file has exactly the link line above, right after its H1.
-- [ ] `git diff --word-diff docs/adr` shows no change other than those lines (0006's paragraph loses only its opening `Supersedes 0005.`).
-- [ ] `grep -rnE "\b000[0-9]\b" docs/adr` shows no bare `000N` reference outside an `ADR-` prefix in the link lines.
+- [x] Each file has exactly the link line above, right after its H1.
+- [x] `git diff --word-diff docs/adr` shows no change other than those lines (0006's paragraph loses only its opening `Supersedes 0005.`).
+- [x] `grep -rnE "\b000[0-9]\b" docs/adr` shows no bare `000N` reference outside an `ADR-` prefix in the link lines.
 
 ## Out of scope
 - Rewording any ADR, adding sections, or removing `Reasons:` labels from bodies.
@@ -54,3 +54,5 @@ ADRs must match the new format.
 ## Questions
 
 ## Notes
+- Set the seven link lines as listed. The word-diff shows only those lines.
+- 0008's body still says "ADRs 0003 and 0004". That is body text, not a link line, and rewording is out of scope, so it stays.
