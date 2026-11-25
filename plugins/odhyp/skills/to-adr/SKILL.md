@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 Read `${CLAUDE_PLUGIN_ROOT}/templates/adr.md`: the single source for the ADR format. Start the file from it.
 
-Record a decision only once it is settled: `implement` shipped it, or `shape` agreed on it with nothing to build. A feature decision that is still being shaped stays in its spec; say so and stop.
+Record a decision only once it is settled: `implement` shipped it, `shape` agreed on it with nothing to build, or it is already in the code (such as a `/odhyp:survey` candidate). A feature decision that is still being shaped stays in its spec; say so and stop.
 
 ## 1. Find the folder
 

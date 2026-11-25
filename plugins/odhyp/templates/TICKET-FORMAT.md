@@ -53,11 +53,11 @@ Identical to commit types.
 
 | status | Meaning | Set by |
 |---|---|---|
-| `ready-for-agent` | Fully specified; an agent can do it | to-tickets, diagnose, human |
+| `ready-for-agent` | Fully specified; an agent can do it | to-tickets, diagnose, implement, human |
 | `ready-for-human` | Needs a person (credentials, DNS, design call, manual test) | any skill, human |
 | `needs-info` | Blocked on the questions in `## Questions`; back to `ready-for-agent` once all are answered | implement (sets and clears), human (clears) |
 | `in-progress` | An agent is working on it (crash recovery) | implement |
-| `resolved` | Code and tests committed | implement, in the same commit as the code |
+| `resolved` | Code and tests committed | implement, in the same commit as the code; human, for `ready-for-human` work done by hand |
 | `wontfix` | Dropped (incl. duplicates); reason in `## Notes` | human |
 
 Dependencies are not a status: `implement` refuses to start until every `depends_on` ticket is `resolved`.
@@ -75,6 +75,8 @@ stateDiagram-v2
     ready_for_human --> ready_for_agent: human decides, agent builds
     ready_for_agent --> wontfix
     needs_info --> wontfix
+    ready_for_human --> wontfix
+    in_progress --> wontfix
     resolved --> [*]
     wontfix --> [*]
 ```
@@ -101,7 +103,7 @@ What NOT to build here.
 <!-- only when needs-info; the human answers inline -->
 
 ## Notes
-<!-- implement appends what it did; wontfix reason; post-commit review findings -->
+<!-- implement appends what it did; wontfix reason -->
 ```
 
 **`fix` tickets from `diagnose`** add four sections right after `## Context`: `## Reproduction`, `## Expected / Actual`, `## Root cause`, `## Failing test to write first`.

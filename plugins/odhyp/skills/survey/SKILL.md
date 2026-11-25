@@ -34,7 +34,7 @@ In chat show only:
 
 1. A table of this run's files: file, kind (glossary, diagram, ADR), what it adds. One row per glossary term, with flagged synonym entries marked for the user to confirm.
 2. **Candidates** for `/odhyp:to-adr`, one line each.
-3. **Findings**, numbered, each with `path:line` and what contradicts what, for `/odhyp:implement N`.
+3. **Findings**, numbered, each with `path:line`, what contradicts what, and the next step by kind: `/odhyp:implement N` to fix the code or a diagram, `/odhyp:to-adr` to supersede or amend an ADR, `/shape` to settle a glossary term.
 
 With nothing drafted, say so, give the candidates and findings, and stop.
 

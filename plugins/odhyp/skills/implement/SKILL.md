@@ -57,12 +57,12 @@ In direct mode: unclear → ask the user and stop; too big → stop and suggest 
 
 ## 3. Keep the records true
 
-- If `diagrams` is not empty, update those diagrams using the **diagram** skill.
+- Using the **diagram** skill, update the ticket's `diagrams` and any other existing diagram the work makes wrong.
 - **Glossary:** when the brief (ticket, or in direct mode the shape summary's `## Glossary`) lists glossary entries and the odhyp block has a `Glossary:` line, read `${CLAUDE_PLUGIN_ROOT}/templates/GLOSSARY-FORMAT.md` and apply them to that file: add new terms, rewrite changed ones, and delete removed ones with every mention of them. A missing file is created with a `# Glossary` H1 when the first term arrives. No `Glossary:` line: write nothing and say nothing. The glossary file is committed with the code in step 5. Do not otherwise read the glossary.
 - If the work proved the spec wrong, add an entry under the spec's `## Decisions`: `date · T-NNNN · what changed and why`.
 - Check off the acceptance criteria and append to `## Notes` what was done and anything a later reader needs.
 
-In direct mode there is no ticket to update; still update any diagram the work makes wrong, and add an entry under the `## Decisions` of any spec the work proves wrong: `date · what changed and why` (put `T-NNNN ·` after the date only when the findings came from a review of that ticket).
+In direct mode there is no ticket to update; update any existing diagram the work makes wrong, and add an entry under the `## Decisions` of any spec the work proves wrong: `date · what changed and why` (put `T-NNNN ·` after the date only when the findings came from a review of that ticket).
 
 ## 4. Review
 

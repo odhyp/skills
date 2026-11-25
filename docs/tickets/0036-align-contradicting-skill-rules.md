@@ -4,7 +4,7 @@ title: Align contradicting rules across the odhyp skills and formats
 type: fix
 breaking: false
 scope: skills
-status: ready-for-agent
+status: resolved
 spec: none
 depends_on: []
 source: diagnose
@@ -69,15 +69,15 @@ Reproduction greps: after the fix, each pair no longer disagrees, and
 - plugins/odhyp/templates/SPEC-FORMAT.md (change)
 
 ## Acceptance criteria
-- [ ] to-adr's settled rule also accepts a decision already in the code (such as a survey candidate).
-- [ ] implement step 3, ticket mode, updates the ticket's `diagrams` and any other existing diagram the work makes wrong; the direct-mode line no longer implies a rule ticket mode lacks.
-- [ ] survey's findings name the right next step by kind: `/odhyp:implement N` for code or a diagram, `/odhyp:to-adr` (supersede or amend) for an ADR, `/shape` for a glossary term.
-- [ ] TICKET-FORMAT's `## Notes` comment no longer mentions post-commit review findings.
-- [ ] TICKET-FORMAT's Statuses table lists implement for `ready-for-agent` and human for `resolved`; the state diagram has `ready_for_human --> wontfix` and `in_progress --> wontfix`.
-- [ ] setup step 2 also checks the diagrams folder and the glossary file with `git check-ignore`, and its reason names implement and survey.
-- [ ] SPEC-FORMAT's `## Decisions` comment makes the ticket ID optional (`date · [ticket ID ·] what changed and why`).
-- [ ] setup step 3 says diagrams come on request, from `/shape` or from `/odhyp:survey`.
-- [ ] Both `claude plugin validate` commands pass.
+- [x] to-adr's settled rule also accepts a decision already in the code (such as a survey candidate).
+- [x] implement step 3, ticket mode, updates the ticket's `diagrams` and any other existing diagram the work makes wrong; the direct-mode line no longer implies a rule ticket mode lacks.
+- [x] survey's findings name the right next step by kind: `/odhyp:implement N` for code or a diagram, `/odhyp:to-adr` (supersede or amend) for an ADR, `/shape` for a glossary term.
+- [x] TICKET-FORMAT's `## Notes` comment no longer mentions post-commit review findings.
+- [x] TICKET-FORMAT's Statuses table lists implement for `ready-for-agent` and human for `resolved`; the state diagram has `ready_for_human --> wontfix` and `in_progress --> wontfix`.
+- [x] setup step 2 also checks the diagrams folder and the glossary file with `git check-ignore`, and its reason names implement and survey.
+- [x] SPEC-FORMAT's `## Decisions` comment makes the ticket ID optional (`date · [ticket ID ·] what changed and why`).
+- [x] setup step 3 says diagrams come on request, from `/shape` or from `/odhyp:survey`.
+- [x] Both `claude plugin validate` commands pass.
 
 ## Out of scope
 - Version bump and CHANGELOG (done by /odhyp:release).
@@ -87,3 +87,4 @@ Reproduction greps: after the fix, each pair no longer disagrees, and
 ## Questions
 
 ## Notes
+- Wording-only edits to to-adr, implement, survey, setup, TICKET-FORMAT and SPEC-FORMAT, one per Reproduction pair. setup step 2 now runs `git check-ignore -v <glossary file>` alongside the folder checks. Validate passes (the ICON_MISSING warning predates this ticket).

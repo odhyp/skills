@@ -39,7 +39,7 @@ tickets: [T-0018, T-0019] # filled by to-tickets
 ## Goals / Non-goals
 ## Design
 ## Decisions
-<!-- added during implementation: date · ticket ID · what changed and why -->
+<!-- added during implementation: date · [ticket ID ·] what changed and why -->
 ```
 
 ## Example
