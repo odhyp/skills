@@ -14,7 +14,7 @@ The scope is the folders given as arguments (`/odhyp:survey src/api src/core`); 
 
 ## 2. Read
 
-Read, within the scope: the code, the git history (`git log --format="%h %s%n%b" -- <folders>`), the README and the docs. Then read what already exists: the glossary file, the `.mmd` files in the diagrams folder, and the ADRs in the decisions folder.
+Read, within the scope: the code, the git history (`git log --show-pulls --format="%h %s%n%b" -- <folders>`), the README and the docs. Then read what already exists: the glossary file, the `.mmd` files in the diagrams folder, and the ADRs in the decisions folder.
 
 ## 3. Draft
 
@@ -24,7 +24,7 @@ Write every draft to disk, uncommitted.
 
 **Diagrams.** Run the `diagram` skill (`odhyp:diagram`) for each of its standard views the scope has something to show in and the diagrams folder does not yet have. Never edit an existing diagram.
 
-**ADRs.** Write an ADR only where a commit, PR or code comment states the reason for a decision: an ADR records the why, and one guessed from code invents reasons later sessions will trust. Start each from `${CLAUDE_PLUGIN_ROOT}/templates/adr.md`, numbered from one above the highest `NNNN` in the decisions folder (`0001` when there is none), file `<decisions>/NNNN-<kebab-title>.md`. Skip a decision an existing ADR already records. Every other decision becomes a **candidate**: one line in the report (the decision and where it shows), never a file, because a candidate has no reason and must not sit in the decisions folder looking like a record.
+**ADRs.** Write an ADR only where a commit, PR or code comment states the reason for a decision (a PR counts through its merge or squash commit message in `git log`): an ADR records the why, and one guessed from code invents reasons later sessions will trust. Start each from `${CLAUDE_PLUGIN_ROOT}/templates/adr.md`, numbered from one above the highest `NNNN` in the decisions folder (`0001` when there is none), file `<decisions>/NNNN-<kebab-title>.md`. Skip a decision an existing ADR already records. Every other decision becomes a **candidate**: one line in the report (the decision and where it shows), never a file, because a candidate has no reason and must not sit in the decisions folder looking like a record.
 
 **Drift.** Where the code contradicts an existing glossary entry, diagram or ADR, change nothing there; list it as a finding.
 
@@ -38,7 +38,7 @@ In chat show only:
 
 With nothing drafted, say so, give the candidates and findings, and stop.
 
-Ask the user to approve the drafts or ask for changes. For each revision request, edit the files and report one line per changed file. Only an explicit approval ends the loop; a reply that approves and also asks for a change is a revision and needs another round. Never skip the loop. A rejection deletes the files this run created and removes the entries it added to an existing glossary, and nothing else.
+Ask the user to approve the drafts or ask for changes. For each revision request, edit the files and report one line per changed file. When a revision drops or merges ADR drafts, delete the files no longer used and renumber the rest of this run's ADRs (file name and every mention that names them) so the IDs stay consecutive. Only an explicit approval ends the loop; a reply that approves and also asks for a change is a revision and needs another round. Never skip the loop. A rejection deletes the files this run created and removes the entries it added to an existing glossary, and nothing else.
 
 ## 5. Commit
 
