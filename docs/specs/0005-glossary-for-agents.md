@@ -1,8 +1,8 @@
 ---
 id: S-0005
 title: Glossary for agents
-status: draft
-tickets: []
+status: accepted
+tickets: [T-0029, T-0030, T-0031, T-0032]
 ---
 
 ## Problem
