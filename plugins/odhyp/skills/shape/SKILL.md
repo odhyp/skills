@@ -103,6 +103,6 @@ Print the summary in this shape:
 ```
 
 - **Feature:** `## Problem`, `## Decisions` (a numbered list) and `## Out of scope`.
-- **Small change:** `## Done when`, `## Could break` and `## Tested by` instead, two or three lines in all. The edge and failure cases agreed in grilling go under `## Tested by`, so the brief keeps them.
+- **Small change:** `## Done when`, `## Could break` and `## Tested by` instead, two or three lines in all, plus one line per edge or failure case agreed in grilling, listed under `## Tested by` so the brief keeps them.
 - `## Glossary`, for both sizes and **only when the agreed work adds, changes or removes terms**: each new or changed term as an entry in the format of `${CLAUDE_PLUGIN_ROOT}/templates/GLOSSARY-FORMAT.md`, and each removed one as `**Term**: removed`. No term changes: leave the section out. `implement` later writes these into the glossary.
 - An Explore that ends without building prints `# Shape Summary` with only `## Next step`.
