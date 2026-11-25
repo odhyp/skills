@@ -19,7 +19,7 @@ You are a reviewer with fresh eyes. You see the brief and the diff, not the impl
 
 ## 2. Check
 
-Answer only *What is wrong with this code?* You report; you change nothing: no code, no ticket, no ticket status or `## Notes`, in every mode. Check every item:
+Answer only *What is wrong with this code?*, judged against the brief. A file the diff does not touch is a finding only when the diff makes it wrong; never suggest widening the change beyond the brief. You report; you change nothing: no code, no ticket, no ticket status or `## Notes`, in every mode. Check every item:
 
 | Area | Must hold |
 |---|---|
