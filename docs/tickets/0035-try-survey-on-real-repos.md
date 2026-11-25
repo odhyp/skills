@@ -4,7 +4,7 @@ title: Try survey on a brownfield and a greenfield repo
 type: test
 breaking: false
 scope: survey
-status: ready-for-human
+status: wontfix
 spec: S-0006
 depends_on: [T-0034]
 source: to-tickets
@@ -41,3 +41,5 @@ S-0006 tests `survey` by hand, not with an automated test: its output is too ope
 ## Questions
 
 ## Notes
+
+- Wontfix: manual trials are dropped for skills in this repo (ADR-0014). `survey` gets tested by real use, and its faults come back as handoff tickets.
