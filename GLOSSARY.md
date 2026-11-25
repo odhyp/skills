@@ -2,8 +2,6 @@
 
 Personal agent skills that carry Odhy's ticket-based engineering workflow into every project.
 
-## Language
-
 ### Skills
 
 **Skill**:
@@ -51,7 +49,7 @@ _Avoid_: deploy, ship
 ### Project
 
 **Project config**:
-The odhyp block in a project's `CLAUDE.md` that names where **Specs**, **Tickets**, **Diagrams** and **Releases** live, plus its version files and changelog; its presence marks a project as using the workflow.
+The odhyp block in a project's `CLAUDE.md` that names where **Specs**, **Tickets**, **Diagrams**, **Releases**, decisions and the **Glossary** live, plus its version files and changelog; its presence marks a project as using the workflow.
 _Avoid_: settings, manifest
 
 **Glossary**:
