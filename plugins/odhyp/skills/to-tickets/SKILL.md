@@ -38,7 +38,7 @@ Write each ticket to `<tickets>/NNNN-short-slug.md`, uncommitted. In chat, show 
 
 ## 3. Confirm
 
-Ask the user to approve the tickets or ask for changes. For each revision request, edit the files and report one line per changed ticket saying what changed; reprint a printed ticket in full. Only an explicit approval ends the loop; a reply that approves and also asks for a change is a revision and needs another round. Never skip the loop. If the user rejects or drops the tickets, delete the files this run wrote, and nothing else.
+Ask the user to approve the tickets or ask for changes. For each revision request, edit the files and report one line per changed ticket saying what changed; reprint a printed ticket in full. When a revision drops or merges tickets, delete the files no longer used and renumber the rest (file name, `id`, and every `depends_on` or mention that names them) so the IDs stay consecutive. Only an explicit approval ends the loop; a reply that approves and also asks for a change is a revision and needs another round. Never skip the loop. If the user rejects or drops the tickets, delete the files this run wrote, and nothing else.
 
 ## 4. Commit
 
