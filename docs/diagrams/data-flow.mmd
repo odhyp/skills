@@ -11,6 +11,7 @@ flowchart LR
     tGlossary["GLOSSARY-FORMAT.md"]
 
     setup
+    survey
     shape
     toSpec["to-spec"]
     toTickets["to-tickets"]
@@ -43,6 +44,18 @@ flowchart LR
     setup --> version
     setup --> changelog
     glossary -.->|"path, if present"| setup
+    setup -.->|"suggests"| survey
+
+    code -.->|"code, git history, docs"| survey
+    tGlossary -.-> survey
+    glossary -.-> survey
+    diagrams -.-> survey
+    tAdr -.-> survey
+    adrs -.->|"next ID, existing"| survey
+    survey -->|"missing terms"| glossary
+    survey -->|"ADRs with a stated reason"| adrs
+    survey -.->|"calls"| diagram
+    survey -.->|"offers candidates"| toAdr
 
     code -.-> shape
     shape -.->|"calls"| diagram
@@ -121,4 +134,4 @@ flowchart LR
     classDef template stroke-dasharray: 4 3
     classDef skill stroke-width:2px
     class tBlock,tHook,tTicket,tSpec,tDiagram,tAdr,tGlossary template
-    class setup,shape,toSpec,toTickets,diagnose,diagram,implement,codeReview,release,sessionReview,toAdr skill
+    class setup,survey,shape,toSpec,toTickets,diagnose,diagram,implement,codeReview,release,sessionReview,toAdr skill

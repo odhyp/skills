@@ -1,7 +1,13 @@
 %% Workflow: how the odhyp skills hand off from setup to release. 👤 manual skill · 🤖 auto skill (starts on its own; you can also call it) · ⚙️ built-in Claude Code command
 flowchart TD
     A1["`/setup 👤
-    CLAUDE.md · VERSION · hook`"] --> X0{"Work type"}
+    CLAUDE.md · VERSION · hook`"] --> X5{"Existing code missing glossary, diagrams or ADRs?"}
+    X5 -->|"No"| X0{"Work type"}
+    X5 -->|"Yes: setup suggests"| A3["`/survey 👤
+    glossary · diagrams · ADRs · docs(survey) commit`"]
+    A3 --> X0
+    A3 -.->|"ADR candidates"| A2
+    A3 -.->|"drift findings"| X4
     X0 -->|"Idea / feature / small change / known-cause bug"| B1
     X0 -->|"Bug, cause unknown"| B5
 

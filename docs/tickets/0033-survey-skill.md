@@ -4,7 +4,7 @@ title: Survey skill drafts glossary, diagrams and ADRs
 type: feat
 breaking: false
 scope: survey
-status: ready-for-agent
+status: resolved
 spec: S-0006
 depends_on: []
 source: to-tickets
@@ -47,13 +47,13 @@ _Avoid_: adopt, onboard, backfill
 
 ## Acceptance criteria
 
-- [ ] `survey/SKILL.md` covers every decision above: block check, scope arguments and the too-large stop, inputs, glossary rules incl. synonyms, diagrams via `diagram`, stated-reason ADRs, candidates in the report only, the ADR-0011 draft/table/loop/commit flow, add-only re-runs and drift findings.
-- [ ] Its description makes clear when to run it (an existing codebase without a glossary, diagrams or ADRs) and that only a person starts it.
-- [ ] `diagram/SKILL.md` lets `survey` create diagrams, in both the description and the body rule.
-- [ ] README row and `Survey` glossary entry added, using no `_Avoid_` word.
-- [ ] Both diagrams match the skill as built.
-- [ ] Every shell command in the skill runs in both sh and PowerShell 5.1.
-- [ ] `claude plugin validate .` and `claude plugin validate plugins/odhyp` pass.
+- [x] `survey/SKILL.md` covers every decision above: block check, scope arguments and the too-large stop, inputs, glossary rules incl. synonyms, diagrams via `diagram`, stated-reason ADRs, candidates in the report only, the ADR-0011 draft/table/loop/commit flow, add-only re-runs and drift findings.
+- [x] Its description makes clear when to run it (an existing codebase without a glossary, diagrams or ADRs) and that only a person starts it.
+- [x] `diagram/SKILL.md` lets `survey` create diagrams, in both the description and the body rule.
+- [x] README row and `Survey` glossary entry added, using no `_Avoid_` word.
+- [x] Both diagrams match the skill as built.
+- [x] Every shell command in the skill runs in both sh and PowerShell 5.1.
+- [x] `claude plugin validate .` and `claude plugin validate plugins/odhyp` pass.
 
 ## Out of scope
 
@@ -66,3 +66,6 @@ _Avoid_: adopt, onboard, backfill
 ## Questions
 
 ## Notes
+Added `survey/SKILL.md` (block check, scope args with a too-large stop, inputs, glossary per ADR-0009 with flagged synonyms, diagrams via `diagram`, stated-reason ADRs, candidates in chat only, the ADR-0011 table/loop/commit, add-only re-runs, numbered drift findings). Beyond the ticket: before adding terms to an existing glossary it runs `git status --porcelain` on it and stops on uncommitted changes, as `to-adr` does, so `git commit -- <files>` does not sweep in the user's edits. A rejection also removes the terms it added to an existing glossary, since deleting that file would lose the user's entries. Shell commands (`git log --format="%h %s%n%b" -- <folders>`, `git status --porcelain -- <file>`) run in sh and PowerShell 5.1. Pre-edited diagrams checked against the skill, unchanged.
+Fix now (review): a missing `Diagrams:` or `Decisions:` line now skips that kind and says to re-run `/odhyp:setup`.
+Open (second review): 1. dropped or merged ADR drafts are not renumbered (ADR-0011), SKILL.md:47. 2. "PR" is named as a reason source but only `git log` is read, SKILL.md:31.
