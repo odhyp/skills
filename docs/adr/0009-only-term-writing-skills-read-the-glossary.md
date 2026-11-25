@@ -1,5 +1,7 @@
 # Only the term-writing skills read the glossary, and it is optional
 
+Amended by ADR-0010.
+
 `shape`, `to-spec` and `to-tickets` read the glossary at the path on the `Glossary:` line of the odhyp block. They use its terms and never an `_Avoid_` word in what they write. `implement` and `code-review` do not read it. Those three skills are the ones that coin terms and write them into questions, specs and tickets. `implement` and `code-review` work from tickets that already use the terms, so reading the glossary there would only cost context. When the `Glossary:` line or the file is missing, every reader skips the glossary silently, so projects set up before the glossary existed keep working without re-running `setup`. For the same reason the glossary never stops `shape`: it reads the odhyp block only for this line and runs without a block.
 
 ## Considered options
