@@ -34,7 +34,7 @@ Interview relentlessly in **rounds of at most 3 questions**, walking each branch
 - When the codebase can answer a question, read the code instead of asking.
 - Cover, as they apply:
   - **Feature:** the problem and who has it, what done looks like, scope edges (what is explicitly out), behaviour in edge and failure cases, data and interfaces touched, how it will be tested, and what it could break.
-  - **Small change:** what done looks like, what it could break, and how it will be tested. Add an item from the feature list only when the code shows it applies; always add edge and failure cases when the change copies a pattern from another skill or adds a loop.
+  - **Small change:** what done looks like, what it could break, and how it will be tested. Add an item from the feature list only when the code shows it applies; always add edge and failure cases when the change copies a pattern from elsewhere in the codebase or adds a loop.
 
 **Done when** every branch is resolved and the user agrees with a summary you give.
 
@@ -103,6 +103,6 @@ Print the summary in this shape:
 ```
 
 - **Feature:** `## Problem`, `## Decisions` (a numbered list) and `## Out of scope`.
-- **Small change:** `## Done when`, `## Could break` and `## Tested by` instead, two or three lines in all.
+- **Small change:** `## Done when`, `## Could break` and `## Tested by` instead, two or three lines in all. The edge and failure cases agreed in grilling go under `## Tested by`, so the brief keeps them.
 - `## Glossary`, for both sizes and **only when the agreed work adds, changes or removes terms**: each new or changed term as an entry in the format of `${CLAUDE_PLUGIN_ROOT}/templates/GLOSSARY-FORMAT.md`, and each removed one as `**Term**: removed`. No term changes: leave the section out. `implement` later writes these into the glossary.
 - An Explore that ends without building prints `# Shape Summary` with only `## Next step`.
