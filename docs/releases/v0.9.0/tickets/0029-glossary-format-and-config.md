@@ -10,7 +10,7 @@ depends_on: []
 source: to-tickets
 parent: none
 diagrams: [data-flow]
-released_in:
+released_in: v0.9.0
 ---
 
 ## Context

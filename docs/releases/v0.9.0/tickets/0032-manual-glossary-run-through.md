@@ -10,7 +10,7 @@ depends_on: [T-0031]
 source: to-tickets
 parent: none
 diagrams: []
-released_in:
+released_in: v0.9.0
 ---
 
 ## Context

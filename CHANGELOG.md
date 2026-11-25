@@ -5,6 +5,29 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+## [0.9.0] - 2026-11-25
+
+### Added
+
+- A project glossary: `templates/GLOSSARY-FORMAT.md`, an optional `Glossary:` line in the CLAUDE.md odhyp block that `setup` fills, and this repo's `GLOSSARY.md` (T-0029).
+- `shape`, `to-spec` and `to-tickets` read the glossary and use its terms and `_Avoid_` lists (T-0030).
+- Glossary changes travel with the work: from the shape summary to the spec and the ticket, then `implement` writes them in the same commit as the code (T-0031).
+- `to-spec` can split one design into several consecutive specs.
+- `implement` applies the findings marked fix now after a review PASS, reruns test and lint, and reviews once more.
+
+### Changed
+
+- `to-spec` writes its drafts to disk and shows only a table. Rejecting deletes the files, and approving commits them in one commit.
+
+### Fixed
+
+- `to-spec` and `to-tickets` keep IDs consecutive when a revision drops one, and renumber only the specs or tickets from the current run.
+- `shape` asks about edge cases when a small change copies a pattern or adds a loop, adapts that rule to any codebase, keeps the agreed cases in the brief, and doesn't count them toward the summary's line cap.
+- `code-review` keeps its findings inside the diff and the brief.
+- `implement` keeps the ticket findings from the first review when the second review blocks, and numbers the findings from both reviews as one list.
+
+Release notes: [docs/releases/v0.9.0](docs/releases/v0.9.0/RELEASE.md)
+
 ## [0.8.0] - 2026-11-24
 
 ### Added
