@@ -1,5 +1,5 @@
 %% Data flow: which odhyp skill reads (dotted) or writes (solid) which file; templates come from plugins/odhyp/templates/, skills from plugins/odhyp/skills/.
-%% Every skill except shape and session-review also reads the CLAUDE.md odhyp block for paths and commands.
+%% Every skill except shape and session-review also reads the CLAUDE.md odhyp block for paths and commands; shape reads it only for the Glossary path. GLOSSARY.md is optional: readers skip it when the path or file is missing.
 %% Not drawn: setup deletes .gitkeep files in the four odhyp folders and sets git config core.hooksPath; to-tickets and session-review check whether plugins/odhyp/.claude-plugin/plugin.json exists (are we in the odhyp repo?). session-review otherwise reads only the session and writes nothing.
 flowchart LR
     tBlock["claude-md-block.md"]
@@ -8,6 +8,7 @@ flowchart LR
     tSpec["SPEC-FORMAT.md · spec.md"]
     tDiagram["diagram.mmd"]
     tAdr["adr.md"]
+    tGlossary["GLOSSARY-FORMAT.md"]
 
     setup
     shape
@@ -30,6 +31,7 @@ flowchart LR
     diagrams[("diagrams/*.mmd")]
     releases[("releases/vX.Y.Z/")]
     adrs[("adr/")]
+    glossary["GLOSSARY.md"]
     code["code and tests"]
     session["session history"]
 
@@ -40,14 +42,19 @@ flowchart LR
     setup --> hook
     setup --> version
     setup --> changelog
+    glossary -.->|"path, if present"| setup
 
     code -.-> shape
     shape -.->|"calls"| diagram
+    tGlossary -.-> shape
+    glossary -.-> shape
 
     tSpec -.-> toSpec
     releases -.->|"next ID"| toSpec
     specs -.->|"next ID"| toSpec
     toSpec --> specs
+    tGlossary -.-> toSpec
+    glossary -.-> toSpec
 
     tTicket -.-> toTickets
     specs -.-> toTickets
@@ -56,6 +63,8 @@ flowchart LR
     diagrams -.-> toTickets
     toTickets --> tickets
     toTickets -->|"tickets, status"| specs
+    tGlossary -.-> toTickets
+    glossary -.-> toTickets
 
     tTicket -.-> diagnose
     code -.-> diagnose
@@ -74,6 +83,8 @@ flowchart LR
     implement --> code
     implement -->|"status, Notes"| tickets
     implement -->|"Decisions"| specs
+    tGlossary -.-> implement
+    implement -->|"terms from the brief"| glossary
     implement -.->|"calls"| diagram
     implement -.->|"calls"| codeReview
 
@@ -109,5 +120,5 @@ flowchart LR
 
     classDef template stroke-dasharray: 4 3
     classDef skill stroke-width:2px
-    class tBlock,tHook,tTicket,tSpec,tDiagram,tAdr template
+    class tBlock,tHook,tTicket,tSpec,tDiagram,tAdr,tGlossary template
     class setup,shape,toSpec,toTickets,diagnose,diagram,implement,codeReview,release,sessionReview,toAdr skill

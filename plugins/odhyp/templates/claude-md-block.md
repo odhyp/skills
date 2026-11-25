@@ -5,6 +5,7 @@
 - Diagrams: `{{diagrams}}`
 - Releases: `{{releases}}`
 - Decisions: `{{decisions}}`
+- Glossary: `{{glossary}}`
 - Version files: {{version_files}}
 - Changelog: `{{changelog}}`
 - Ticket and spec format: locked frontmatter, free Markdown body (loaded by the odhyp skills)

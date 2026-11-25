@@ -4,7 +4,7 @@ title: Glossary format and config line
 type: feat
 breaking: false
 scope: glossary
-status: ready-for-agent
+status: resolved
 spec: S-0005
 depends_on: []
 source: to-tickets
@@ -37,12 +37,12 @@ Agents start every session fresh and drift into synonyms a project rejected, so 
 - docs/diagrams/data-flow.mmd (change: already edited in the working tree during shape; review it against this ticket and commit it with this work)
 
 ## Acceptance criteria
-- [ ] `GLOSSARY-FORMAT.md` states the entry format, the project-specific-only rule and the delete-don't-stale rule, with a short example.
-- [ ] The block template has the `Glossary:` line, and `setup` step 3 says how `{{glossary}}` is filled, in the order above.
-- [ ] `setup` asks no new question and creates no glossary file; its report lists the glossary path.
-- [ ] This repo's `CLAUDE.md` block has `- Glossary: \`GLOSSARY.md\``, and `GLOSSARY.md` defines **Glossary**.
-- [ ] `data-flow.mmd` shows `GLOSSARY-FORMAT.md` and `GLOSSARY.md` with the read/write edges of S-0005, and is committed.
-- [ ] `claude plugin validate .` and `claude plugin validate plugins/odhyp` pass.
+- [x] `GLOSSARY-FORMAT.md` states the entry format, the project-specific-only rule and the delete-don't-stale rule, with a short example.
+- [x] The block template has the `Glossary:` line, and `setup` step 3 says how `{{glossary}}` is filled, in the order above.
+- [x] `setup` asks no new question and creates no glossary file; its report lists the glossary path.
+- [x] This repo's `CLAUDE.md` block has `- Glossary: \`GLOSSARY.md\``, and `GLOSSARY.md` defines **Glossary**.
+- [x] `data-flow.mmd` shows `GLOSSARY-FORMAT.md` and `GLOSSARY.md` with the read/write edges of S-0005, and is committed.
+- [x] `claude plugin validate .` and `claude plugin validate plugins/odhyp` pass.
 
 ## Out of scope
 - Any skill reading the glossary (T-0030) or writing it (T-0031).
@@ -52,3 +52,7 @@ Agents start every session fresh and drift into synonyms a project rejected, so 
 ## Questions
 
 ## Notes
+- Added `templates/GLOSSARY-FORMAT.md` (layout, entry format, project-specific-only, delete-don't-stale, one-meaning rule, example). It allows the repo's own layout: any H1 plus an optional description line, `###` groups, optional `## Relationships`; `# Glossary` only when a skill creates the file.
+- Block template and this repo's `CLAUDE.md` gained the `Glossary:` line after `Decisions:`; `setup` step 1 notes a glossary file, step 3 fills `{{glossary}}` (block → found file → `GLOSSARY.md`) without asking and creates no file, step 4 reports the path.
+- `GLOSSARY.md` defines **Glossary** under `### Project`. `data-flow.mmd` (edited during shape) checked against S-0005 and committed unchanged.
+- Tests and both `claude plugin validate` runs pass.

@@ -54,6 +54,10 @@ _Avoid_: deploy, ship
 The odhyp block in a project's `CLAUDE.md` that names where **Specs**, **Tickets**, **Diagrams** and **Releases** live, plus its version files and changelog; its presence marks a project as using the workflow.
 _Avoid_: settings, manifest
 
+**Glossary**:
+The project's file of its own terms, each with a one-line definition and rejected synonyms, that skills read so every session uses the same words; its path is in the **Project config**.
+_Avoid_: dictionary, vocabulary, context file
+
 **Diagram**:
 A Mermaid `.mmd` file showing the project's infrastructure, architecture or data flow. Drawn only on request or when **Shape** settles structural work.
 _Avoid_: chart, graph
