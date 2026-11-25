@@ -5,6 +5,7 @@
 - Releases: bump `VERSION` and `plugins/odhyp/.claude-plugin/plugin.json` together, and add a CHANGELOG entry.
 - Shell commands written into skills must run in both sh and PowerShell 5.1 (quote `@{...}`; no `&&`, `||` or `VAR=x cmd`); run each in both before committing.
 - The plugin is `plugins/odhyp/`; everything else at the root is dev-only and never installed.
+- No manual trial tickets for skills; real use and handoffs test them (ADR-0014).
 - Vocabulary: `GLOSSARY.md`. Decisions and their reasons: `docs/adr/`.
 
 <!-- odhyp:start -->
