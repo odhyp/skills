@@ -1,8 +1,8 @@
 ---
 id: S-0007
 title: Diagnose hands off its findings like shape
-status: draft
-tickets: []
+status: accepted
+tickets: [T-0037]
 ---
 
 ## Problem
