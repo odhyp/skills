@@ -1,10 +1,10 @@
 ---
 name: to-spec
-description: Turn the design agreed in this conversation into a spec file (S-NNNN) in the project's specs folder.
+description: Turn the design agreed in this conversation into one or more spec files (S-NNNN) in the project's specs folder.
 disable-model-invocation: true
 ---
 
-Read the odhyp block in `CLAUDE.md` for the specs and releases folders (No odhyp block: stop and say to run `/odhyp:setup`), then `${CLAUDE_PLUGIN_ROOT}/templates/SPEC-FORMAT.md`: the single source for fields, statuses and sections. Start the file from `${CLAUDE_PLUGIN_ROOT}/templates/spec.md`.
+Read the odhyp block in `CLAUDE.md` for the specs and releases folders (No odhyp block: stop and say to run `/odhyp:setup`), then `${CLAUDE_PLUGIN_ROOT}/templates/SPEC-FORMAT.md`: the single source for fields, statuses and sections. Start each file from `${CLAUDE_PLUGIN_ROOT}/templates/spec.md`.
 
 **Glossary:** when the odhyp block has a `Glossary:` line and its file exists, read `${CLAUDE_PLUGIN_ROOT}/templates/GLOSSARY-FORMAT.md`, then the file, and use its terms, never an `_Avoid_` word, in your questions and the spec. When the line or the file is missing, skip the glossary silently.
 
@@ -14,24 +14,25 @@ The input is the design agreed earlier in this conversation (usually via `/shape
 
 ## 2. Draft
 
-- **ID:** next `S-` ID (see the spec format).
-- **File:** `<specs>/NNNN-short-slug.md`, `status: draft`, `tickets: []`.
-- **Body:** every section of the format. `## Design` records the decisions as agreed, including the reasons that are not obvious. When the agreed design has a `## Glossary` list, copy it unchanged into `## Design` under a `Glossary:` line. `## Decisions` starts empty.
+Write one spec per separate feature in the agreed design; usually there is one.
 
-Show the full draft (frontmatter and body) in chat. Write nothing to disk yet.
+- **IDs:** next `S-` ID (see the spec format), then onward in order.
+- **File:** `<specs>/NNNN-short-slug.md`, `status: draft`, `tickets: []`.
+- **Body:** every section of the format. `## Design` records the decisions as agreed, including the reasons that are not obvious. When the agreed design has a `## Glossary` list, copy it unchanged into `## Design` under a `Glossary:` line; with several specs, each entry goes into the spec whose feature uses the term. `## Decisions` starts empty.
+
+Write each spec to disk, uncommitted. In chat, show only a table (ID, title, path) and, under it, one line per spec for anything it adds beyond the agreed design. The user reads the files themselves.
 
 ## 3. Confirm
 
-Ask the user to approve the draft or ask for changes. For each revision request, apply it and show the whole spec again. Only an explicit approval ends the loop; a reply that approves and also asks for a change is a revision and needs another round. Never skip the loop.
+Ask the user to approve the specs or ask for changes. For each revision request, edit the files and report one line per changed spec saying what changed. Only an explicit approval ends the loop; a reply that approves and also asks for a change is a revision and needs another round. Never skip the loop. If the user rejects or drops the specs, delete the files this run wrote, and nothing else.
 
-## 4. Write and commit
+## 4. Commit
 
 On approval:
 
-1. Write the spec to `<specs>/NNNN-short-slug.md` with `status: draft` (written, not yet split into tickets).
-2. Stage only that file: `git add` the spec file. Never `git add -A`.
-3. Commit only that file, so anything the user already had staged stays out: `git commit -m "docs(spec): add S-NNNN <slug>" -- <spec file>`, with no `Refs:` footer. Never push.
+1. Stage only the written specs: `git add` the spec files. Never `git add -A`.
+2. Commit only those files, so anything the user already had staged stays out: `git commit -m "docs(spec): add S-NNNN to S-MMMM" -- <files>` (one spec: `docs(spec): add S-NNNN <slug>`), with no `Refs:` footer. Never push.
 
 ## 5. Report
 
-Give the spec's ID, path and commit hash, and the next step: `/to-tickets S-NNNN`. Then stop: never continue to tickets or implementation.
+List the specs (ID, title, path) and give the commit hash. Next step: `/to-tickets S-NNNN` for each spec. Then stop: never continue to tickets or implementation.
