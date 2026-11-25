@@ -25,7 +25,7 @@ T-0033 adds `/odhyp:survey`, which drafts a glossary, diagrams and ADRs for an e
 
 ## Files
 
-- `plugins/odhyp/skills/setup/SKILL.md` (change: step 1 notes the checks, step 4 reports the suggestion)
+- `plugins/odhyp/skills/setup/SKILL.md` (change: step 1 notes source code, step 4 checks the docs and reports the suggestion)
 
 ## Acceptance criteria
 
