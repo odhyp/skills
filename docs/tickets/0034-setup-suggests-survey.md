@@ -4,7 +4,7 @@ title: Setup suggests survey for existing code
 type: feat
 breaking: false
 scope: setup
-status: ready-for-agent
+status: resolved
 spec: S-0006
 depends_on: [T-0033]
 source: to-tickets
@@ -29,11 +29,11 @@ T-0033 adds `/odhyp:survey`, which drafts a glossary, diagrams and ADRs for an e
 
 ## Acceptance criteria
 
-- [ ] Step 1 notes whether the project has source code outside the odhyp folders and which of glossary, diagrams and ADRs exist.
-- [ ] Step 4 suggests `/odhyp:survey` and names what is missing when the rule applies, and says nothing about it otherwise (greenfield with no code, or all three present).
-- [ ] `setup` still writes nothing new and stays safe to re-run.
-- [ ] `docs/diagrams/workflow.mmd` still matches (its `/setup` → `/survey` branch came with T-0033).
-- [ ] `claude plugin validate .` and `claude plugin validate plugins/odhyp` pass.
+- [x] Step 1 notes whether the project has source code outside the odhyp folders and which of glossary, diagrams and ADRs exist.
+- [x] Step 4 suggests `/odhyp:survey` and names what is missing when the rule applies, and says nothing about it otherwise (greenfield with no code, or all three present).
+- [x] `setup` still writes nothing new and stays safe to re-run.
+- [x] `docs/diagrams/workflow.mmd` still matches (its `/setup` → `/survey` branch came with T-0033).
+- [x] `claude plugin validate .` and `claude plugin validate plugins/odhyp` pass.
 
 ## Out of scope
 
@@ -43,3 +43,5 @@ T-0033 adds `/odhyp:survey`, which drafts a glossary, diagrams and ADRs for an e
 ## Questions
 
 ## Notes
+Step 1 of `setup/SKILL.md` gains one bullet: source code outside the odhyp folders, and which of glossary, `.mmd` diagrams and ADRs exist, checked at the paths step 3 writes into the block (so a changed base path is honoured). Step 4's next step starts with `/odhyp:survey`, naming what is missing, only when code exists and something is missing; otherwise it says nothing about survey. Read-only checks, so setup still writes nothing new. `workflow.mmd` already had the `/setup` → `/survey` branch; unchanged.
+Review fix now: step 1 checks at the existing block or default paths; step 4 rechecks at the paths step 3 wrote, since step 2 can change them.
