@@ -4,7 +4,7 @@ title: Manual glossary run-through on a scratch repo
 type: test
 breaking: false
 scope: glossary
-status: ready-for-human
+status: resolved
 spec: S-0005
 depends_on: [T-0031]
 source: to-tickets
@@ -25,11 +25,11 @@ The skills are prose with no automated tests, so S-0005 is checked by one manual
 - none in this repo (scratch repo only)
 
 ## Acceptance criteria
-- [ ] `/odhyp:setup` on a scratch repo writes `- Glossary: \`GLOSSARY.md\`` into the block, creates no glossary file, and shows the path in its report.
-- [ ] A re-run of `setup` keeps the line unchanged; with an existing `CONTEXT.md`, a fresh setup picks it.
-- [ ] Removing the `Glossary:` line: `shape`, `to-spec`, `to-tickets` and `implement` run without warnings.
-- [ ] `/odhyp:shape` on a small change that coins a term prints `## Glossary` in its summary; a change coining none prints no such section.
-- [ ] `/odhyp:implement this` creates `GLOSSARY.md` with `# Glossary` and the term, in the same commit as the code.
+- [x] `/odhyp:setup` on a scratch repo writes `- Glossary: \`GLOSSARY.md\`` into the block, creates no glossary file, and shows the path in its report.
+- [x] A re-run of `setup` keeps the line unchanged; with an existing `CONTEXT.md`, a fresh setup picks it.
+- [x] Removing the `Glossary:` line: `shape`, `to-spec`, `to-tickets` and `implement` run without warnings.
+- [x] `/odhyp:shape` on a small change that coins a term prints `## Glossary` in its summary; a change coining none prints no such section.
+- [x] `/odhyp:implement this` creates `GLOSSARY.md` with `# Glossary` and the term, in the same commit as the code.
 
 ## Out of scope
 - Fixing anything found: file follow-up tickets.
@@ -37,3 +37,4 @@ The skills are prose with no automated tests, so S-0005 is checked by one manual
 ## Questions
 
 ## Notes
+- 2026-11-25: Run through by hand on the Polaris repo; all acceptance criteria passed, nothing to follow up.
