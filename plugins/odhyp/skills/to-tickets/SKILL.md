@@ -7,6 +7,8 @@ argument-hint: "[S-NNNN | finding numbers]"
 
 Read the odhyp block in `CLAUDE.md` for the paths (No odhyp block: stop and say to run `/odhyp:setup`), then `${CLAUDE_PLUGIN_ROOT}/templates/TICKET-FORMAT.md`: the single source for fields, statuses, sections and both examples. Start each file from `${CLAUDE_PLUGIN_ROOT}/templates/ticket.md`.
 
+**Glossary:** when the odhyp block has a `Glossary:` line and its file exists, read `${CLAUDE_PLUGIN_ROOT}/templates/GLOSSARY-FORMAT.md`, then the file, and use its terms, never an `_Avoid_` word, in the breakdown and the tickets. When the line or the file is missing, skip the glossary silently.
+
 **Input:** one of
 - the spec `$ARGUMENTS` (S-NNNN);
 - findings selected from this conversation, from `session-review` or `code-review` (e.g. `$ARGUMENTS` = `2` or `1,3`);

@@ -9,6 +9,8 @@ Planned work, the features and changes the user decides to make, starts here, an
 
 This skill writes no specs, tickets or code. Its only output besides the agreement is diagrams, in step 4.
 
+**Glossary:** read the odhyp block in `CLAUDE.md` only for its `Glossary:` line; a missing block does not stop this skill. With the line present and its file existing, read `${CLAUDE_PLUGIN_ROOT}/templates/GLOSSARY-FORMAT.md`, then the file, and use its terms, never an `_Avoid_` word, in your questions and the summary. When the line or the file is missing, skip the glossary silently.
+
 ## 1. Explore
 
 Run this step only when the request is too vague to size: the problem, who has it, or what done looks like is unknown. A clear request skips to step 2.

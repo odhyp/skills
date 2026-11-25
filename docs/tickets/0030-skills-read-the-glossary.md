@@ -4,7 +4,7 @@ title: Term-writing skills read the glossary
 type: feat
 breaking: false
 scope: glossary
-status: ready-for-agent
+status: resolved
 spec: S-0005
 depends_on: [T-0029]
 source: to-tickets
@@ -29,11 +29,11 @@ Agents drift into synonyms a project rejected because nothing tells a fresh sess
 - plugins/odhyp/skills/to-tickets/SKILL.md (change)
 
 ## Acceptance criteria
-- [ ] Each of the three skills says to read the `Glossary:` path, the format and the file, and to use its terms and avoid its `_Avoid_` words.
-- [ ] Each says to skip silently when the line or file is missing.
-- [ ] `shape` reads the block only for that line and still runs with no odhyp block.
-- [ ] `implement` and `code-review` are unchanged.
-- [ ] `claude plugin validate .` and `claude plugin validate plugins/odhyp` pass.
+- [x] Each of the three skills says to read the `Glossary:` path, the format and the file, and to use its terms and avoid its `_Avoid_` words.
+- [x] Each says to skip silently when the line or file is missing.
+- [x] `shape` reads the block only for that line and still runs with no odhyp block.
+- [x] `implement` and `code-review` are unchanged.
+- [x] `claude plugin validate .` and `claude plugin validate plugins/odhyp` pass.
 
 ## Out of scope
 - Writing glossary changes (`## Glossary` in the shape summary, `implement` writing the file): T-0031.
@@ -42,3 +42,4 @@ Agents drift into synonyms a project rejected because nothing tells a fresh sess
 ## Questions
 
 ## Notes
+- Added a `**Glossary:**` paragraph to shape, to-spec and to-tickets, after their existing block/format read. shape reads the block only for that line and keeps running without it. implement and code-review untouched.
