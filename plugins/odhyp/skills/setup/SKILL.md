@@ -19,7 +19,7 @@ Look before asking. Note:
 - An existing version, when there is no block: a `VERSION` file, `__version__` in the package source, `version` in `pyproject.toml` or `package.json`, or the latest tag (`git describe --tags --abbrev=0`).
 - A glossary file: the first of `GLOSSARY.md`, `CONTEXT.md`, `docs/glossary.md` that exists.
 - An existing tracker outside the odhyp folders (e.g. `.scratch/`, `issues/`, `todo/`): Markdown files that read as issues, tasks, plans or PRDs.
-- For the survey suggestion in step 4: whether the project has source code outside the odhyp folders (files in the stack's languages, not only docs and config), and which of these exist at the existing block's paths, or the defaults without one: the glossary file, any `.mmd` in the diagrams folder, any ADR in the decisions folder. Step 4 checks the three again at the paths step 3 wrote, in case step 2 changed them.
+- For the survey suggestion in step 4: whether the project has source code outside the odhyp folders (files in the stack's languages, not only docs and config). Step 4 checks the glossary, diagrams and ADRs, once step 3 has settled their paths.
 
 ## 2. Ask
 
@@ -43,4 +43,4 @@ Ask in one round, each with a recommended answer from step 1:
 
 ## 4. Report
 
-List each target from step 3 as created, updated or unchanged, and each `.gitkeep` deleted, any odhyp folder git still ignores, the import's ID map, and the glossary path (say the user can change it in the block), then the next step. When step 1 found source code and any of glossary, diagrams or ADRs is missing at the block's paths, it starts with `/odhyp:survey` to draft them, naming which are missing; otherwise say nothing about survey. Then `/shape` for planned work, or describe a bug whose cause is unknown for `diagnose`. Leave the changes uncommitted for the user to review.
+List each target from step 3 as created, updated or unchanged, and each `.gitkeep` deleted, any odhyp folder git still ignores, the import's ID map, and the glossary path (say the user can change it in the block), then the next step. When step 1 found source code and, at the paths step 3 wrote into the block, the glossary file, any `.mmd` in the diagrams folder or any ADR in the decisions folder is missing, it starts with `/odhyp:survey` to draft them, naming which are missing; otherwise say nothing about survey. Then `/shape` for planned work, or describe a bug whose cause is unknown for `diagnose`. Leave the changes uncommitted for the user to review.
