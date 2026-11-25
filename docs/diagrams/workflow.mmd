@@ -45,8 +45,11 @@ flowchart TD
         ticket: must-fix in Notes · direct: report only`"]
         S1["`/session-review 👤
         optional`"]
+        D2["`apply fix-now findings
+        once · review again`"]
         C1 --> D1
-        D1 -->|"Pass"| C2
+        D1 -->|"Pass (no fix-now, or second review)"| C2
+        D1 -->|"Pass with fix-now (first review)"| D2 --> D1
         D1 -->|"Must-fix"| C3
     end
 
