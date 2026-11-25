@@ -58,6 +58,7 @@ In direct mode: unclear → ask the user and stop; too big → stop and suggest 
 ## 3. Keep the records true
 
 - If `diagrams` is not empty, update those diagrams using the **diagram** skill.
+- **Glossary:** when the brief (ticket, or in direct mode the shape summary's `## Glossary`) lists glossary entries and the odhyp block has a `Glossary:` line, read `${CLAUDE_PLUGIN_ROOT}/templates/GLOSSARY-FORMAT.md` and apply them to that file: add new terms, rewrite changed ones, and delete removed ones with every mention of them. A missing file is created with a `# Glossary` H1 when the first term arrives. No `Glossary:` line: write nothing and say nothing. The glossary file is committed with the code in step 5. Do not otherwise read the glossary.
 - If the work proved the spec wrong, add an entry under the spec's `## Decisions`: `date · T-NNNN · what changed and why`.
 - Check off the acceptance criteria and append to `## Notes` what was done and anything a later reader needs.
 
@@ -72,7 +73,7 @@ Run the odhyp **code-review** skill (`odhyp:code-review`) with the ticket ID as 
 
 ## 5. Commit
 
-Set `status: resolved`. Stage the code, the tests, the ticket file and any diagram or spec files, and commit them together:
+Set `status: resolved`. Stage the code, the tests, the ticket file and any diagram, spec or glossary files, and commit them together:
 
 ```
 type(scope)!: subject
@@ -82,7 +83,7 @@ Refs: T-NNNN
 
 `type`, `scope` and `!` (only when `breaking: true`) come from the ticket. Commit to the current branch.
 
-In direct mode there is no ticket status to set; stage the code, the tests and any diagram or spec files. Pick `type` and `scope` from the change and commit `type(scope): subject` with no `Refs:` footer, unless the findings came from a review of ticket T-NNNN: then add `Refs: T-NNNN`. Findings that share type and scope share one commit; otherwise one commit each.
+In direct mode there is no ticket status to set; stage the code, the tests and any diagram, spec or glossary files. Pick `type` and `scope` from the change and commit `type(scope): subject` with no `Refs:` footer, unless the findings came from a review of ticket T-NNNN: then add `Refs: T-NNNN`. Findings that share type and scope share one commit; otherwise one commit each.
 
 ## 6. Stop
 

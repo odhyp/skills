@@ -95,6 +95,7 @@ Print the summary in this shape:
 ## Problem
 ## Decisions
 ## Out of scope
+## Glossary
 
 ## Next step
 
@@ -103,4 +104,5 @@ Print the summary in this shape:
 
 - **Feature:** `## Problem`, `## Decisions` (a numbered list) and `## Out of scope`.
 - **Small change:** `## Done when`, `## Could break` and `## Tested by` instead, two or three lines in all.
+- `## Glossary`, for both sizes and **only when the agreed work adds, changes or removes terms**: each new or changed term as an entry in the format of `${CLAUDE_PLUGIN_ROOT}/templates/GLOSSARY-FORMAT.md`, and each removed one as `**Term**: removed`. No term changes: leave the section out. `implement` later writes these into the glossary.
 - An Explore that ends without building prints `# Shape Summary` with only `## Next step`.

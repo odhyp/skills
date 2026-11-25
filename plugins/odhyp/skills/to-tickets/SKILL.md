@@ -28,7 +28,7 @@ Show the breakdown as a short list (title, type, depends on) and adjust it until
 - `source: to-tickets`, `parent: none`, `status: ready-for-agent` unless it needs a person.
 - **From a finding:** `source: session-review` or `source: code-review`; `parent:` the reviewed ticket if there is one, else `none`. `## Context` quotes the finding's evidence from this session.
 - **An `odhyp skill` finding outside the odhyp repo** (no `plugins/odhyp/.claude-plugin/plugin.json` at the repo root): the installed plugin is read-only, so print the ticket with `id: T-XXXX` for the user to number and copy into the odhyp repo; write nothing.
-- **Self-contained:** a fresh agent with only this ticket must be able to finish it. Copy into `## Decisions that apply` every spec decision the ticket depends on; never write "see spec". Name the files, write checkable acceptance criteria, and fence the scope in `## Out of scope`.
+- **Self-contained:** a fresh agent with only this ticket must be able to finish it. Copy into `## Decisions that apply` every spec decision the ticket depends on; never write "see spec". Copy the glossary entries (from the spec's `## Design` or the shape summary's `## Glossary`) whose terms the ticket introduces, changes or removes into its `## Decisions that apply` under a `Glossary:` line, so each entry lands in exactly one ticket. Name the files, write checkable acceptance criteria, and fence the scope in `## Out of scope`.
 - `diagrams` lists each existing diagram file whose code the ticket changes, or `[]`.
 - A trivial-bug `fix` states its known cause in one line in `## Context` and skips the root-cause sections.
 

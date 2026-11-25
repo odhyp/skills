@@ -4,7 +4,7 @@ title: Glossary changes travel with the work
 type: feat
 breaking: false
 scope: glossary
-status: ready-for-agent
+status: resolved
 spec: S-0005
 depends_on: [T-0030]
 source: to-tickets
@@ -31,10 +31,10 @@ After T-0030, `shape`, `to-spec` and `to-tickets` read the project glossary (pat
 - plugins/odhyp/skills/implement/SKILL.md (change)
 
 ## Acceptance criteria
-- [ ] `shape`'s Output section shows `## Glossary` in the summary, marked as present only when terms changed.
-- [ ] `to-spec` says to copy the list into `## Design`; `to-tickets` says to carry the needed entries into each ticket.
-- [ ] `implement` says to apply the brief's glossary entries in the same commit as the code, create the file with `# Glossary` when missing, and do nothing when the block has no `Glossary:` line.
-- [ ] `claude plugin validate .` and `claude plugin validate plugins/odhyp` pass.
+- [x] `shape`'s Output section shows `## Glossary` in the summary, marked as present only when terms changed.
+- [x] `to-spec` says to copy the list into `## Design`; `to-tickets` says to carry the needed entries into each ticket.
+- [x] `implement` says to apply the brief's glossary entries in the same commit as the code, create the file with `# Glossary` when missing, and do nothing when the block has no `Glossary:` line.
+- [x] `claude plugin validate .` and `claude plugin validate plugins/odhyp` pass.
 
 ## Out of scope
 - `code-review` checking that listed terms reached the glossary.
@@ -43,3 +43,6 @@ After T-0030, `shape`, `to-spec` and `to-tickets` read the project glossary (pat
 ## Questions
 
 ## Notes
+- shape: `## Glossary` added to the summary template before `## Next step`, with a rule that it appears for both sizes only when terms change; removed terms read `**Term**: removed`.
+- to-spec copies the list into `## Design` under a `Glossary:` line; to-tickets copies each needed entry into one ticket's `## Decisions that apply` under a `Glossary:` line.
+- implement step 3 applies the entries (add, rewrite, delete with mentions), creates the file with `# Glossary` when missing, is silent without a `Glossary:` line; step 5 stages glossary files with the code.

@@ -16,7 +16,7 @@ The input is the design agreed earlier in this conversation (usually via `/shape
 
 - **ID:** next `S-` ID (see the spec format).
 - **File:** `<specs>/NNNN-short-slug.md`, `status: draft`, `tickets: []`.
-- **Body:** every section of the format. `## Design` records the decisions as agreed, including the reasons that are not obvious. `## Decisions` starts empty.
+- **Body:** every section of the format. `## Design` records the decisions as agreed, including the reasons that are not obvious. When the agreed design has a `## Glossary` list, copy it unchanged into `## Design` under a `Glossary:` line. `## Decisions` starts empty.
 
 Show the full draft (frontmatter and body) in chat. Write nothing to disk yet.
 
