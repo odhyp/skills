@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 Read the odhyp block in `CLAUDE.md` for the specs and releases folders (No odhyp block: stop and say to run `/odhyp:setup`), then `${CLAUDE_PLUGIN_ROOT}/templates/SPEC-FORMAT.md`: the single source for fields, statuses and sections. Start each file from `${CLAUDE_PLUGIN_ROOT}/templates/spec.md`.
 
-**Glossary:** when the odhyp block has a `Glossary:` line and its file exists, read `${CLAUDE_PLUGIN_ROOT}/templates/GLOSSARY-FORMAT.md`, then the file, and use its terms, never an `_Avoid_` word, in your questions and the spec. When the line or the file is missing, skip the glossary silently.
+**Glossary:** when the odhyp block has a `Glossary:` line and its file exists, read `${CLAUDE_PLUGIN_ROOT}/templates/GLOSSARY-FORMAT.md`, then the file, and use its terms, never an `_Avoid_` word, in your questions and the specs. When the line or the file is missing, skip the glossary silently.
 
 ## 1. Check the input
 
@@ -24,7 +24,7 @@ Write each spec to disk, uncommitted. In chat, show only a table (ID, title, pat
 
 ## 3. Confirm
 
-Ask the user to approve the specs or ask for changes. For each revision request, edit the files and report one line per changed spec saying what changed. Only an explicit approval ends the loop; a reply that approves and also asks for a change is a revision and needs another round. Never skip the loop. If the user rejects or drops the specs, delete the files this run wrote, and nothing else.
+Ask the user to approve the specs or ask for changes. For each revision request, edit the files and report one line per changed spec saying what changed. When a revision drops or merges specs, delete the files no longer used and renumber the rest (file name and `id`) so the IDs stay consecutive. Only an explicit approval ends the loop; a reply that approves and also asks for a change is a revision and needs another round. Never skip the loop. If the user rejects or drops the specs, delete the files this run wrote, and nothing else.
 
 ## 4. Commit
 
