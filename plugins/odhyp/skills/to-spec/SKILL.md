@@ -24,7 +24,7 @@ Write each spec to disk, uncommitted. In chat, show only a table (ID, title, pat
 
 ## 3. Confirm
 
-Ask the user to approve the specs or ask for changes. For each revision request, edit the files and report one line per changed spec saying what changed. When a revision drops or merges specs, delete the files no longer used and renumber the rest (file name and `id`) so the IDs stay consecutive. Only an explicit approval ends the loop; a reply that approves and also asks for a change is a revision and needs another round. Never skip the loop. If the user rejects or drops the specs, delete the files this run wrote, and nothing else.
+Ask the user to approve the specs or ask for changes. For each revision request, edit the files and report one line per changed spec saying what changed. When a revision drops or merges specs, delete the files no longer used and renumber the rest of this run's files (file name, `id`, and every mention that names them) so the IDs stay consecutive. Only an explicit approval ends the loop; a reply that approves and also asks for a change is a revision and needs another round. Never skip the loop. If the user rejects or drops the specs, delete the files this run wrote, and nothing else.
 
 ## 4. Commit
 
