@@ -17,23 +17,27 @@ Each step below says what differs in direct mode.
 
 ### Ticket mode
 
-The ticket is `$ARGUMENTS`. With no argument, pick the next eligible one: an `in-progress` ticket first, otherwise the lowest-numbered `ready-for-agent` ticket whose `depends_on` are all `resolved`. State its ID and title.
+The ticket is `$ARGUMENTS`. With no argument, pick the next eligible one: an `in-progress` ticket first, then a `needs-info` ticket with every item under `## Questions` answered, otherwise the lowest-numbered `ready-for-agent` ticket whose `depends_on` are all `resolved`. State its ID and title.
 
-- `needs-info` with every item under `## Questions` answered: set `status: ready-for-agent` and continue.
-- `in-progress`: resume. Check `git status` and `## Notes`; must-fix findings from an earlier review are listed there, and fixing them comes first.
-- Otherwise set `status: in-progress`.
-
-Refuse, change no ticket, and stop when:
+Check these first, in this order, before changing any file. Refuse, change no ticket, and stop when:
 - it is `resolved` or `wontfix`: say so;
-- it is `needs-info` with unanswered questions: show them, and say to answer them inline under `## Questions` in the ticket's file path; the next `/implement` then sets `ready-for-agent`;
+- it is `needs-info` with unanswered questions: show them, and say to answer them inline under `## Questions` in the ticket's file path and commit; the next `/implement` then sets `ready-for-agent`;
 - it is `ready-for-human`: say what the person has to do, then to set `status: resolved` (done by hand) or `status: ready-for-agent` (an agent should build it) in the ticket's file path, and commit;
-- any `depends_on` ticket is not `resolved`: list them.
+- any `depends_on` ticket is not `resolved`: list them;
+- it is `in-progress` and its `## Notes` holds two or more `Must-fix (review):` or `Blocked:` entries (one per failed run): show them and give the ways out: fix it by hand, set `status: resolved` and commit the code with the ticket file; delete the entries to allow another try; or discard the ticket's code changes, set `status: wontfix` with the reason under `## Notes` and commit the ticket file. Both commits end with `Refs: T-NNNN`;
+- the ticket is not `in-progress` and `git status --porcelain` prints anything: list the changes and say to commit, stash or discard them first;
+- it is not `in-progress` and the test or lint command fails before any change: show the failure and say to fix it first.
+
+Otherwise:
+- `needs-info` with every item under `## Questions` answered: set `status: ready-for-agent` and continue.
+- `in-progress`: resume. Check `git status` and `## Notes`; must-fix findings from an earlier review and `Blocked:` entries are listed there, and fixing them comes first.
+- Otherwise set `status: in-progress`.
 
 With no argument and no eligible ticket, change nothing and stop:
 - no open tickets (every ticket is `resolved` or `wontfix`): say so and point to `/shape` for new work;
 - otherwise: list each open ticket with the refusal reason above that blocks it.
 
-After a `needs-info`, `ready-for-human` or `depends_on` refusal, or the open-ticket list, add one line: to drop a blocking ticket instead, set `status: wontfix` in its file with the reason under `## Notes`.
+After a `needs-info`, `ready-for-human` or `depends_on` refusal, or the open-ticket list, add one line: to drop a blocking ticket instead, set `status: wontfix` in its file with the reason under `## Notes`, and commit.
 
 ### Direct mode
 
@@ -50,10 +54,13 @@ For each acceptance criterion (direct mode: each expected outcome): write the te
 Then run the full test and lint commands, in both modes. **Done when** both are clean.
 
 **Never guess.** When the ticket turns out to be:
-- **unclear**: set `status: needs-info`, write the questions under `## Questions`, and stop;
-- **too big** for one session: narrow this ticket to a first slice that fits, write the rest as new self-contained tickets (`parent:` this ticket, `source: implement`, depending on it), note the split in `## Notes`, set this ticket back to `ready-for-agent`, and stop.
+- **unclear**: set `status: needs-info`, write the questions under `## Questions`, discard this ticket's code changes, commit the ticket file alone as `chore(<scope>): ask questions on T-NNNN` with `Refs: T-NNNN`, and stop;
+- **too big** for one session: narrow this ticket to a first slice that fits, write the rest as new self-contained tickets (`parent:` this ticket, `source: implement`, depending on it), note the split in `## Notes`, set this ticket back to `ready-for-agent`, discard this ticket's code changes, commit the ticket files alone as `chore(<scope>): split T-NNNN` with `Refs: T-NNNN`, and stop;
+- **stuck red**: the test or lint command still fails after a real attempt: keep the code and `status: in-progress`, add `Blocked:` under `## Notes` with the failing test or lint error and what was tried, tell the user the next step is `/implement` on this ticket again, and stop.
 
-In direct mode: unclear → ask the user and stop; too big → stop and suggest `/to-tickets`. Direct mode never creates a ticket unless the user asks.
+Discard code changes with `git restore --staged --worktree <path>` for changed files and by deleting new ones. Commit the ticket files with `git add -- <ticket files>`, then `git commit -m "<subject>" -m "Refs: T-NNNN" -- <ticket files>`, so new files are tracked and nothing else staged goes in. `<scope>` is the ticket's.
+
+In direct mode: unclear → ask the user and stop; too big → stop and suggest `/to-tickets`; stuck red → report the failure and stop. Direct mode never creates a ticket unless the user asks.
 
 ## 3. Keep the records true
 
@@ -68,8 +75,8 @@ In direct mode there is no ticket to update; update any existing diagram the wor
 
 Run the odhyp **code-review** skill (`odhyp:code-review`) with the ticket ID as its argument (direct mode: the brief). It reviews the uncommitted diff in a fresh context and returns a verdict and ranked findings; it changes nothing.
 
-- **MUST-FIX:** commit nothing. Add the Critical and High findings under `## Notes` as `Must-fix (review):` with each `path:line` and required change, keep `status: in-progress`, and stop. Tell the user the findings and that the next step is `/implement` on this ticket again. In direct mode: commit nothing, report the findings, say they exist only in this session and a `/clear` loses them, offer `/to-tickets N` (N = the finding numbers) to keep them or `/implement N` to fix them now, and stop.
-- **PASS:** if there are Medium or Low findings marked `fix now`, apply them (ticket mode: note them under `## Notes`), get the test and lint commands clean as in step 2, and run code-review once more on the new diff; its verdict decides as above, but a second PASS changes nothing further, and a second MUST-FIX also reports the first review's `ticket` findings to the user (ticket mode: also under `## Notes`). Then continue to step 5 and commit the diff as reviewed. Whenever findings from both reviews are reported, number them as one list: the first review's open findings first, then the second review's, continuing the count, so each `N` names one finding; applied `fix now` findings get no number.
+- **MUST-FIX:** commit nothing. Add one `Must-fix (review):` entry under `## Notes` for this run, listing each Critical and High finding with its `path:line` and required change, keep `status: in-progress`, and stop. Tell the user the findings and that the next step is `/implement` on this ticket again. In direct mode: commit nothing, report the findings, say they exist only in this session and a `/clear` loses them, offer `/to-tickets N` (N = the finding numbers) to keep them or `/implement N` to fix them now, and stop.
+- **PASS:** if there are Medium or Low findings marked `fix now`, apply them (ticket mode: note them under `## Notes`), get the test and lint commands clean as in step 2, and run code-review once more on the new diff; its verdict decides as above, but a second PASS changes nothing further, and a second MUST-FIX also reports the first review's `ticket` findings to the user (ticket mode: also under `## Notes`). In ticket mode, add the open non-blocking findings of each review run under `## Notes` as `Findings (review):` with each `path:line`, numbered as in step 6. Then continue to step 5 and commit the diff as reviewed. Whenever findings from both reviews are reported, number them as one list: the first review's open findings first, then the second review's, continuing the count, so each `N` names one finding; applied `fix now` findings get no number.
 
 ## 5. Commit
 
