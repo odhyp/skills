@@ -17,7 +17,7 @@ Each step below says what differs in direct mode.
 
 ### Ticket mode
 
-The ticket is `$ARGUMENTS`. With no argument, pick the next eligible one: an `in-progress` ticket first, then a `needs-info` ticket with every item under `## Questions` answered, otherwise the lowest-numbered `ready-for-agent` ticket whose `depends_on` are all `resolved`. State its ID and title.
+The ticket is `$ARGUMENTS`. With no argument, pick the next eligible one: an `in-progress` ticket first, then a `needs-info` ticket with every item under `## Questions` answered and every `depends_on` `resolved`, otherwise the lowest-numbered `ready-for-agent` ticket whose `depends_on` are all `resolved`. State its ID and title. An `in-progress` ticket refused below ends the pick with its own refusal; never move on to another ticket.
 
 Check these first, in this order, before changing any file. Refuse, change no ticket, and stop when:
 - it is `resolved` or `wontfix`: say so;
@@ -76,7 +76,7 @@ In direct mode there is no ticket to update; update any existing diagram the wor
 Run the odhyp **code-review** skill (`odhyp:code-review`) with the ticket ID as its argument (direct mode: the brief). It reviews the uncommitted diff in a fresh context and returns a verdict and ranked findings; it changes nothing.
 
 - **MUST-FIX:** commit nothing. Add one `Must-fix (review):` entry under `## Notes` for this run, listing each Critical and High finding with its `path:line` and required change, keep `status: in-progress`, and stop. Tell the user the findings and that the next step is `/implement` on this ticket again. In direct mode: commit nothing, report the findings, say they exist only in this session and a `/clear` loses them, offer `/to-tickets N` (N = the finding numbers) to keep them or `/implement N` to fix them now, and stop.
-- **PASS:** if there are Medium or Low findings marked `fix now`, apply them (ticket mode: note them under `## Notes`), get the test and lint commands clean as in step 2, and run code-review once more on the new diff; its verdict decides as above, but a second PASS changes nothing further, and a second MUST-FIX also reports the first review's `ticket` findings to the user (ticket mode: also under `## Notes`). In ticket mode, add the open non-blocking findings of each review run under `## Notes` as `Findings (review):` with each `path:line`, numbered as in step 6. Then continue to step 5 and commit the diff as reviewed. Whenever findings from both reviews are reported, number them as one list: the first review's open findings first, then the second review's, continuing the count, so each `N` names one finding; applied `fix now` findings get no number.
+- **PASS:** if there are Medium or Low findings marked `fix now`, apply them (ticket mode: note them under `## Notes`), get the test and lint commands clean as in step 2, and run code-review once more on the new diff; its verdict decides as above, but a second PASS changes nothing further, and a second MUST-FIX also reports the first review's `ticket` findings to the user. In ticket mode, whatever the second verdict, add the open non-blocking findings of each review run under `## Notes` as `Findings (review):` with each `path:line`, numbered as in step 6. Then, on a PASS, continue to step 5 and commit the diff as reviewed. Whenever findings from both reviews are reported, number them as one list: the first review's open findings first, then the second review's, continuing the count, so each `N` names one finding; applied `fix now` findings get no number.
 
 ## 5. Commit
 
