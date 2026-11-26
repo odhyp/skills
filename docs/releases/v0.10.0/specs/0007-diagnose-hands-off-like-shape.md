@@ -1,7 +1,7 @@
 ---
 id: S-0007
 title: Diagnose hands off its findings like shape
-status: accepted
+status: done
 tickets: [T-0037]
 ---
 

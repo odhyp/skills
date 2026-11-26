@@ -1,7 +1,7 @@
 ---
 id: S-0006
 title: Survey skill for existing codebases
-status: accepted
+status: done
 tickets: [T-0033, T-0034, T-0035]
 ---
 

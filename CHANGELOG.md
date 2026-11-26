@@ -5,6 +5,24 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+## [0.10.0] - 2026-11-26
+
+### Added
+
+- `survey` reads an existing codebase and drafts the missing glossary, diagrams and ADRs. It writes ADRs only from reasons it finds stated (T-0033).
+- `setup` suggests `/odhyp:survey` for projects that already have code (T-0034).
+
+### Changed
+
+- `diagnose` ends like `shape`: a `# Diagnosis Summary` of numbered findings and a next step of `/implement N` or `/to-tickets N`, instead of writing and committing a ticket itself. `to-tickets`, `implement` and TICKET-FORMAT accept those findings (T-0037).
+
+### Fixed
+
+- Eight rules that contradicted each other across the odhyp skills and formats now agree, which fixes the survey → to-adr and implement → code-review handoffs (T-0036).
+- `survey` renumbers dropped ADR drafts and reads PR merge commits (T-0033).
+
+Release notes: [docs/releases/v0.10.0](docs/releases/v0.10.0/RELEASE.md)
+
 ## [0.9.0] - 2026-11-25
 
 ### Added
