@@ -45,7 +45,35 @@ Move into `<releases>/vX.Y.Z/`:
 - `tickets/`: the `resolved` and `wontfix` tickets;
 - `specs/`: the `done` specs.
 
-Write `<releases>/vX.Y.Z/RELEASE.md`: the version, the date, a two-line summary, and the shipped tickets by type (ID and title), the `wontfix` tickets under **Dropped**, and the specs archived.
+Write `<releases>/vX.Y.Z/RELEASE.md` in exactly this shape, leaving out `## Dropped` or `## Specs` when empty:
+
+```markdown
+# vX.Y.Z
+
+Released YYYY-MM-DD.
+
+<two-line summary>
+
+## Tickets
+
+### feat
+
+- T-NNNN <title>
+
+### fix
+
+- T-NNNN <title>
+
+## Dropped
+
+- T-NNNN <title>
+
+## Specs
+
+- S-NNNN <title>
+```
+
+The date line comes right after the heading, on its own line: `Released`, one space, the ISO date of the CHANGELOG section, and a full stop. The summary is the first paragraph after it. Under `## Tickets`, one `### <type>` per type of shipped ticket; the `wontfix` tickets go under `## Dropped`, and the archived specs under `## Specs`.
 
 ## 7. Commit, tag and push
 
