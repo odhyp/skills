@@ -11,7 +11,7 @@ Read the odhyp block in `CLAUDE.md` for the paths (No odhyp block: stop and say 
 
 **Input:** one of
 - the spec `$ARGUMENTS` (S-NNNN);
-- findings selected from this conversation, from `session-review` or `code-review` (e.g. `$ARGUMENTS` = `2` or `1,3`);
+- findings selected from this conversation, from `session-review`, `code-review` or `diagnose` (e.g. `$ARGUMENTS` = `2` or `1,3`);
 - otherwise the small change agreed earlier in this conversation.
 
 Without a spec, every ticket gets `spec: none`.
@@ -27,6 +27,7 @@ Show the breakdown as a short list (title, type, depends on) and adjust it until
 - **IDs:** next `T-` ID (see the ticket format), then onward in order.
 - `source: to-tickets`, `parent: none`, `status: ready-for-agent` unless it needs a person.
 - **From a finding:** `source: session-review` or `source: code-review`; `parent:` the reviewed ticket if there is one, else `none`. `## Context` quotes the finding's evidence from this session.
+- **From a diagnose finding:** `type: fix` (or `perf` for slowness), `source: diagnose`, `parent: none`. Copy its `### Reproduction`, `### Expected / Actual`, `### Root cause` and `### Failing test to write first` into the `##` sections of the same names right after `## Context`, and its `### Constraints` into `## Decisions that apply`.
 - **An `odhyp skill` finding outside the odhyp repo** (no `plugins/odhyp/.claude-plugin/plugin.json` at the repo root): the installed plugin is read-only, so print the ticket with `id: T-XXXX` for the user to number and copy into the odhyp repo; write nothing.
 - **Self-contained:** a fresh agent with only this ticket must be able to finish it. Copy into `## Decisions that apply` every spec decision the ticket depends on; never write "see spec". Copy the glossary entries (from the spec's `## Design` or the shape summary's `## Glossary`) whose terms the ticket introduces, changes or removes into its `## Decisions that apply` under a `Glossary:` line, so each entry lands in exactly one ticket. Name the files, write checkable acceptance criteria, and fence the scope in `## Out of scope`.
 - `diagrams` lists each existing diagram file whose code the ticket changes, or `[]`.

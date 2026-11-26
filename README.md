@@ -2,7 +2,7 @@
 
 My engineering workflow as Claude Code skills, installed once and used in every project.
 
-**Tickets are the handoff between fresh contexts.** Planning and diagnosing write tickets; review findings go straight to `/implement` or become tickets, your choice. Only `implement` writes code. Run `/clear` between tickets.
+**Tickets are the handoff between fresh contexts.** Planning writes tickets; diagnosis and review findings go straight to `/implement` or become tickets, your choice. Only `implement` writes code. Run `/clear` between tickets.
 
 ## Install
 
@@ -27,8 +27,8 @@ How the skills hand off, from `/setup` to `/release`: [`docs/diagrams/workflow.m
 | `survey`         | Manual     | Maps an existing codebase. Reads its code, git history and docs, drafts the missing glossary entries, diagrams and ADRs (only where a commit or comment states the reason), confirms them with you in a loop, then commits them. Only adds; reports drift. |
 | `shape`          | Manual     | Settles what we are building and why. Entry point for ideas, features, small changes and known-cause bugs. Turns a vague idea into a clear need, sizes it, grills you in short rounds, draws diagrams if the structure changes, then names the next step.   |
 | `to-spec`        | Manual     | Records what we agreed to build: turns the agreed design into one or more specs (`S-NNNN`), confirms them with you in a loop, then commits them.                                                                                                            |
-| `to-tickets`     | Manual     | Splits a spec, review findings, or an agreed small change into self-contained tickets (`T-NNNN`), confirms them with you in a loop, then commits them.                                                                                                      |
-| `diagnose`       | Auto       | Finds why it is broken. When you report a bug whose cause is unknown: reproduces it, finds the root cause, drafts a `fix` ticket, confirms it with you in a loop, then commits it. Does not fix.                                                            |
+| `to-tickets`     | Manual     | Splits a spec, review or diagnosis findings, or an agreed small change into self-contained tickets (`T-NNNN`), confirms them with you in a loop, then commits them.                                                                                                      |
+| `diagnose`       | Auto       | Finds why it is broken. When you report a bug whose cause is unknown: reproduces it, finds the root cause, then prints numbered findings for `/implement N` or `/to-tickets N`. Writes nothing; does not fix.                                               |
 | `diagram`        | Auto       | Shows what the system looks like. Creates or updates the `.mmd` diagrams: on request, from `shape`, or when a change makes an existing diagram wrong.                                                                                                       |
 | `implement`      | Manual     | `/odhyp:implement @<ticket>` or `/odhyp:implement N`: builds one ticket or a direct request (a review finding, a small change) test-first, runs `code-review`, then commits on a pass or stops with the must-fix findings. The only skill that writes code. |
 | `code-review`    | Auto       | Answers what is wrong with this code. Reviews the uncommitted diff against the ticket in a forked subagent, before the commit, and grades findings by severity. Writes no tickets. Also reviews a ticket's commits on request.                              |

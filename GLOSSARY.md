@@ -28,6 +28,10 @@ _Avoid_: adopt, onboard, backfill
 The conversation that turns an idea, even a vague one, a small change or a known-cause bug into agreed work before any **Spec** or **Ticket** exists.
 _Avoid_: plan, refine, groom
 
+**Diagnose**:
+The **Skill** that reproduces a bug of unknown cause and finds its root cause from the code, then hands its numbered findings to `implement` or `to-tickets` the way **Shape** hands off agreed work.
+_Avoid_: debug, triage
+
 ### Work items
 
 **Ticket**:

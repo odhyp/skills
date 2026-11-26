@@ -25,7 +25,7 @@ flowchart TD
         B3["`/to-tickets 👤
         T-NNNN`"]
         B5["`diagnose 🤖
-        Root cause → fix ticket`"]
+        Root cause → Diagnosis Summary`"]
         B1 --> X2
         B1 -.->|"Explore: nothing to build"| B0
         B1 -.->|"Explore: bug, cause unknown"| B5
@@ -36,7 +36,8 @@ flowchart TD
     end
 
     B3 --> CL0["/clear ⚙️"]
-    B5 --> CL0
+    B5 -->|"/implement N"| C1
+    B5 -->|"/to-tickets N"| B3
     CL0 --> T[("`tickets
     ready-for-agent`")]
 

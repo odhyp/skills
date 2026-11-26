@@ -37,7 +37,7 @@ After a `needs-info`, `ready-for-human` or `depends_on` refusal, or the open-tic
 
 ### Direct mode
 
-Restate the selected finding(s) from this session, or the request, as one or two lines of expected outcome: the **brief**. A request like `this` means the session's last `# Shape Summary`; its `## Done when` and `## Tested by` are the brief. State it before building. Keep the scope to what was asked.
+Restate the selected finding(s) from this session, or the request, as one or two lines of expected outcome: the **brief**. A request like `this` means only the session's last `# Shape Summary`, never a `# Diagnosis Summary`; its `## Done when` and `## Tested by` are the brief. State it before building. Keep the scope to what was asked.
 
 Ask instead of building when the request is ambiguous; when it has significant architectural implications, send the user to `/shape`.
 
@@ -45,7 +45,7 @@ Ask instead of building when the request is ambiguous; when it has significant a
 
 In ticket mode, the ticket is the whole brief: build exactly its acceptance criteria, inside its `## Decisions that apply` and `## Out of scope`. Read the spec only as background. In direct mode, build exactly the brief.
 
-For each acceptance criterion (direct mode: each expected outcome): write the test, run it and watch it go **red**, write the code that turns it **green**, refactor. A `fix` ticket starts with its `## Failing test to write first`. Changes with no testable behaviour (docs, skill text) skip red/green.
+For each acceptance criterion (direct mode: each expected outcome): write the test, run it and watch it go **red**, write the code that turns it **green**, refactor. A `fix` ticket starts with its `## Failing test to write first`; in direct mode, a diagnose finding starts with its `### Failing test to write first`. Changes with no testable behaviour (docs, skill text) skip red/green.
 
 Then run the full test and lint commands, in both modes. **Done when** both are clean.
 

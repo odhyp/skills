@@ -4,12 +4,12 @@ title: Diagnose hands off its findings like shape
 type: fix
 breaking: false
 scope: diagnose
-status: ready-for-agent
+status: resolved
 spec: S-0007
 depends_on: [T-0036]
 source: to-tickets
 parent: none
-diagrams: []
+diagrams: [workflow, data-flow]
 released_in:
 ---
 
@@ -58,15 +58,15 @@ _Avoid_: debug, triage
 - GLOSSARY.md (change)
 
 ## Acceptance criteria
-- [ ] `diagnose` has no step that writes, stages or commits a file, and says the working tree ends exactly as it found it.
-- [ ] `diagnose` prints a `# Diagnosis Summary` of numbered findings, each with the five sections above, and a `## Next step` that picks `/implement N` or `/to-tickets N` by the direct-mode bar, prints both when mixed, and says to run it before `/clear`.
-- [ ] `diagnose` offers only `/to-tickets N` for an `odhyp skill` finding outside the odhyp repo.
-- [ ] `diagnose`'s description no longer says it writes a ticket.
-- [ ] `to-tickets` takes diagnose findings and writes them as `fix`/`perf` tickets with the four sections, `## Constraints` under `## Decisions that apply`, and `source: diagnose`.
-- [ ] `implement` direct mode starts a diagnose finding with its failing test; `this` still means only the last `# Shape Summary`.
-- [ ] TICKET-FORMAT: `diagnose` is gone from `ready-for-agent`'s setters; the `fix` section rule, the trivial-bug line and the example heading name `to-tickets` writing from a diagnose finding; `source: diagnose` remains.
-- [ ] `GLOSSARY.md` has the **Diagnose** entry in the `### Skills` group.
-- [ ] `claude plugin validate . && claude plugin validate plugins/odhyp` passes.
+- [x] `diagnose` has no step that writes, stages or commits a file, and says the working tree ends exactly as it found it.
+- [x] `diagnose` prints a `# Diagnosis Summary` of numbered findings, each with the five sections above, and a `## Next step` that picks `/implement N` or `/to-tickets N` by the direct-mode bar, prints both when mixed, and says to run it before `/clear`.
+- [x] `diagnose` offers only `/to-tickets N` for an `odhyp skill` finding outside the odhyp repo.
+- [x] `diagnose`'s description no longer says it writes a ticket.
+- [x] `to-tickets` takes diagnose findings and writes them as `fix`/`perf` tickets with the four sections, `## Constraints` under `## Decisions that apply`, and `source: diagnose`.
+- [x] `implement` direct mode starts a diagnose finding with its failing test; `this` still means only the last `# Shape Summary`.
+- [x] TICKET-FORMAT: `diagnose` is gone from `ready-for-agent`'s setters; the `fix` section rule, the trivial-bug line and the example heading name `to-tickets` writing from a diagnose finding; `source: diagnose` remains.
+- [x] `GLOSSARY.md` has the **Diagnose** entry in the `### Skills` group.
+- [x] `claude plugin validate . && claude plugin validate plugins/odhyp` passes.
 
 ## Out of scope
 - `/implement this` for a diagnosis.
@@ -77,3 +77,9 @@ _Avoid_: debug, triage
 ## Questions
 
 ## Notes
+Rewrote `diagnose` steps 3 to 6 as one `## 3. Hand off` step that reverts logging and prints the `# Diagnosis Summary`; it no longer reads TICKET-FORMAT. Findings are `## N. <title>` with the five sections as `###` headings so several findings nest under one summary; `to-tickets` maps them to the ticket's `##` sections, and `implement` names the `###` failing test. TICKET-FORMAT's `ready-for-agent` setters drop `diagnose` (T-0036 had added `implement` there).
+
+Must-fix (review):
+- `docs/diagrams/workflow.mmd:27` (and `:39`), `docs/diagrams/data-flow.mmd:84-86`: diagrams still show diagnose writing a ticket (`Root cause → fix ticket`, `B5 --> CL0`, next-ID and tickets edges). Redraw diagnose handing off to `implement` (direct) or `to-tickets` before `/clear`, drop its next-ID and tickets edges, and add `workflow` and `data-flow` to this ticket's `diagrams`.
+
+Resumed: fixed the must-fix by redrawing `workflow.mmd` (diagnose → `/implement N` or `/to-tickets N`, no `/clear` into tickets) and `data-flow.mmd` (diagnose reads only code; next-ID, TICKET-FORMAT and tickets edges removed), and set `diagrams: [workflow, data-flow]`. Also fixed README lines 5, 30 and 31 and added the `###` heading decision to S-0007 `## Decisions`.

@@ -53,3 +53,5 @@ The **Skill** that reproduces a bug of unknown cause and finds its root cause fr
 _Avoid_: debug, triage
 
 ## Decisions
+
+2026-11-26 · T-0037 · Diagnosis findings use `###` section headings under `## N. <title>`, not `##`, so several findings nest under one `# Diagnosis Summary`; to-tickets maps them to the ticket's `##` sections.

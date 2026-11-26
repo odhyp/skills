@@ -53,7 +53,7 @@ Identical to commit types.
 
 | status | Meaning | Set by |
 |---|---|---|
-| `ready-for-agent` | Fully specified; an agent can do it | to-tickets, diagnose, implement, human |
+| `ready-for-agent` | Fully specified; an agent can do it | to-tickets, implement, human |
 | `ready-for-human` | Needs a person (credentials, DNS, design call, manual test) | any skill, human |
 | `needs-info` | Blocked on the questions in `## Questions`; back to `ready-for-agent` once all are answered | implement (sets and clears), human (clears) |
 | `in-progress` | An agent is working on it (crash recovery) | implement |
@@ -106,8 +106,8 @@ What NOT to build here.
 <!-- implement appends what it did; wontfix reason -->
 ```
 
-**`fix` tickets from `diagnose`** add four sections right after `## Context`: `## Reproduction`, `## Expected / Actual`, `## Root cause`, `## Failing test to write first`.
-**Trivial-bug `fix` tickets** (cause already known, from `to-tickets`) skip those four and state the cause in one line in `## Context`.
+**`fix` tickets that `to-tickets` writes from a diagnose finding** add four sections right after `## Context`: `## Reproduction`, `## Expected / Actual`, `## Root cause`, `## Failing test to write first`.
+**Trivial-bug `fix` tickets** (cause known without a diagnosis) skip those four and state the cause in one line in `## Context`.
 
 ## Example: `feat`
 
@@ -158,7 +158,7 @@ renders a placeholder card. Widgets come in T-0019.
 ## Notes
 ```
 
-## Example: `fix` (from `diagnose`)
+## Example: `fix` (from a diagnose finding)
 
 ```markdown
 ---

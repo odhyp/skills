@@ -1,6 +1,6 @@
 %% Data flow: which odhyp skill reads (dotted) or writes (solid) which file; templates come from plugins/odhyp/templates/, skills from plugins/odhyp/skills/.
 %% Every skill except shape and session-review also reads the CLAUDE.md odhyp block for paths and commands; shape reads it only for the Glossary path. GLOSSARY.md is optional: readers skip it when the path or file is missing.
-%% Not drawn: setup deletes .gitkeep files in the four odhyp folders and sets git config core.hooksPath; to-tickets and session-review check whether plugins/odhyp/.claude-plugin/plugin.json exists (are we in the odhyp repo?). session-review otherwise reads only the session and writes nothing.
+%% Not drawn: setup deletes .gitkeep files in the four odhyp folders and sets git config core.hooksPath; to-tickets, diagnose and session-review check whether plugins/odhyp/.claude-plugin/plugin.json exists (are we in the odhyp repo?). session-review otherwise reads only the session and writes nothing; diagnose reads only the code and writes nothing.
 flowchart LR
     tBlock["claude-md-block.md"]
     tHook["commit-msg"]
@@ -79,11 +79,7 @@ flowchart LR
     tGlossary -.-> toTickets
     glossary -.-> toTickets
 
-    tTicket -.-> diagnose
     code -.-> diagnose
-    releases -.->|"next ID"| diagnose
-    tickets -.->|"next ID"| diagnose
-    diagnose --> tickets
 
     tDiagram -.-> diagram
     diagrams -.-> diagram
