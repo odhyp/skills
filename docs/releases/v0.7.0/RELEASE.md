@@ -1,6 +1,6 @@
 # v0.7.0
 
-2026-11-24
+Released 2026-11-24.
 
 `to-tickets` and `diagnose` now confirm their ticket drafts and commit them, and `implement` names the edit that unblocks a refused ticket.
 `release` keeps wontfix tickets out of the bump, and `setup` reuses the existing version files and can import a tracker.

@@ -1,6 +1,6 @@
 # v0.9.0
 
-2026-11-25
+Released 2026-11-25.
 
 Projects get a glossary that `shape`, `to-spec` and `to-tickets` read, and glossary changes travel with the work until `implement` writes them in the same commit as the code.
 `to-spec` writes its drafts to disk and shows a table, and `implement` applies the findings marked fix now before it reviews once more.

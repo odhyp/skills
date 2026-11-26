@@ -1,6 +1,6 @@
 # v0.8.0
 
-2026-11-24
+Released 2026-11-24.
 
 The new `to-adr` skill records decisions as ADRs. `implement` and `shape` offer it, and `setup` adds a decisions path to the CLAUDE.md block.
 `to-tickets` writes its drafts to disk and shows a table, and the ticket and spec templates require plain-text titles.

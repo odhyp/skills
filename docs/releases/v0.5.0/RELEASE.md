@@ -1,6 +1,6 @@
 # v0.5.0
 
-2026-11-23
+Released 2026-11-23.
 
 `shape` can now explore a vague idea before sizing it.
 Polaris is gone from the skills (ADR-0008), and the workflow chart lives in `docs/diagrams/`.

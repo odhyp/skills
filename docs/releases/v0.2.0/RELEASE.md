@@ -1,6 +1,6 @@
 # v0.2.0
 
-2026-11-22
+Released 2026-11-22.
 
 Project config moves from `polaris.json` into the odhyp block in `CLAUDE.md` (breaking).
 Also fixes gaps in `implement`, `session-review` and `release`, and marks the format files as the public contract.

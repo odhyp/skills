@@ -1,6 +1,6 @@
 # v0.3.0
 
-2026-11-23
+Released 2026-11-23.
 
 Review findings and small requests can be fixed without a ticket: `implement` gains a direct mode, and `session-review` and `code-review` return graded findings instead of writing tickets.
 Also adds a confirmation loop to `to-spec`, drops `.gitkeep` from `setup`, and gives each skill's question in the README.
