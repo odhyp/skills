@@ -29,7 +29,7 @@ Check these first, in this order, before changing any file. Refuse, change no ti
 - it is not `in-progress` and the test or lint command fails before any change: show the failure and say to fix it first.
 
 Otherwise:
-- `needs-info` with every item under `## Questions` answered: it is now `ready-for-agent`; set `status: in-progress` and continue.
+- `needs-info` with every item under `## Questions` answered: set `status: in-progress` and continue.
 - `in-progress`: resume. Check `git status` and `## Notes`; must-fix findings from an earlier review and `Blocked:` entries are listed there, and fixing them comes first.
 - Otherwise set `status: in-progress`.
 
