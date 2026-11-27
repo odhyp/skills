@@ -21,7 +21,7 @@ The ticket is `$ARGUMENTS`. With no argument, pick the next eligible one: an `in
 
 Check these first, in this order, before changing any file. Refuse, change no ticket, and stop when:
 - it is `resolved` or `wontfix`: say so;
-- it is `needs-info` with unanswered questions: show them, and say to answer them inline under `## Questions` in the ticket's file path and commit; the next `/implement` then sets `ready-for-agent`;
+- it is `needs-info` with unanswered questions: show them, and say to answer them inline under `## Questions` in the ticket's file path and commit; the next `/implement` then picks it up;
 - it is `ready-for-human`: say what the person has to do, then to set `status: resolved` (done by hand) or `status: ready-for-agent` (an agent should build it) in the ticket's file path, and commit;
 - any `depends_on` ticket is not `resolved`: list them;
 - it is `in-progress` and its `## Notes` holds two or more `Must-fix (review):` or `Blocked:` entries (one per failed run): show them and give the ways out: fix it by hand, set `status: resolved` and commit the code with the ticket file; delete the entries to allow another try; or discard the ticket's code changes, set `status: wontfix` with the reason under `## Notes` and commit the ticket file. Both commits end with `Refs: T-NNNN`;
@@ -29,7 +29,7 @@ Check these first, in this order, before changing any file. Refuse, change no ti
 - it is not `in-progress` and the test or lint command fails before any change: show the failure and say to fix it first.
 
 Otherwise:
-- `needs-info` with every item under `## Questions` answered: set `status: ready-for-agent` and continue.
+- `needs-info` with every item under `## Questions` answered: it is now `ready-for-agent`; set `status: in-progress` and continue.
 - `in-progress`: resume. Check `git status` and `## Notes`; must-fix findings from an earlier review and `Blocked:` entries are listed there, and fixing them comes first.
 - Otherwise set `status: in-progress`.
 
