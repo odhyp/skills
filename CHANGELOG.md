@@ -5,6 +5,21 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+## [0.10.1] - 2026-11-27
+
+### Fixed
+
+- `implement` leaves a known state after every ticket-mode run (ADR-0016):
+  - It refuses on a dirty tree, a red baseline or two failed runs.
+  - It commits the ticket files when it stops because a ticket is unclear or needs splitting.
+  - It records `Blocked:` when it is stuck on red.
+  - It writes review findings to `## Notes` before any stop, and only a PASS commits.
+- `implement` picks an answered `needs-info` ticket only when its `depends_on` tickets are resolved, and sets it `in-progress` before building.
+- `to-spec` and `to-tickets` commit the diagrams `shape` drew, so `implement` in ticket mode no longer refuses on a dirty tree. TICKET-FORMAT lists `setup` as a status setter.
+- `release` writes an exact date line in RELEASE.md.
+
+Release notes: [docs/releases/v0.10.1](docs/releases/v0.10.1/RELEASE.md)
+
 ## [0.10.0] - 2026-11-26
 
 ### Added
