@@ -46,7 +46,7 @@ Ask the user to approve the tickets or ask for changes. For each revision reques
 On approval, commit the written tickets (an `odhyp skill` finding outside the odhyp repo has none, see step 2). No written tickets: skip this step.
 
 1. If there is a spec: set its `tickets:` to the new IDs and `status: accepted`.
-2. Stage only those files: `git add` the ticket files and the spec file. Never `git add -A`.
+2. Stage only those files: `git add` the ticket files, the spec file, and any diagram `shape` drew in this conversation that is still uncommitted (otherwise `/implement` refuses on the dirty tree). Never `git add -A`.
 3. Commit only those files, so anything the user already had staged stays out: `git commit -m "docs(tickets): add T-NNNN to T-MMMM" -- <files>` (one ticket: `docs(tickets): add T-NNNN <slug>`), with no `Refs:` footer. Never push.
 
 ## 5. Report

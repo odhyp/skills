@@ -30,7 +30,7 @@ Ask the user to approve the specs or ask for changes. For each revision request,
 
 On approval:
 
-1. Stage only the written specs: `git add` the spec files. Never `git add -A`.
+1. Stage only the written specs, plus any diagram `shape` drew in this conversation that is still uncommitted (otherwise `/implement` refuses on the dirty tree): `git add` those files. Never `git add -A`.
 2. Commit only those files, so anything the user already had staged stays out: `git commit -m "docs(spec): add S-NNNN to S-MMMM" -- <files>` (one spec: `docs(spec): add S-NNNN <slug>`), with no `Refs:` footer. Never push.
 
 ## 5. Report

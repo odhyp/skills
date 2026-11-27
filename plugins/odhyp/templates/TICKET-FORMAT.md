@@ -53,12 +53,12 @@ Identical to commit types.
 
 | status | Meaning | Set by |
 |---|---|---|
-| `ready-for-agent` | Fully specified; an agent can do it | to-tickets, implement, human |
+| `ready-for-agent` | Fully specified; an agent can do it | to-tickets, implement, setup (import), human |
 | `ready-for-human` | Needs a person (credentials, DNS, design call, manual test) | any skill, human |
-| `needs-info` | Blocked on the questions in `## Questions`; back to `ready-for-agent` once all are answered | implement (sets and clears), human (clears) |
+| `needs-info` | Blocked on the questions in `## Questions`; eligible for an agent again once all are answered | implement (sets and clears), setup (import), human (clears) |
 | `in-progress` | An agent is working on it (crash recovery) | implement |
-| `resolved` | Code and tests committed | implement, in the same commit as the code; human, for `ready-for-human` work done by hand |
-| `wontfix` | Dropped (incl. duplicates); reason in `## Notes` | human |
+| `resolved` | Code and tests committed | implement, in the same commit as the code; human, for `ready-for-human` work done by hand; setup, for imported done items |
+| `wontfix` | Dropped (incl. duplicates); reason in `## Notes` | human, setup (imported dropped items) |
 
 Dependencies are not a status: `implement` refuses to start until every `depends_on` ticket is `resolved`.
 
